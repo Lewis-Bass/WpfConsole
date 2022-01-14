@@ -1,0 +1,101 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~    These colors    ~~~ -->
+    <!-- ~~~   should only be   ~~~ -->
+    <!-- ~~~   referenced from  ~~~ -->
+    <!-- ~~~ DefaultStyles.xaml ~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+    <!-- ***************************************** -->
+    <!-- ******* MEDIUM LIGHT THEME COLORS *******-->
+    <!-- ***************************************** -->
+
+    <!-- Navigation Colors -->
+    <Color x:Key="Nav.Background.Color">#35434B</Color>
+    <Color x:Key="Nav.Border.Color">#35434B</Color>
+    <Color x:Key="Nav.Line.Color">#8D1448</Color>
+    <Color x:Key="Nav.Expander.Pressed.Color">#FFFFFF</Color>
+    <Color x:Key="MainMenu.Background.Color">#35434B</Color>
+    <Color x:Key="MainMenuItem.MouseOverPressed.Background.Color">#31596D</Color>
+    <Color x:Key="MainMenuItem.MouseOverPressed.Border.Color">#26A0DA</Color>
+
+    <!-- Main Window Colors -->
+    <Color x:Key="NormalView.Background.Color">#FFFFFF</Color>
+    <Color x:Key="NormalView.Foreground.Color">#44545E</Color>
+    <Color x:Key="NormalView.Disabled.Foreground.Color">#A5A8AB</Color>
+    
+    <!-- Converge Matrix Specific Colors -->
+    <Color x:Key="ConvergeMatrix_MiniAppBackgroundBrush">#FF4d616d</Color>
+
+    <!-- Dialog Colors -->
+    <Color x:Key="Dialog.Background.Color">#FFFFFF</Color>
+
+    <!-- All List type control Colors -->
+    <Color x:Key="ListControl.Background.Color">#FFFFFF</Color>
+    <Color x:Key="ListControl.Border.Color">#FF6E6E6E</Color>
+    <Color x:Key="ListControl.Foreground.Color">#35434B</Color>
+    <Color x:Key="ListControl.MouseOver.Background.Color">#D8F2FE</Color>
+    <Color x:Key="ListControl.MouseOver.Border.Color">#80BEF7</Color>
+    <Color x:Key="ListControl.Selected.Background.Color">#D8F2FE</Color>
+    <Color x:Key="ListControl.Selected.Border.Color">#80BEF7</Color>
+    <Color x:Key="ListControl.Selected.Text.Color">#070707</Color>
+    <Color x:Key="ListControl.SelectedInactive.Background.Color">LightGray</Color>
+    <Color x:Key="ListControl.SelectedInactive.Border.Color">Transparent</Color>
+    <Color x:Key="ListControl.MouseOverSelected.Background.Color">#D8F2FE</Color>
+    <Color x:Key="ListControl.MouseOverSelected.Border.Color">#26A0DA</Color>
+    <Color x:Key="ListControl.Header.Background.Color">#C2C2C2</Color>
+    <Color x:Key="ListControl.Disabled.Background.Color">#FFC2C2C2</Color>
+    <Color x:Key="ListControl.Disabled.Border.Color">#D8000000</Color>
+    <Color x:Key="ListControl.Disabled.Foreground.Color">#FFCCCCCC</Color>
+
+    <!-- Indeterminate Colors -->
+    <Color x:Key="IndeterminateBackgroundDarkColor">#FFFFA80D</Color>
+    <Color x:Key="IndeterminateBackgroundLightColor">#99FFFFFF</Color>
+
+    <!-- GroupBox Control Colors -->
+    <Color x:Key="GroupBox.Header.Color">#35434B</Color>
+    <Color x:Key="GroupBox.Border.Color">DarkGray</Color>
+
+    <!-- Normal Button Colors -->
+    <Color x:Key="ButtonControl.Background.Color">#35434B</Color>
+    <Color x:Key="ButtonControl.Border.Color">#35434B</Color>
+    <Color x:Key="ButtonControl.Disabled.Color">#FFF1F4F5</Color>
+    <Color x:Key="ButtonControl.Disabled.Text.Color">#B3B4BF</Color>
+    <Color x:Key="ButtonControl.MouseOver.Background.Color">#FF5B6B72</Color>
+
+    <!-- Vector Button Colors -->
+    <Color x:Key="VectorButton.Fill.Color">#FF313E49</Color>
+
+    <!-- Progress Dialog Colors -->
+    <Color x:Key="ProgressDialog.BorderBrush.Color">#000000</Color>
+    <Color x:Key="ProgressDialog.Indicator.Color">#FF6306</Color>
+
+    <!-- Unique FlowView Colors -->
+    <Color x:Key="FlowView.NonCanvas.Background.Color">LightGray</Color>
+
+    <!-- Tab Control and TabItem Colors -->
+    <Color x:Key="TabItem.Static.Border.Color">#D7D7D7</Color>
+    <Color x:Key="TabItem.Static.Foreground.Color">#43545E</Color>
+    <Color x:Key="TabItem.Disabled.Background.Color">#F4F4F4</Color>
+    <Color x:Key="TabItem.Disabled.Border.Color">#C9C7BA</Color>
+    <Color x:Key="TabItem.Disabled.Foreground.Color">#AFB4B8</Color>
+
+    <!-- TextBox Colors -->
+    <Color x:Key="TextBox.Static.Background.Color">#FFFFFF</Color>
+    <Color x:Key="TextBox.Static.Border.Color">#FFC2C2C2</Color>
+    <Color x:Key="TextBox.Static.Foreground.Color">#44555F</Color>
+    <Color x:Key="TextBox.Disabled.Background.Color">#FFF1F4F5</Color>
+    <Color x:Key="TextBox.Disabled.Foreground.Color">#A5A8AB</Color>
+
+    <!-- ComboBox Colors -->
+    <Color x:Key="ComboBox.Static.Background.Color">#FFFFFF</Color>
+    <Color x:Key="ComboBox.Static.Border.Color">#C2C2C2</Color>
+    <Color x:Key="ComboBox.Static.Foreground.Color">#44555F</Color>
+    <Color x:Key="ComboBox.Disabled.Background.Color">#FFF1F4F5</Color>
+    <Color x:Key="ComboBox.Disabled.Foreground.Color">#A5A8AB</Color>
+
+</ResourceDictionary>

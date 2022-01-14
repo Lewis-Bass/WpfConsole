@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Es - Add</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="AddFiles" xml:space="preserve">
+    <value>Es - Add Files</value>
+    <comment>FileDisplay</comment>
+  </data>
+  <data name="AddGroup" xml:space="preserve">
+    <value>Es - Add Group</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="AdministrativeAccount" xml:space="preserve">
+    <value>Es - Administrative Account</value>
+    <comment>MainCreate</comment>
+  </data>
+  <data name="ArkName" xml:space="preserve">
+    <value>Es - Ark Name</value>
+    <comment>MainCreate</comment>
+  </data>
+  <data name="BaseGroupName" xml:space="preserve">
+    <value>ES - Group</value>
+    <comment>WindowsData - SearchGroup</comment>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Es - Browse</value>
+    <comment>FileDisplay</comment>
+  </data>
+  <data name="BrowseHardDisk" xml:space="preserve">
+    <value>Es - Browse HardDisk</value>
+    <comment>MainCreate</comment>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>_Es - Cancel</value>
+    <comment>UserInput</comment>
+  </data>
+  <data name="CheckedOut" xml:space="preserve">
+    <value>Es - Files Checked Out</value>
+    <comment>CheckedOutList</comment>
+  </data>
+  <data name="CheckedOutViews" xml:space="preserve">
+    <value>Es - Maximum Checked Out Views (left menu)</value>
+    <comment>Preference</comment>
+  </data>
+  <data name="CheckIn" xml:space="preserve">
+    <value>Es - Check In</value>
+    <comment>CheckedOutList</comment>
+  </data>
+  <data name="CheckOut" xml:space="preserve">
+    <value>Es - Check Out</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="ConnectionEntries" xml:space="preserve">
+    <value>Es - Connection Entries (left menu)</value>
+    <comment>Preference</comment>
+  </data>
+  <data name="Connections" xml:space="preserve">
+    <value>Es - Connections</value>
+    <comment>MainWindow</comment>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Es - Create</value>
+    <comment>MainCreate</comment>
+  </data>
+  <data name="CreateArk" xml:space="preserve">
+    <value>Es - Create Ark</value>
+    <comment>MainCreate</comment>
+  </data>
+  <data name="Execute" xml:space="preserve">
+    <value>Es - Execute</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Es - Enter File Name</value>
+    <comment>FileDisplay</comment>
+  </data>
+  <data name="FileViews" xml:space="preserve">
+    <value>Es - Maximum File Views (left menu)</value>
+    <comment>Preference</comment>
+  </data>
+  <data name="Keys" xml:space="preserve">
+    <value>Es - Keys</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Es - Language</value>
+    <comment>Preference</comment>
+  </data>
+  <data name="LanguageEnglish" xml:space="preserve">
+    <value>Es - English</value>
+    <comment>Preference</comment>
+  </data>
+  <data name="LanguageSpanish" xml:space="preserve">
+    <value>Es - Spanish</value>
+    <comment>Preference</comment>
+  </data>
+  <data name="LastCheckOuts" xml:space="preserve">
+    <value>Es - Last CheckOuts</value>
+  </data>
+  <data name="LastViewed" xml:space="preserve">
+    <value>Es - LastViewed</value>
+    <comment>MainWindow</comment>
+  </data>
+  <data name="LoadFiles" xml:space="preserve">
+    <value>Es - Load Files</value>
+    <comment>FileDisplay</comment>
+  </data>
+  <data name="ManualIP" xml:space="preserve">
+    <value>Es - Enter Address</value>
+    <comment>MainConnection</comment>
+  </data>
+  <data name="MyCheckOuts" xml:space="preserve">
+    <value>Es - Show My CheckOuts</value>
+    <comment>CheckedOutList</comment>
+  </data>
+  <data name="MyRemoveCheckIn" xml:space="preserve">
+    <value>Es - Remove File When Checked in</value>
+    <comment>CheckedOutList</comment>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>_Es - Ok</value>
+    <comment>UserInput</comment>
+  </data>
+  <data name="OutputFileName" xml:space="preserve">
+    <value>Es - Please Enter Your Filename</value>
+    <comment>UserInput</comment>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Es - Password</value>
+    <comment>MainCreate</comment>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Es- Preferences</value>
+    <comment>MainWindow</comment>
+  </data>
+  <data name="PreviousSearches" xml:space="preserve">
+    <value>Es - Previous Searches</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="RekeyPassword" xml:space="preserve">
+    <value>Es - RekeyPassword</value>
+    <comment>MainCreate</comment>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Es - Remove</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="SaveAndExecute" xml:space="preserve">
+    <value>Es - Save and Execute</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="ScanNetwork" xml:space="preserve">
+    <value>Es - Scan Network</value>
+    <comment>MainConnection</comment>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Es - Search</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="SearchFieldClassification" xml:space="preserve">
+    <value>Es - Classification</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="SearchFieldDate" xml:space="preserve">
+    <value>Es - Date</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="SearchFieldExtension" xml:space="preserve">
+    <value>Es - Extension</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="SearchFieldFileName" xml:space="preserve">
+    <value>Es - File Name</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="SearchFieldLocked" xml:space="preserve">
+    <value>Es - Locked</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="SearchFieldPath" xml:space="preserve">
+    <value>Es - Path</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="SearchFieldPriorVersions" xml:space="preserve">
+    <value>Es - Prior Versions</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="SearchHowContains" xml:space="preserve">
+    <value>Es - Contains</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="SearchHowList" xml:space="preserve">
+    <value>Es - List</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="SearchHowRange" xml:space="preserve">
+    <value>Es - Range</value>
+    <comment>MainSearch</comment>
+  </data>
+  <data name="SelectTheme" xml:space="preserve">
+    <value>Es - Select Theme</value>
+    <comment>Preference</comment>
+  </data>
+  <data name="StorageLocation" xml:space="preserve">
+    <value>Es - Storage Location</value>
+    <comment>MainCreate</comment>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Es - View</value>
+    <comment>MainSearch CheckedOutList</comment>
+  </data>
+</root>

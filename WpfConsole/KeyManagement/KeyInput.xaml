@@ -1,0 +1,74 @@
+﻿<Window x:Class="WpfConsole.KeyManagement.KeyInput"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mext="using:Microsoft.UI.Xaml.Controls"
+        xmlns:local="clr-namespace:WpfConsole.KeyManagement"
+        xmlns:lang="clr-namespace:WpfConsole.Resources"
+        mc:Ignorable="d"
+        Title="{x:Static lang:Resource.KeyTitle}" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterOwner" 
+        FocusManager.FocusedElement="{Binding ElementName=NameTextBox}" 
+        SizeToContent="WidthAndHeight" 
+        Background="{DynamicResource Dialog.BackgroundBrush}"
+        Height="300" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{x:Static lang:Resource.KeyName }"/>
+        <TextBox Grid.Row="0" Grid.Column="1" 
+                         x:Name="KeyNameTextBox"
+                         Margin="5"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Text="{x:Static lang:Resource.KeyPin }"/>        
+        <TextBox Grid.Row="1" Grid.Column="1" 
+                         x:Name="KeyPinTextBox"
+                         Margin="5"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Text="{x:Static lang:Resource.KeyCheckInOut}"/>
+        <CheckBox Grid.Row="2" Grid.Column="1" x:Name="CanCheckInOutCheckBox" Margin="5"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Margin="5" Text="{x:Static lang:Resource.KeyView}"/>
+        <CheckBox Grid.Row="3" Grid.Column="1" x:Name="CanViewCheckBox" Margin="5"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Margin="5" Text="{x:Static lang:Resource.KeySubmit}"/>
+        <CheckBox Grid.Row="4" Grid.Column="1" Name="CanSubmitCheckBox" Margin="5"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Margin="5" Text="{x:Static lang:Resource.KeyExpiration}"/>
+        <DatePicker Grid.Row="5" Grid.Column="1" Name="KeyExpirationDate" Margin="5" Width="150" HorizontalAlignment="Left" />
+
+        <TextBlock Grid.Row="6" Grid.Column="1" x:Name="ErrorText" Foreground="Red" Margin="5"/>        
+        
+        <WrapPanel Grid.Row="7" Grid.Column="2" >
+            <Button IsDefault="True" 
+                    IsCancel="False" 
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Click="Button_Click">
+                <TextBlock Text="{x:Static lang:Resource.Create }"/>
+            </Button>
+            <Button IsCancel="True"
+                    Margin="5">
+                <TextBlock Text="{x:Static lang:Resource.CancelButton }"/>
+            </Button>
+        </WrapPanel>
+
+    </Grid>
+</Window>

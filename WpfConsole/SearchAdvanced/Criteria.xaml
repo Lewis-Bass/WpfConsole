@@ -1,0 +1,250 @@
+﻿<UserControl x:Class="WpfConsole.SearchAdvanced.Criteria"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfConsole.SearchAdvanced"
+             xmlns:converters="clr-namespace:WpfConsole.Converters" 
+             xmlns:lang="clr-namespace:WpfConsole"
+             xmlns:ctrl="clr-namespace:Itenso.Windows.Controls.ListViewLayout;assembly=Itenso.Windows.Controls.ListViewLayout"  
+             Style="{DynamicResource StandardUserControl}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="b2vconv"/>
+        <!--<converters:BooleanToHideConverter x:Key="b2hconv"/>-->
+        <Style x:Key="CollapsedHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+        <DataTemplate x:Key="cmbTemplate">
+            <Image Source="{Binding Value}" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Center" 
+                   Height="23"/>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0">
+            <Button x:Name="AddGroup" 
+                    Margin="5"                    
+                    Click="AddGroup_Click">
+                <TextBlock Text="{x:Static lang:Resource.CreateGroup}"/>
+            </Button>
+        </WrapPanel>
+
+        <!-- Simple Search Content-->
+        <ListView x:Name="UserSearchInput" 
+                  Grid.Row="1"
+                  ItemsSource="{Binding SearchCriteriaInfo}"
+                  VerticalAlignment="Stretch" 
+                  HorizontalAlignment="Stretch"
+                  ScrollViewer.CanContentScroll="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  ScrollViewer.HorizontalScrollBarVisibility="Visible">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Background" Value="{Binding GroupColor}"/>
+                    <Setter Property="Margin" Value="1 0 0 -3"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderBrush" Value="{Binding GroupColor}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{Binding GroupColor}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="BorderBrush" Value="{Binding GroupColor}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource CollapsedHeaderStyle}"                          >
+                    <GridViewColumn Width="75">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel >
+                                    <TextBlock Width="10"
+                                               Margin="5 0 5 0"
+                                               Visibility="{Binding ShowGroupBorder, Converter={StaticResource b2vconv}}"
+                                               />
+                                    <CheckBox x:Name="cbSelect" 
+                                              IsChecked="{Binding Select}"
+                                              Margin="0,0,5,0"
+                                              Background="White"
+                                              VerticalAlignment="Center"
+                                              Click="cbSelect_Click"
+                                              />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                    </GridViewColumn>
+                    <GridViewColumn Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <ComboBox Margin="5" 
+                                              Height="25"
+                                              DisplayMemberPath="Value"
+                                              SelectedValuePath="Key"
+                                              Visibility="{Binding ShowGroupRelationship, Converter={StaticResource b2vconv}}"
+                                              ItemTemplate="{StaticResource cmbTemplate}"
+                                              ItemsSource="{Binding GroupRelationshipFields}"
+                                              SelectedValue="{Binding GroupRelationship}"
+                                              >
+                                        <ComboBox.ItemContainerStyle>
+                                            <Style TargetType="ComboBoxItem">
+                                                <Setter Property="ToolTip">
+                                                    <Setter.Value>
+                                                        <TextBlock Text="{Binding ToolTip}" />
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ComboBox.ItemContainerStyle>
+                                    </ComboBox>
+                                    <ComboBox Grid.Row="0" Grid.Column="0" 
+                                                  Margin="5" 
+                                                  Height="25"
+                                                  DisplayMemberPath="Value"
+                                                  SelectedValuePath="Key"                                                  
+                                                  ItemTemplate="{StaticResource cmbTemplate}"
+                                                  ItemsSource="{Binding RelationshipFields}"
+                                                  SelectedValue="{Binding Relationship}"
+                                                  Visibility="{Binding ShowRelationship, Converter={StaticResource b2vconv}}"
+                                             >
+                                        <ComboBox.ItemContainerStyle>
+                                            <Style TargetType="ComboBoxItem">
+                                                <Setter Property="ToolTip">
+                                                    <Setter.Value>
+                                                        <TextBlock Text="{Binding ToolTip}" />
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ComboBox.ItemContainerStyle>
+                                    </ComboBox>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Text="{x:Static lang:Resource.SearchField }"/>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <ComboBox Grid.Row="0" Grid.Column="0"                                              
+                                                        Width="125"
+                                                        HorizontalAlignment="Stretch"
+                                                        DisplayMemberPath="Value"
+                                                        SelectedValuePath="Key"
+                                                        ItemsSource="{Binding SearchFields}"
+                                                        SelectedValue="{Binding Field}">
+                                    </ComboBox>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Text="{x:Static lang:Resource.SearchHow }"/>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <ComboBox Grid.Row="0" Grid.Column="0" 
+                                                        Width="125"
+                                                        DisplayMemberPath="Value"
+                                                        SelectedValuePath="Key"
+                                                        ItemsSource="{Binding SearchHow}"
+                                                        SelectedValue="{Binding Criteria}"
+                                                        Visibility="{Binding ShowCriteria, Converter={StaticResource b2vconv}}">
+                                    </ComboBox>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="200">
+                        <GridViewColumn.Header>
+                            <TextBlock Text="{x:Static lang:Resource.SearchValues}"/>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBox Width="150" 
+                                                        Text="{Binding ValueMin}" 
+                                                        Visibility="{Binding ShowValueMin, Converter={StaticResource b2vconv}}" />
+                                    <DatePicker Width="150" 
+                                                        SelectedDate="{Binding ValueMinDate}" 
+                                                        Visibility="{Binding ShowValueMinDate, Converter={StaticResource b2vconv}}"/>
+                                    <TextBlock Text=" To "
+                                                        Visibility="{Binding ShowTo, Converter={StaticResource b2vconv}}"/>
+                                    <TextBox Width="150" 
+                                                        Text="{Binding ValueMax}" 
+                                                        Visibility="{Binding ShowValueMax, Converter={StaticResource b2vconv}}" />
+                                    <DatePicker Width="150" 
+                                                        SelectedDate="{Binding ValueMaxDate}" 
+                                                        Visibility="{Binding ShowValueMaxDate, Converter={StaticResource b2vconv}}"/>
+                                    <CheckBox IsChecked="{Binding ValueBool}"
+                                                        Visibility="{Binding ShowValueBool, Converter={StaticResource b2vconv}}"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <Button x:Name="RemoveCriteria"
+                                            Width="75"
+                                            Padding="5"
+                                            Margin="5"
+                                            Click="RemoveCriteria_Click">
+                                        <TextBlock Text="{x:Static lang:Resource.Remove}"/>
+                                    </Button>
+                                    <Button x:Name="AddCriteria"
+                                            Margin="5"
+                                            Padding="5"
+                                            Width="75"
+                                            Click="AddCriteria_Click">
+                                        <TextBlock Text="{x:Static lang:Resource.Add}"/>
+                                    </Button>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- color selections-->
+        <!--<WrapPanel>
+                        <TextBlock Width="100" Text="picks" Foreground="Black"/>
+                        <TextBlock Width="100" Background="#641e16 " Text="TEST"/>                        
+                        <TextBlock Width="100" Background="#c0392b" Text="TEST"/>
+                        <TextBlock Width="100" Background="#d98880" Text="TEST"/>
+                        <TextBlock Width="100" Background="#512e5f" Text="TEST"/>
+                        <TextBlock Width="100" Background="#884ea0" Text="TEST"/>
+                        <TextBlock Width="100" Background="#c39bd3" Text="TEST"/>
+                        <TextBlock Width="100" Background="#154360" Text="TEST"/>
+                        <TextBlock Width="100" Background="#2471a3" Text="TEST"/>
+                        <TextBlock Width="100" Background="#7fb3d5" Text="TEST"/>
+                        <TextBlock Width="100" Background="#0e6251" Text="TEST"/>
+                        <TextBlock Width="100" Background="#17a589" Text="TEST"/>
+                        <TextBlock Width="100" Background="#76d7c4" Text="TEST"/>
+                        <TextBlock Width="100" Background="#145a32" Text="TEST"/>
+                        <TextBlock Width="100" Background="#229954" Text="TEST"/>
+                        <TextBlock Width="100" Background="#7dcea0" Text="TEST"/>
+                        <TextBlock Width="100" Background="#7e5109" Text="TEST"/>
+                        <TextBlock Width="100" Background="#d68910" Text="TEST"/>
+                        <TextBlock Width="100" Background="#f8c471" Text="TEST"/>
+                        <TextBlock Width="100" Background="#6e2c00" Text="TEST"/>
+                        <TextBlock Width="100" Background="#ba4a00" Text="TEST"/>
+                        <TextBlock Width="100" Background="#e59866" Text="TEST"/>
+                    </WrapPanel>-->
+    </Grid>
+</UserControl>
