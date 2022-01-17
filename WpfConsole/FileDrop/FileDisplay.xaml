@@ -106,29 +106,7 @@
 
 
 
-        <!--<DataGrid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="99"
-                  ItemsSource="{Binding FileList}"
-                  AutoGenerateColumns="False"
-                  Margin="5">
-            <DataGrid.Columns>
-                <DataGridTemplateColumn >
-                    <DataGridTemplateColumn.HeaderTemplate>
-                        <DataTemplate>
-                            <Button x:Name="BtnClear" Click="BtnClear_Click">Clear</Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.HeaderTemplate>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <WrapPanel>
-                                <Button x:Name="BtnRemove" Click="BtnRemove_Click">Remove</Button>
-                                <TextBlock Margin="10 0 0 0"
-                                Text="{Binding FileName}"/>
-                            </WrapPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>-->
+     
 
     </Grid>
 </UserControl>

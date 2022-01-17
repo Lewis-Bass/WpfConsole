@@ -608,4 +608,22 @@
   <data name="StartTime" xml:space="preserve">
     <value>Start Time</value>
   </data>
+  <data name="LoadFilesFromDirectory" xml:space="preserve">
+    <value>Scan/Load files from directories Below</value>
+  </data>
+  <data name="AutoLoad" xml:space="preserve">
+    <value>Auto Load</value>
+  </data>
+  <data name="MyDocuments" xml:space="preserve">
+    <value>[Documents]</value>
+  </data>
+  <data name="MyPictures" xml:space="preserve">
+    <value>[Pictures]</value>
+  </data>
+  <data name="MyMusic" xml:space="preserve">
+    <value>[Music]</value>
+  </data>
+  <data name="MyVideo" xml:space="preserve">
+    <value>[Video]</value>
+  </data>
 </root>

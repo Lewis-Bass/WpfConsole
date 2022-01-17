@@ -151,6 +151,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto Load.
+        /// </summary>
+        public static string AutoLoad {
+            get {
+                return ResourceManager.GetString("AutoLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Group.
         /// </summary>
         public static string BaseGroupName {
@@ -1024,6 +1033,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scan/Load files from directories Below.
+        /// </summary>
+        public static string LoadFilesFromDirectory {
+            get {
+                return ResourceManager.GetString("LoadFilesFromDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Local Path.
         /// </summary>
         public static string LocalPath {
@@ -1114,11 +1132,47 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Documents].
+        /// </summary>
+        public static string MyDocuments {
+            get {
+                return ResourceManager.GetString("MyDocuments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [Music].
+        /// </summary>
+        public static string MyMusic {
+            get {
+                return ResourceManager.GetString("MyMusic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [Pictures].
+        /// </summary>
+        public static string MyPictures {
+            get {
+                return ResourceManager.GetString("MyPictures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove File When Checked in.
         /// </summary>
         public static string MyRemoveCheckIn {
             get {
                 return ResourceManager.GetString("MyRemoveCheckIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [Video].
+        /// </summary>
+        public static string MyVideo {
+            get {
+                return ResourceManager.GetString("MyVideo", resourceCulture);
             }
         }
         

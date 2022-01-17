@@ -17,6 +17,7 @@ using WpfConsole.Preference;
 using WpfConsole.Search;
 using WpfConsole.SearchFilter;
 using WpfConsole.Resources;
+using WpfConsole.AutoLoad;
 using static Themes.Enumerations.ThemeEnums;
 using System.IO;
 using Common.Licenses;
@@ -40,6 +41,7 @@ namespace WpfConsole
         UserControl _SearchFilter;
         UserControl _Connections;
         UserControl _FileDisplay;
+        UserControl _AutoLoad;
         UserControl _PreferenceSetup;
         UserControl _KeyManagement;
         UserControl _CheckedOut;
@@ -216,7 +218,7 @@ namespace WpfConsole
 
         #endregion
 
-        #region menu click events
+        #region Menu Click Events
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
@@ -327,6 +329,21 @@ namespace WpfConsole
         }
 
         /// <summary>
+        /// Top Menu Auto Load Preferences
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AutoLoad_Click(object sender, RoutedEventArgs e)
+        {
+            if (_AutoLoad == null)
+            {
+                _AutoLoad = new AutoLoadMain();
+            }
+            DisplayControl(_AutoLoad);
+
+        }
+
+        /// <summary>
         /// logout of the current session
         /// </summary>
         /// <param name="sender"></param>
@@ -422,6 +439,7 @@ namespace WpfConsole
             CheckedOutFiles.IsEnabled = GlobalValues.IsConnectionValid;
             Keys.IsEnabled = GlobalValues.IsConnectionValid;
             Logout.IsEnabled = GlobalValues.IsConnectionValid;
+            AutoLoad.IsEnabled = GlobalValues.IsConnectionValid;
         }
 
         #endregion

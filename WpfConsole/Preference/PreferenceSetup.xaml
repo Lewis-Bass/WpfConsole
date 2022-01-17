@@ -7,7 +7,7 @@
              xmlns:lang="clr-namespace:WpfConsole.Resources"
              mc:Ignorable="d" 
              Style="{DynamicResource StandardUserControl}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="750" d:DesignWidth="800">
     <StackPanel IsVisibleChanged="StackPanel_IsVisibleChanged">
         <GroupBox Header="Preferences">
             <Grid Margin="10,10,10,10">
@@ -156,58 +156,5 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox x:Name="grpAutoLoad" Header="Upload Files">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="40*"/>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="20*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0" Grid.Column="0"
-                   Text="{x:Static lang:Resource.LibraryCard}"                   
-                   VerticalAlignment="Center" 
-                   Margin="5px"
-                   Style="{DynamicResource TextBlockNormal3Style}"/>
-                <ComboBox Grid.Row="0" Grid.Column="1" />
-                
-                <TextBlock Grid.Row="1" Grid.Column="0"
-                   Text="{x:Static lang:Resource.StartTime}"                   
-                   VerticalAlignment="Center" 
-                   Margin="5px"
-                   Style="{DynamicResource TextBlockNormal3Style}"/>
-
-                           
-                <TextBlock Grid.Row="2" Grid.Column="0"
-                   Text="{x:Static lang:Resource.EndTime}"
-                   VerticalAlignment="Center" 
-                   Margin="5px"
-                   Style="{DynamicResource TextBlockNormal3Style}"/>
-
-
-                <TextBlock Grid.Row="0" Grid.Column="2"
-                   Text="{x:Static lang:Resource.LastFileUploadDate}"
-                   VerticalAlignment="Center" 
-                   Margin="5px"
-                   Style="{DynamicResource TextBlockNormal3Style}"/>
-
-                <TextBlock Grid.Row="1" Grid.Column="2"
-                   Text="{x:Static lang:Resource.LastUploadCount}"
-                   VerticalAlignment="Center" 
-                   Margin="5px"
-                   Style="{DynamicResource TextBlockNormal3Style}"/>
-
-
-                
-                <!--Directories to scan-->
-            </Grid>
-        </GroupBox>
     </StackPanel>
 </UserControl>

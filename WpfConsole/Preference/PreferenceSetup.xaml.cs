@@ -84,8 +84,6 @@ namespace WpfConsole.Preference
 
         #endregion
 
-
-
         #region Combo box selection changed
         private void cbThemeSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
