@@ -74,11 +74,6 @@ namespace Common
         {
             get
             {
-                if (_ConnectionsData.Any(r => r.AccessKeyName == ConnectionInformation.LocalAdminName) == false)
-                {
-                    // this connection should always exist
-                    AddConnection(new ConnectionInformation { AccessKeyName = ConnectionInformation.LocalAdminName, IPAddress = "localhost", IsCurrentConnection = false });
-                }
                 return _ConnectionsData;
             }
             set

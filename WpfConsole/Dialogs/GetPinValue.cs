@@ -13,9 +13,10 @@ namespace WpfConsole.Dialogs
     {
         public static string GetPinValueFromUser(ConnectionInformation data)
         {
-            // do we need to get a PIN code?
             string pin = string.Empty;
-            if (data.AccessKeyName != ConnectionInformation.LocalAdminName)
+
+            // do we need to get a PIN code?
+            if (!data.IsLocalAdmin)
             {
                 var dlg = new UserInput(string.Format(Resource.EnterPIN, data.AccessKeyName));
                 if (Application.Current.MainWindow.IsLoaded)
@@ -26,9 +27,8 @@ namespace WpfConsole.Dialogs
                 {
                     pin = dlg.Answer;
                 }
-                else
-                {
-                    // fail the login
+                if (string.IsNullOrEmpty(pin))
+                { 
                     MessageBox.Show(Resource.PINRequired, Resource.LoginName, MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 }
             }

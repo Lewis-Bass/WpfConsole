@@ -75,11 +75,12 @@ namespace WindowsData
         /// <summary>
         /// GUI ONLY PROPERTY - IS THIS CONNECTION THE CURRENT ONE?
         /// </summary>
-        public bool IsNotLocalAdmin
+        public bool IsLocalAdmin
         {
             get
             {
-                return _AccessKeyName != LocalAdminName;
+                //return ((IPAddress != "localhost" || IPAddress != "127.0.0.1") && AccessKeyName != ConnectionInformation.LocalAdminName);
+                return ((IPAddress != "localhost" || IPAddress != "127.0.0.1") && string.Compare(AccessKeyName, ConnectionInformation.LocalAdminName, true) == 0);
             }
         }
 

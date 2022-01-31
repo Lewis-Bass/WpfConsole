@@ -56,7 +56,7 @@ namespace WpfConsole.Connection
         {
             var settings = LocalSettings.Load();
             LanAddressInfo = new ObservableCollection<ConnectionInformation>(settings.ConnectionsData);
-            lanPrior.ItemsSource = LanAddressInfo; // TODO: Fix this
+            lanPrior.ItemsSource = LanAddressInfo; 
         }
 
         #region Routed Event Handlers
@@ -123,23 +123,23 @@ namespace WpfConsole.Connection
         /// <param name="e"></param>
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button)
-            {
-                var btn = (Button)sender;
-                if (btn.DataContext is ConnectionInformation)
-                {
-                    var data = (ConnectionInformation)btn.DataContext;
-                    var mbox = MessageBox.Show($"{Resource.DeleteMessageBox} {data.AccessKeyName} {Resource.Connection}", Resource.Confirm, MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (mbox == MessageBoxResult.Yes)
-                    {
-                        LanAddressInfo.Remove(data);
-                        var settings = LocalSettings.Load();
-                        settings.RemoveConnection(data);
+            ////if (sender is Button)
+            ////{
+            ////    var btn = (Button)sender;
+            ////    if (btn.DataContext is ConnectionInformation)
+            ////    {
+            ////        var data = (ConnectionInformation)btn.DataContext;
+            ////        var mbox = MessageBox.Show($"{Resource.DeleteMessageBox} {data.AccessKeyName} {Resource.Connection}", Resource.Confirm, MessageBoxButton.YesNo, MessageBoxImage.Question);
+            ////        if (mbox == MessageBoxResult.Yes)
+            ////        {
+            ////            LanAddressInfo.Remove(data);
+            ////            var settings = LocalSettings.Load();
+            ////            settings.RemoveConnection(data);
 
-                        RaiseEvent(new RoutedEventArgs(ConnectionChangedEvent));
-                    }
-                }
-            }
+            ////            RaiseEvent(new RoutedEventArgs(ConnectionChangedEvent));
+            ////        }
+            ////    }
+            ////}
         }
 
         /// <summary>
@@ -170,33 +170,9 @@ namespace WpfConsole.Connection
         /// <param name="data"></param>
         private void HandleLogin(ConnectionInformation data)
         {
-            // do we need to get a PIN code?
-            string pin = GetPinValue.GetPinValueFromUser(data);
-
-            var response = AccountHelpers.Login(data, pin);
-
-            data.IsCurrentConnection = response.IsLoginValid;
-
-            // do we have a valid connection?
-            string msg = string.Empty;
-            if (response.IsLoginValid)
-            {
-                GlobalValues.LastConnection = data;
-                GlobalValues.ConnectionToken = response.ConnectionToken;
-                msg = Resource.LoginSuccessful;
-            }
-            else
-            {
-                GlobalValues.LastConnection = null;
-                GlobalValues.ConnectionToken = null; ;
-                msg = Resource.LoginFailed;
-            }
-
-            MessageBox.Show(msg, Resource.LoginName, MessageBoxButton.OK, MessageBoxImage.Asterisk);
-
-
-            // tell the world..
-            RaiseEvent(new RoutedEventArgs(ConnectionChangedEvent));
+            var helper = new Helpers.LoginHelper();
+            helper.ProcessLogin(data);
+            RaiseEvent(new RoutedEventArgs(ConnectionChangedEvent));           
         }
 
         #endregion

@@ -58,6 +58,7 @@ namespace WpfConsole
         {
             InitializeComponent();
             SerilogSetup();
+            EventSetup();
             ThemeSetup();
 
             // do we have any problems associated with running the back end to make the user aware of ?
@@ -68,7 +69,6 @@ namespace WpfConsole
             LoadCheckedFiles();
 
             SetTopMenuAvailability();
-            EventSetup();
         }
 
         void OnLoad(object sender, RoutedEventArgs e)
@@ -91,8 +91,13 @@ namespace WpfConsole
             }
             else if (licenseStatus == LicenseChecks.LicenseStatus.Expired)
             {
-                MessageBox.Show(Resource.ExpiredLicense, Resource.Error, MessageBoxButton.OK, MessageBoxImage.Stop);
-                //this.Close();
+                // local admin can always connect
+                var settings = LocalSettings.Load();
+                if (!settings.LastConnection.IsLocalAdmin)
+                {
+                    MessageBox.Show(Resource.ExpiredLicense, Resource.Error, MessageBoxButton.OK, MessageBoxImage.Stop);
+                    GlobalValues.LastConnection = null;
+                }
             }
             else if (licenseStatus == LicenseChecks.LicenseStatus.Demo)
             {
@@ -120,6 +125,9 @@ namespace WpfConsole
 
             AddHandler(MainConnection.ConnectionChangedEvent,
                 new RoutedEventHandler(MainSearch_ConnectionChangedMethod));
+
+            //AddHandler(Helpers.LoginHelper.LoginChangedEvent,
+            //   new RoutedEventHandler(MainSearch_LoginChangedMethod));
         }
 
         /// <summary>
@@ -215,6 +223,23 @@ namespace WpfConsole
             }
             SetTopMenuAvailability();
         }
+
+        /////////// <summary>
+        /////////// Handle the event from the MainConnection user control - a new connection was just established
+        /////////// </summary>
+        /////////// <param name="sender"></param>
+        /////////// <param name="e"></param>
+        ////////private void MainSearch_LoginChangedMethod(object sender, RoutedEventArgs e)
+        ////////{
+        ////////    LicenseSetup();
+        ////////    LoadConnections();
+        ////////    // make certain that the last connection still has a valid value (it might have been deleted by MainConnection.xaml)
+        ////////    if (!PriorConnections.Any(r => r.AccessKeyName == GlobalValues.LastConnection.AccessKeyName))
+        ////////    {
+        ////////        GlobalValues.LastConnection = null;
+        ////////    }
+        ////////    SetTopMenuAvailability();
+        ////////}
 
         #endregion
 
@@ -421,6 +446,16 @@ namespace WpfConsole
         private void LoadConnections()
         {
             LocalSettings settings = LocalSettings.Load();
+
+            // add the local host setting if it is not there
+            if (settings.ConnectionsData.Any(r => r.AccessKeyName == ConnectionInformation.LocalAdminName) == false)
+            {
+                // this connection should always exist
+                var conn = new ConnectionInformation { AccessKeyName = ConnectionInformation.LocalAdminName, IPAddress = "localhost", IsCurrentConnection = false };
+                settings.AddConnection(conn);
+                settings.LastConnection = conn;
+            }
+
             PriorConnections = new ObservableCollection<ConnectionInformation>(settings.ConnectionsData);
             // setup the current connection 
             foreach (var con in settings.ConnectionsData)
@@ -460,7 +495,6 @@ namespace WpfConsole
 
         private void DragDropZone_DragOver(object sender, DragEventArgs e)
         {
-
         }
 
         private void DragDropZone_Drop(object sender, DragEventArgs e)
@@ -509,53 +543,17 @@ namespace WpfConsole
                 {
                     var data = (ConnectionInformation)btn.DataContext;
                     ProcessLogin(data);
-                }                
+                }
             }
         }
 
         private void ProcessLogin(ConnectionInformation data)
         {
-            string pin = GetPinValue.GetPinValueFromUser(data);
-            var response = AccountHelpers.Login(data, pin);
-            data.IsCurrentConnection = response.IsLoginValid;
+            var helper = new Helpers.LoginHelper();
+            helper.ProcessLogin(data);
 
-            // do we have a valid connection?
-            string msg = string.Empty;
-            if (response.IsLoginValid)
-            {
-                GlobalValues.LastConnection = data;
-                GlobalValues.ConnectionToken = response.ConnectionToken;
-                msg = Resource.LoginSuccessful;
-            }
-            else
-            {
-                GlobalValues.LastConnection = null;
-                GlobalValues.ConnectionToken = null;
-                msg = Resource.LoginFailed;
-            }
-            MessageBox.Show(Application.Current.MainWindow, msg, Resource.LoginName, MessageBoxButton.OK, MessageBoxImage.Asterisk);
-
-            foreach (var connect in PriorConnections)
-            {
-                if (connect.AccessKeyName == data.AccessKeyName)
-                {
-                    connect.IsCurrentConnection = data.IsCurrentConnection;
-                }
-                else
-                {
-                    connect.IsCurrentConnection = false;
-                }
-            }
-            if (data.IsCurrentConnection)
-            {
-                GlobalValues.LastConnection = data;
-                GlobalValues.ConnectionToken = response.ConnectionToken;
-            }
-            else
-            {
-                GlobalValues.LastConnection = null;
-                GlobalValues.ConnectionToken = null;
-            }
+            LicenseSetup();
+            LoadConnections();
             SetTopMenuAvailability();
         }
 
