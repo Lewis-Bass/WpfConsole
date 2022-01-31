@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Date" xml:space="preserve">
-    <value>Date</value>
+    <value>Date - ES</value>
   </data>
   <data name="Equal" xml:space="preserve">
     <value>=</value>
   </data>
   <data name="Extension" xml:space="preserve">
-    <value>Extension</value>
+    <value>Extension  - ES</value>
   </data>
   <data name="FileName" xml:space="preserve">
-    <value>File Name</value>
+    <value>File Name  - ES</value>
   </data>
   <data name="GreaterThan" xml:space="preserve">
     <value>&gt;</value>
@@ -142,30 +142,31 @@
     <value>&lt;=</value>
   </data>
   <data name="LocalAdminName" xml:space="preserve">
-    <value>Local Admin</value>
+    <value>Local Admin  - ES</value>
   </data>
   <data name="Locked" xml:space="preserve">
-    <value>Locked</value>
+    <value>Locked  - ES</value>
   </data>
   <data name="Matches" xml:space="preserve">
-    <value>Matches</value>
+    <value>Matches  - ES</value>
   </data>
   <data name="NotEqual" xml:space="preserve">
     <value>&lt;&gt;</value>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>Path</value>
+    <value>Path  - ES</value>
   </data>
   <data name="Prior Versions" xml:space="preserve">
-    <value>Prior Versions</value>
+    <value>Prior Versions  - ES</value>
   </data>
   <data name="Range" xml:space="preserve">
-    <value>Range</value>
+    <value>Range  - ES</value>
+    <comment> </comment>
   </data>
   <data name="RelationshipAndHelp" xml:space="preserve">
-    <value>All Search Critera must be met</value>
+    <value>All Search Critera must be met  - ES</value>
   </data>
   <data name="RelationshipOrHelp" xml:space="preserve">
-    <value>One Search Critera must be met</value>
+    <value>One Search Critera must be met  - ES</value>
   </data>
 </root>

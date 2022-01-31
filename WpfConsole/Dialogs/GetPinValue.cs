@@ -15,7 +15,7 @@ namespace WpfConsole.Dialogs
         {
             // do we need to get a PIN code?
             string pin = string.Empty;
-            if (data.AccessKeyName != ConnectionInformation.LOCALADMIN)
+            if (data.AccessKeyName != ConnectionInformation.LocalAdminName)
             {
                 var dlg = new UserInput(string.Format(Resource.EnterPIN, data.AccessKeyName));
                 if (Application.Current.MainWindow.IsLoaded)

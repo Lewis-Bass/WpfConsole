@@ -9,8 +9,7 @@ namespace WindowsData
     public class ConnectionInformation : INotifyPropertyChanged
     {
 
-        public const string LOCALADMIN = "Local Admin";
-
+        public static string LocalAdminName { get { return Resources.Resource.LocalAdminName; } }
 
         string _IPAddress;
         /// <summary>
@@ -80,7 +79,7 @@ namespace WindowsData
         {
             get
             {
-                return _AccessKeyName != LOCALADMIN;
+                return _AccessKeyName != LocalAdminName;
             }
         }
 

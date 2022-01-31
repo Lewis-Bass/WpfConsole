@@ -89,6 +89,8 @@ namespace WpfConsole.AutoLoad
 
             tbLastProcessed.Text = settings.AutoLoadLastProcessed.ToShortDateString();
             tbTotalUpload.Text = settings.AutoLoadLastTotalUpload.ToString();
+            //tbPin.Password = settings.AutoLoadPin;
+            tbPin.Text = settings.AutoLoadPin;
 
             if (settings.AutoLoadDirectories == null || settings.AutoLoadDirectories.Count <= 0)
             {
@@ -181,6 +183,26 @@ namespace WpfConsole.AutoLoad
             }
         }
 
+
+        private void tbPin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                var tb = sender as TextBox;
+                settings.AutoLoadPin = tb.Text;
+            }
+        }
+
+        //private void tbPin_PasswordChanged(object sender, RoutedEventArgs e)
+        //{
+        //    if (sender is PasswordBox)
+        //    {
+        //        var tb = sender as PasswordBox;
+        //        settings.AutoLoadPin = tb.Password;
+        //    }
+        //}
         #endregion
+
+
     }
 }

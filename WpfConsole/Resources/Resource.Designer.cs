@@ -1042,6 +1042,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Local Admin.
+        /// </summary>
+        public static string LocalAdminName {
+            get {
+                return ResourceManager.GetString("LocalAdminName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Local Path.
         /// </summary>
         public static string LocalPath {
@@ -1200,6 +1209,15 @@ namespace WpfConsole.Resources {
         public static string OK {
             get {
                 return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string OkButton {
+            get {
+                return ResourceManager.GetString("OkButton", resourceCulture);
             }
         }
         

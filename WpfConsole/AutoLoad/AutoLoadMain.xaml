@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WpfConsole.AutoLoad"
-             
+             xmlns:local="clr-namespace:WpfConsole.AutoLoad"             
              xmlns:lang="clr-namespace:WpfConsole.Resources"
              mc:Ignorable="d" 
              Style="{DynamicResource StandardUserControl}"
@@ -33,7 +32,7 @@
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="0"
+                <TextBlock Grid.Row="0" Grid.Column="0"
                    Text="{x:Static lang:Resource.LibraryCard}"                   
                    VerticalAlignment="Center" 
                    Margin="5,0,5,0"
@@ -42,6 +41,16 @@
                           ItemsSource="{Binding settings.ConnectionsData}"
                           DisplayMemberPath="AccessKeyName"                          
                           SelectionChanged="cbConnection_SelectionChanged"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="3"
+                   Text="{x:Static lang:Resource.KeyPin}"                   
+                   VerticalAlignment="Center" 
+                   Margin="5,0,5,0"
+                   Style="{DynamicResource TextBlockNormal3Style}"/>                
+                <!--<PasswordBox x:Name="tbPin" Grid.Row="0" Grid.Column="4"                              
+                         PasswordChanged="tbPin_PasswordChanged"/>-->
+                <TextBox x:Name="tbPin" Grid.Row="0" Grid.Column="4"                              
+                         TextChanged="tbPin_TextChanged"/>
 
                 <TextBlock Grid.Row="1" Grid.Column="0"
                    Text="{x:Static lang:Resource.StartTime}"                   
@@ -61,23 +70,25 @@
                           DisplayMemberPath="Value"
                           SelectionChanged="cbEndTime_SelectionChanged"/>
 
+                
+
                 <!--Summary stats-->
-                <TextBlock Grid.Column="3"
+                <TextBlock Grid.Row="1" Grid.Column="3"
                    Text="{x:Static lang:Resource.LastFileUploadDate}"
                    VerticalAlignment="Center" 
                    Margin="5,0,5,0"
                    Style="{DynamicResource TextBlockNormal3Style}"/>
-                <TextBlock Name="tbLastProcessed" Grid.Column="4"
+                <TextBlock Name="tbLastProcessed" Grid.Row="1" Grid.Column="4"
                    VerticalAlignment="Center" 
                    Margin="5,0,5,0"
                    Style="{DynamicResource TextBlockNormal3Style}"/>
 
-                <TextBlock Grid.Row="1" Grid.Column="3"
+                <TextBlock Grid.Row="2" Grid.Column="3"
                    Text="{x:Static lang:Resource.LastUploadCount}"
                    VerticalAlignment="Center" 
                    Margin="5,0,5,0"
                    Style="{DynamicResource TextBlockNormal3Style}"/>
-                <TextBlock x:Name="tbTotalUpload" Grid.Row="1" Grid.Column="4"                  
+                <TextBlock x:Name="tbTotalUpload" Grid.Row="2" Grid.Column="4"                  
                    VerticalAlignment="Center" 
                    Margin="5,0,5,0"
                    Style="{DynamicResource TextBlockNormal3Style}"/>

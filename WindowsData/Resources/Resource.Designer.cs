@@ -19,10 +19,10 @@ namespace WindowsData.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource {
+    public class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace WindowsData.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WindowsData.Resources.Resource", typeof(Resource).Assembly);
@@ -51,7 +51,7 @@ namespace WindowsData.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
-        internal static string Date {
+        public static string Date {
             get {
                 return ResourceManager.GetString("Date", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to =.
         /// </summary>
-        internal static string Equal {
+        public static string Equal {
             get {
                 return ResourceManager.GetString("Equal", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Extension.
         /// </summary>
-        internal static string Extension {
+        public static string Extension {
             get {
                 return ResourceManager.GetString("Extension", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to File Name.
         /// </summary>
-        internal static string FileName {
+        public static string FileName {
             get {
                 return ResourceManager.GetString("FileName", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to &gt;.
         /// </summary>
-        internal static string GreaterThan {
+        public static string GreaterThan {
             get {
                 return ResourceManager.GetString("GreaterThan", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to &gt;=.
         /// </summary>
-        internal static string GreaterThanEqual {
+        public static string GreaterThanEqual {
             get {
                 return ResourceManager.GetString("GreaterThanEqual", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to &lt;.
         /// </summary>
-        internal static string LessThan {
+        public static string LessThan {
             get {
                 return ResourceManager.GetString("LessThan", resourceCulture);
             }
@@ -126,16 +126,25 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to &lt;=.
         /// </summary>
-        internal static string LessThanEqual {
+        public static string LessThanEqual {
             get {
                 return ResourceManager.GetString("LessThanEqual", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Local Admin.
+        /// </summary>
+        public static string LocalAdminName {
+            get {
+                return ResourceManager.GetString("LocalAdminName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Locked.
         /// </summary>
-        internal static string Locked {
+        public static string Locked {
             get {
                 return ResourceManager.GetString("Locked", resourceCulture);
             }
@@ -144,7 +153,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Matches.
         /// </summary>
-        internal static string Matches {
+        public static string Matches {
             get {
                 return ResourceManager.GetString("Matches", resourceCulture);
             }
@@ -153,7 +162,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to &lt;&gt;.
         /// </summary>
-        internal static string NotEqual {
+        public static string NotEqual {
             get {
                 return ResourceManager.GetString("NotEqual", resourceCulture);
             }
@@ -162,7 +171,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Path.
         /// </summary>
-        internal static string Path {
+        public static string Path {
             get {
                 return ResourceManager.GetString("Path", resourceCulture);
             }
@@ -171,7 +180,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Prior Versions.
         /// </summary>
-        internal static string Prior_Versions {
+        public static string Prior_Versions {
             get {
                 return ResourceManager.GetString("Prior Versions", resourceCulture);
             }
@@ -180,7 +189,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Range.
         /// </summary>
-        internal static string Range {
+        public static string Range {
             get {
                 return ResourceManager.GetString("Range", resourceCulture);
             }
@@ -189,7 +198,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to All Search Critera must be met.
         /// </summary>
-        internal static string RelationshipAndHelp {
+        public static string RelationshipAndHelp {
             get {
                 return ResourceManager.GetString("RelationshipAndHelp", resourceCulture);
             }
@@ -198,7 +207,7 @@ namespace WindowsData.Resources {
         /// <summary>
         ///   Looks up a localized string similar to One Search Critera must be met.
         /// </summary>
-        internal static string RelationshipOrHelp {
+        public static string RelationshipOrHelp {
             get {
                 return ResourceManager.GetString("RelationshipOrHelp", resourceCulture);
             }

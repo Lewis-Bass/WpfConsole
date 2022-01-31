@@ -117,214 +117,516 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccesKeyName" xml:space="preserve">
+    <value>Key Name - ES</value>
+  </data>
+  <data name="Accounts" xml:space="preserve">
+    <value>Accounts - ES</value>
+  </data>
   <data name="Add" xml:space="preserve">
-    <value>Es - Add</value>
-    <comment>MainSearch</comment>
+    <value>Add - ES</value>
   </data>
   <data name="AddFiles" xml:space="preserve">
-    <value>Es - Add Files</value>
-    <comment>FileDisplay</comment>
+    <value>Add Files - ES</value>
   </data>
   <data name="AddGroup" xml:space="preserve">
-    <value>Es - Add Group</value>
-    <comment>MainSearch</comment>
+    <value>Add Group - ES</value>
   </data>
   <data name="AdministrativeAccount" xml:space="preserve">
-    <value>Es - Administrative Account</value>
-    <comment>MainCreate</comment>
+    <value>Administrative Account - ES</value>
+  </data>
+  <data name="AllFiles" xml:space="preserve">
+    <value>All Files - ES</value>
   </data>
   <data name="ArkName" xml:space="preserve">
-    <value>Es - Ark Name</value>
-    <comment>MainCreate</comment>
+    <value>Ark Name - ES</value>
   </data>
   <data name="BaseGroupName" xml:space="preserve">
-    <value>ES - Group</value>
-    <comment>WindowsData - SearchGroup</comment>
+    <value>Group - ES</value>
+  </data>
+  <data name="BinderName" xml:space="preserve">
+    <value>Saved Search Name - ES</value>
   </data>
   <data name="Browse" xml:space="preserve">
-    <value>Es - Browse</value>
-    <comment>FileDisplay</comment>
+    <value>Browse - ES</value>
   </data>
   <data name="BrowseHardDisk" xml:space="preserve">
-    <value>Es - Browse HardDisk</value>
-    <comment>MainCreate</comment>
+    <value>Browse HardDisk - ES</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>_Es - Cancel</value>
-    <comment>UserInput</comment>
+    <value>Cancel - ES</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel - ES</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password - ES</value>
   </data>
   <data name="CheckedOut" xml:space="preserve">
-    <value>Es - Files Checked Out</value>
-    <comment>CheckedOutList</comment>
+    <value>Files Checked Out - ES</value>
   </data>
   <data name="CheckedOutViews" xml:space="preserve">
-    <value>Es - Maximum Checked Out Views (left menu)</value>
-    <comment>Preference</comment>
+    <value>Maximum Checked Out Views (left menu) - ES</value>
   </data>
   <data name="CheckIn" xml:space="preserve">
-    <value>Es - Check In</value>
-    <comment>CheckedOutList</comment>
+    <value>Check In - ES</value>
+  </data>
+  <data name="CheckInCancelError" xml:space="preserve">
+    <value>ERROR Occurred while canceling the check in - ES</value>
+  </data>
+  <data name="CheckInError" xml:space="preserve">
+    <value>ERROR Occurred during check in - ES</value>
   </data>
   <data name="CheckOut" xml:space="preserve">
-    <value>Es - Check Out</value>
-    <comment>MainSearch</comment>
+    <value>Check Out - ES</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear - ES</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm - ES</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Connect - ES</value>
+  </data>
+  <data name="Connection" xml:space="preserve">
+    <value>Connection - ES</value>
+  </data>
+  <data name="ConnectionAddress" xml:space="preserve">
+    <value>Address - ES</value>
   </data>
   <data name="ConnectionEntries" xml:space="preserve">
-    <value>Es - Connection Entries (left menu)</value>
-    <comment>Preference</comment>
+    <value>Connection Entries (left menu) - ES</value>
+  </data>
+  <data name="ConnectionName" xml:space="preserve">
+    <value>Connection Name - ES</value>
+  </data>
+  <data name="ConnectionPort" xml:space="preserve">
+    <value>Port - ES</value>
   </data>
   <data name="Connections" xml:space="preserve">
-    <value>Es - Connections</value>
-    <comment>MainWindow</comment>
+    <value>Connections - ES</value>
+  </data>
+  <data name="ConnectionTitle" xml:space="preserve">
+    <value>Connection Setup - ES</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Es - Create</value>
-    <comment>MainCreate</comment>
+    <value>Create - ES</value>
   </data>
   <data name="CreateArk" xml:space="preserve">
-    <value>Es - Create Ark</value>
-    <comment>MainCreate</comment>
+    <value>Create Ark - ES</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Date Created - ES</value>
+  </data>
+  <data name="CreateGroup" xml:space="preserve">
+    <value>Create Group - ES</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete - ES</value>
+  </data>
+  <data name="DeleteMessageBox" xml:space="preserve">
+    <value>Do You Want to Delete - ES</value>
+  </data>
+  <data name="DocumentDate" xml:space="preserve">
+    <value>Date - ES</value>
+  </data>
+  <data name="DocumentName" xml:space="preserve">
+    <value>Document Name - ES</value>
+  </data>
+  <data name="DocumentPath" xml:space="preserve">
+    <value>Path - ES</value>
+  </data>
+  <data name="DropFilesHere" xml:space="preserve">
+    <value>Drop Files Here - ES</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit - ES</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error - ES</value>
+  </data>
+  <data name="ErrorBadPassword" xml:space="preserve">
+    <value>The Current Password is incorrect - ES</value>
+  </data>
+  <data name="ErrorNewPasswordMatch" xml:space="preserve">
+    <value>The Passwords must match - ES</value>
+  </data>
+  <data name="ErrorNewPasswordMissing" xml:space="preserve">
+    <value>The New Password is Required - ES</value>
+  </data>
+  <data name="ErrorOldPasswordMissing" xml:space="preserve">
+    <value>The Current Password is Required - ES</value>
   </data>
   <data name="Execute" xml:space="preserve">
-    <value>Es - Execute</value>
-    <comment>MainSearch</comment>
+    <value>Execute - ES</value>
+  </data>
+  <data name="FileBrowserTypeTitle" xml:space="preserve">
+    <value>Select Matching File - ES</value>
   </data>
   <data name="FileName" xml:space="preserve">
-    <value>Es - Enter File Name</value>
-    <comment>FileDisplay</comment>
+    <value>Enter File Name - ES</value>
+  </data>
+  <data name="FileNameColumn" xml:space="preserve">
+    <value>File Name - ES</value>
+  </data>
+  <data name="FileTransferCompleted" xml:space="preserve">
+    <value>File Transfer Completed - ES</value>
   </data>
   <data name="FileViews" xml:space="preserve">
-    <value>Es - Maximum File Views (left menu)</value>
-    <comment>Preference</comment>
+    <value>Maximum File Views (left menu) - ES</value>
   </data>
-  <data name="Keys" xml:space="preserve">
-    <value>Es - Keys</value>
+  <data name="HostInformation" xml:space="preserve">
+    <value>Host Information - ES</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Es - Language</value>
-    <comment>Preference</comment>
+    <value>Language - ES</value>
   </data>
   <data name="LanguageEnglish" xml:space="preserve">
-    <value>Es - English</value>
-    <comment>Preference</comment>
+    <value>English - ES</value>
   </data>
   <data name="LanguageSpanish" xml:space="preserve">
-    <value>Es - Spanish</value>
-    <comment>Preference</comment>
+    <value>Spanish - ES</value>
   </data>
   <data name="LastCheckOuts" xml:space="preserve">
-    <value>Es - Last CheckOuts</value>
+    <value>Last CheckOuts - ES</value>
+  </data>
+  <data name="LastUpdate" xml:space="preserve">
+    <value>Last Changed - ES</value>
   </data>
   <data name="LastViewed" xml:space="preserve">
-    <value>Es - LastViewed</value>
-    <comment>MainWindow</comment>
+    <value>LastViewed - ES</value>
   </data>
   <data name="LoadFiles" xml:space="preserve">
-    <value>Es - Load Files</value>
-    <comment>FileDisplay</comment>
+    <value>Load Files - ES</value>
+  </data>
+  <data name="LocalPath" xml:space="preserve">
+    <value>Local Path - ES</value>
+  </data>
+  <data name="LoginFailed" xml:space="preserve">
+    <value>Login Failed - ES</value>
+  </data>
+  <data name="LoginInformation" xml:space="preserve">
+    <value>Login  - ES</value>
+  </data>
+  <data name="LoginName" xml:space="preserve">
+    <value>Login - ES</value>
+  </data>
+  <data name="LoginSuccessful" xml:space="preserve">
+    <value>Login Successful - ES</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Disconnect - ES</value>
+  </data>
+  <data name="Keys" xml:space="preserve">
+    <value>Keys - ES</value>
   </data>
   <data name="ManualIP" xml:space="preserve">
-    <value>Es - Enter Address</value>
-    <comment>MainConnection</comment>
+    <value>Enter Address - ES</value>
+  </data>
+  <data name="Match" xml:space="preserve">
+    <value>Find Match - ES</value>
+  </data>
+  <data name="Modify" xml:space="preserve">
+    <value>Modify - ES</value>
   </data>
   <data name="MyCheckOuts" xml:space="preserve">
-    <value>Es - Show My CheckOuts</value>
-    <comment>CheckedOutList</comment>
+    <value>Show My CheckOuts - ES</value>
   </data>
   <data name="MyRemoveCheckIn" xml:space="preserve">
-    <value>Es - Remove File When Checked in</value>
-    <comment>CheckedOutList</comment>
+    <value>Remove File When Checked in - ES</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New Password - ES</value>
+  </data>
+  <data name="Notice" xml:space="preserve">
+    <value>Notice - ES</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>_Es - Ok</value>
-    <comment>UserInput</comment>
+    <value>Ok - ES</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Current Password - ES</value>
   </data>
   <data name="OutputFileName" xml:space="preserve">
-    <value>Es - Please Enter Your Filename</value>
-    <comment>UserInput</comment>
+    <value>Please Enter Your File Name - ES</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Es - Password</value>
-    <comment>MainCreate</comment>
+    <value>Password - ES</value>
   </data>
   <data name="Preferences" xml:space="preserve">
-    <value>Es- Preferences</value>
-    <comment>MainWindow</comment>
+    <value>Preferences - ES</value>
   </data>
   <data name="PreviousSearches" xml:space="preserve">
-    <value>Es - Previous Searches</value>
-    <comment>MainSearch</comment>
+    <value>Previous Searches - ES</value>
+  </data>
+  <data name="PriorConnections" xml:space="preserve">
+    <value>Prior Connections - ES</value>
   </data>
   <data name="RekeyPassword" xml:space="preserve">
-    <value>Es - RekeyPassword</value>
-    <comment>MainCreate</comment>
+    <value>RekeyPassword - ES</value>
+  </data>
+  <data name="RelationshipAndHelp" xml:space="preserve">
+    <value>All Search Critera must be met - ES</value>
+  </data>
+  <data name="RelationshipOrHelp" xml:space="preserve">
+    <value>One Search Critera must be met - ES</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>Es - Remove</value>
-    <comment>MainSearch</comment>
+    <value>Remove - ES</value>
+  </data>
+  <data name="RequiredAddress" xml:space="preserve">
+    <value>Address is Required - ES</value>
+  </data>
+  <data name="RequiredLogin" xml:space="preserve">
+    <value>Login is Required - ES</value>
+  </data>
+  <data name="RequiredName" xml:space="preserve">
+    <value>Name is Required - ES</value>
+  </data>
+  <data name="RequiredPassword" xml:space="preserve">
+    <value>Password is Required - ES</value>
+  </data>
+  <data name="RequiredPort" xml:space="preserve">
+    <value>Port is Required - ES</value>
+  </data>
+  <data name="RequiredPortNumber" xml:space="preserve">
+    <value>Port must be a number - ES</value>
   </data>
   <data name="SaveAndExecute" xml:space="preserve">
-    <value>Es - Save and Execute</value>
-    <comment>MainSearch</comment>
+    <value>Save and Execute - ES</value>
   </data>
   <data name="ScanNetwork" xml:space="preserve">
-    <value>Es - Scan Network</value>
-    <comment>MainConnection</comment>
+    <value>Scan Network - ES</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Es - Search</value>
-    <comment>MainSearch</comment>
+    <value>Search - ES</value>
+  </data>
+  <data name="SearchField" xml:space="preserve">
+    <value>Field - ES</value>
   </data>
   <data name="SearchFieldClassification" xml:space="preserve">
-    <value>Es - Classification</value>
-    <comment>MainSearch</comment>
+    <value>Classification - ES</value>
   </data>
   <data name="SearchFieldDate" xml:space="preserve">
-    <value>Es - Date</value>
-    <comment>MainSearch</comment>
+    <value>Date - ES</value>
   </data>
   <data name="SearchFieldExtension" xml:space="preserve">
-    <value>Es - Extension</value>
-    <comment>MainSearch</comment>
+    <value>Extension - ES</value>
   </data>
   <data name="SearchFieldFileName" xml:space="preserve">
-    <value>Es - File Name</value>
-    <comment>MainSearch</comment>
+    <value>File Name - ES</value>
   </data>
   <data name="SearchFieldLocked" xml:space="preserve">
-    <value>Es - Locked</value>
-    <comment>MainSearch</comment>
+    <value>Locked - ES</value>
   </data>
   <data name="SearchFieldPath" xml:space="preserve">
-    <value>Es - Path</value>
-    <comment>MainSearch</comment>
+    <value>Path - ES</value>
   </data>
   <data name="SearchFieldPriorVersions" xml:space="preserve">
-    <value>Es - Prior Versions</value>
-    <comment>MainSearch</comment>
+    <value>Prior Versions - ES</value>
+  </data>
+  <data name="SearchHow" xml:space="preserve">
+    <value>How - ES</value>
   </data>
   <data name="SearchHowContains" xml:space="preserve">
-    <value>Es - Contains</value>
-    <comment>MainSearch</comment>
+    <value>Contains - ES</value>
   </data>
   <data name="SearchHowList" xml:space="preserve">
-    <value>Es - List</value>
-    <comment>MainSearch</comment>
+    <value>List - ES</value>
   </data>
   <data name="SearchHowRange" xml:space="preserve">
-    <value>Es - Range</value>
-    <comment>MainSearch</comment>
+    <value>Range - ES</value>
+  </data>
+  <data name="SearchJoinText" xml:space="preserve">
+    <value>Handle Multiple Searches as - ES</value>
+  </data>
+  <data name="SearchSaveName" xml:space="preserve">
+    <value>Please Enter a Unique Name for the Search - ES</value>
+  </data>
+  <data name="SearchValues" xml:space="preserve">
+    <value>Values - ES</value>
   </data>
   <data name="SelectTheme" xml:space="preserve">
-    <value>Es - Select Theme</value>
-    <comment>Preference</comment>
+    <value>Select Theme - ES</value>
   </data>
   <data name="StorageLocation" xml:space="preserve">
-    <value>Es - Storage Location</value>
-    <comment>MainCreate</comment>
+    <value>Storage Location - ES</value>
   </data>
   <data name="View" xml:space="preserve">
-    <value>Es - View</value>
-    <comment>MainSearch CheckedOutList</comment>
+    <value>View - ES</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group - ES</value>
+  </data>
+  <data name="Expire" xml:space="preserve">
+    <value>Expire - ES</value>
+  </data>
+  <data name="KeyAdmin" xml:space="preserve">
+    <value>Admin Rights - ES</value>
+  </data>
+  <data name="KeyCheckInOut" xml:space="preserve">
+    <value>Check In/Out - ES</value>
+  </data>
+  <data name="KeyDevices" xml:space="preserve">
+    <value>Devices - ES</value>
+  </data>
+  <data name="KeyDownload" xml:space="preserve">
+    <value>Download - ES</value>
+  </data>
+  <data name="KeyName" xml:space="preserve">
+    <value>Name - ES</value>
+  </data>
+  <data name="KeyPin" xml:space="preserve">
+    <value>PIN - ES</value>
+  </data>
+  <data name="KeyView" xml:space="preserve">
+    <value>View Files - ES</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update - ES</value>
+  </data>
+  <data name="DemoLicense" xml:space="preserve">
+    <value>You are currently running a full function demo license. It is Valid for {0} more days. - ES</value>
+  </data>
+  <data name="ExpiredLicense" xml:space="preserve">
+    <value>The license has expired. Please contact support or purchace the full license. - ES</value>
+  </data>
+  <data name="KeySubmit" xml:space="preserve">
+    <value>Submit New Files - ES</value>
+  </data>
+  <data name="KeyExpiration" xml:space="preserve">
+    <value>Expiration - ES</value>
+  </data>
+  <data name="KeyTitle" xml:space="preserve">
+    <value>Keys - ES</value>
+  </data>
+  <data name="KeyExpiredRequired" xml:space="preserve">
+    <value>Expiration Date is Required - ES</value>
+  </data>
+  <data name="KeyNameRequired" xml:space="preserve">
+    <value>Name is Required - ES</value>
+  </data>
+  <data name="KeyPinRequired" xml:space="preserve">
+    <value>PIN is Required - ES</value>
+  </data>
+  <data name="KeyDateAfterNow" xml:space="preserve">
+    <value>Date must be greater than today - ES</value>
+  </data>
+  <data name="KeyPinNumeric" xml:space="preserve">
+    <value>PIN must be a number - ES</value>
+  </data>
+  <data name="LibraryCardFile" xml:space="preserve">
+    <value>Select Library Card File - ES</value>
+  </data>
+  <data name="LibraryCardTextMessage" xml:space="preserve">
+    <value>Paste Library Card Text Message - ES</value>
+  </data>
+  <data name="AddLibraryCard" xml:space="preserve">
+    <value>Add Library Card - ES</value>
+  </data>
+  <data name="ErrorBadLibraryCard" xml:space="preserve">
+    <value>There is a problem with the Library Card - it can not be used. - ES</value>
+  </data>
+  <data name="ErrorMissingLibraryCard" xml:space="preserve">
+    <value>The Library Card was not found - ES</value>
+  </data>
+  <data name="KeyEmail" xml:space="preserve">
+    <value>Email - ES</value>
+  </data>
+  <data name="EmailBody" xml:space="preserve">
+    <value>&lt;p&gt;This is your library card.&lt;/p&gt;&lt;p&gt;Please add the attached file to your applications connection list.&lt;/p&gt;&lt;p&gt;You can also cut and paste the code below into the connection list.&lt;/p&gt;&lt;p&gt;{0}&lt;/p&gt; - ES</value>
+  </data>
+  <data name="EmailFromAddress" xml:space="preserve">
+    <value>lewisbass@gmail.com - ES</value>
+    <comment>lewisbass@gmail.com</comment>
+  </data>
+  <data name="EmailFromName" xml:space="preserve">
+    <value>Lewis Bass - ES</value>
+    <comment>Lewis Bass</comment>
+  </data>
+  <data name="EmailHost" xml:space="preserve">
+    <value>smtp.gmail.com - ES</value>
+    <comment>SmtpHost - smtp.gmail.com</comment>
+  </data>
+  <data name="EmailHostLogin" xml:space="preserve">
+    <value>lewisbass@gmail.com - ES</value>
+    <comment>lewisbass@gmail.com</comment>
+  </data>
+  <data name="EmailHostPassword" xml:space="preserve">
+    <value>Gobez08172010 - ES</value>
+  </data>
+  <data name="EmailHostPort" xml:space="preserve">
+    <value>587 - ES</value>
+    <comment>587</comment>
+  </data>
+  <data name="EmailEnterText" xml:space="preserve">
+    <value>Enter Email Addresses - ES</value>
+  </data>
+  <data name="EmailCardSubject" xml:space="preserve">
+    <value>Library Card - ES</value>
+  </data>
+  <data name="EnterPIN" xml:space="preserve">
+    <value>Enter PIN for {0} - ES</value>
+  </data>
+  <data name="PINRequired" xml:space="preserve">
+    <value>PIN Is Required for the connection - ES</value>
+  </data>
+  <data name="AttachLicenseFile" xml:space="preserve">
+    <value>Upgrade License File - ES</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter - ES</value>
+  </data>
+  <data name="DateBegin" xml:space="preserve">
+    <value>Beginning Date - ES</value>
+  </data>
+  <data name="DateEnd" xml:space="preserve">
+    <value>Ending Date - ES</value>
+  </data>
+  <data name="FileExtension" xml:space="preserve">
+    <value>File Extension - ES</value>
+  </data>
+  <data name="RequiredCriteria" xml:space="preserve">
+    <value>Error: Search Criteria not entered - ES</value>
+  </data>
+  <data name="DirectoriesToScan" xml:space="preserve">
+    <value>Directories To Scan - ES</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>End Time - ES</value>
+  </data>
+  <data name="LastFileUploadDate" xml:space="preserve">
+    <value>Last Scan - ES</value>
+  </data>
+  <data name="LastUploadCount" xml:space="preserve">
+    <value>Uploaded - ES</value>
+  </data>
+  <data name="LibraryCard" xml:space="preserve">
+    <value>Library Card - ES</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Start Time - ES</value>
+  </data>
+  <data name="LoadFilesFromDirectory" xml:space="preserve">
+    <value>Scan/Load files from directories Below - ES</value>
+  </data>
+  <data name="AutoLoad" xml:space="preserve">
+    <value>Auto Load - ES</value>
+  </data>
+  <data name="MyDocuments" xml:space="preserve">
+    <value>[Documents] - ES</value>
+  </data>
+  <data name="MyPictures" xml:space="preserve">
+    <value>[Pictures] - ES</value>
+  </data>
+  <data name="MyMusic" xml:space="preserve">
+    <value>[Music] - ES</value>
+  </data>
+  <data name="MyVideo" xml:space="preserve">
+    <value>[Video] - ES</value>
+  </data>
+  <data name="OkButton" xml:space="preserve">
+    <value>Ok - ES</value>
   </data>
 </root>

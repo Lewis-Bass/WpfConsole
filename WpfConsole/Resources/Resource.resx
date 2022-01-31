@@ -626,4 +626,10 @@
   <data name="MyVideo" xml:space="preserve">
     <value>[Video]</value>
   </data>
+  <data name="OkButton" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="LocalAdminName" xml:space="preserve">
+    <value>Local Admin</value>
+  </data>
 </root>

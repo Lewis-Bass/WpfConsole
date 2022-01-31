@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -73,6 +74,11 @@ namespace Common
         {
             get
             {
+                if (_ConnectionsData.Any(r => r.AccessKeyName == ConnectionInformation.LocalAdminName) == false)
+                {
+                    // this connection should always exist
+                    AddConnection(new ConnectionInformation { AccessKeyName = ConnectionInformation.LocalAdminName, IPAddress = "localhost", IsCurrentConnection = false });
+                }
                 return _ConnectionsData;
             }
             set
@@ -196,7 +202,7 @@ namespace Common
             get { return _AutoLoadStartTime; }
             set
             {
-                if (_AutoLoadStartTime != value )
+                if (_AutoLoadStartTime != value)
                 {
                     _AutoLoadStartTime = value;
                     WriteFile();
@@ -216,6 +222,23 @@ namespace Common
                 if (_AutoLoadEndTime != value)
                 {
                     _AutoLoadEndTime = value;
+                    WriteFile();
+                }
+            }
+        }
+
+        string _AutoLoadPIN = String.Empty;
+        /// <summary>
+        /// AutoLoad uses this pin to connect
+        /// </summary>
+        public string AutoLoadPin
+        {
+            get { return _AutoLoadPIN; }
+            set
+            {
+                if (_AutoLoadPIN != value)
+                {
+                    _AutoLoadPIN = value;
                     WriteFile();
                 }
             }
@@ -328,11 +351,11 @@ namespace Common
                     }
                 }
             }
-            if (!settings.ConnectionsData.Any(r => r.AccessKeyName == ConnectionInformation.LOCALADMIN))
-            {
-                // this connection should always exist
-                settings.AddConnection(new ConnectionInformation { AccessKeyName = ConnectionInformation.LOCALADMIN, IPAddress = "localhost", IsCurrentConnection = false });
-            }
+            //if (!settings.ConnectionsData.Any(r => r.AccessKeyName == ConnectionInformation.LocalAdminName))
+            //{
+            //    // this connection should always exist
+            //    settings.AddConnection(new ConnectionInformation { AccessKeyName = ConnectionInformation.LocalAdminName, IPAddress = "localhost", IsCurrentConnection = false });
+            //}
             //}
             //Monitor.Exit(readingFile);
 
