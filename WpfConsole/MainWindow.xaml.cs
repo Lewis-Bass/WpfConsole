@@ -126,8 +126,6 @@ namespace WpfConsole
             AddHandler(MainConnection.ConnectionChangedEvent,
                 new RoutedEventHandler(MainSearch_ConnectionChangedMethod));
 
-            //AddHandler(Helpers.LoginHelper.LoginChangedEvent,
-            //   new RoutedEventHandler(MainSearch_LoginChangedMethod));
         }
 
         /// <summary>
@@ -214,32 +212,20 @@ namespace WpfConsole
         /// <param name="e"></param>
         private void MainSearch_ConnectionChangedMethod(object sender, RoutedEventArgs e)
         {
+            ProcessConnectionChanged();
+        }
+
+        private void ProcessConnectionChanged()
+        {
             LicenseSetup();
             LoadConnections();
             // make certain that the last connection still has a valid value (it might have been deleted by MainConnection.xaml)
-            if (!PriorConnections.Any(r => r.AccessKeyName == GlobalValues.LastConnection.AccessKeyName))
+            if (!PriorConnections.Any(r => r.AccessKeyName == GlobalValues.LastConnection?.AccessKeyName))
             {
                 GlobalValues.LastConnection = null;
             }
             SetTopMenuAvailability();
         }
-
-        /////////// <summary>
-        /////////// Handle the event from the MainConnection user control - a new connection was just established
-        /////////// </summary>
-        /////////// <param name="sender"></param>
-        /////////// <param name="e"></param>
-        ////////private void MainSearch_LoginChangedMethod(object sender, RoutedEventArgs e)
-        ////////{
-        ////////    LicenseSetup();
-        ////////    LoadConnections();
-        ////////    // make certain that the last connection still has a valid value (it might have been deleted by MainConnection.xaml)
-        ////////    if (!PriorConnections.Any(r => r.AccessKeyName == GlobalValues.LastConnection.AccessKeyName))
-        ////////    {
-        ////////        GlobalValues.LastConnection = null;
-        ////////    }
-        ////////    SetTopMenuAvailability();
-        ////////}
 
         #endregion
 
@@ -552,9 +538,10 @@ namespace WpfConsole
             var helper = new Helpers.LoginHelper();
             helper.ProcessLogin(data);
 
-            LicenseSetup();
-            LoadConnections();
-            SetTopMenuAvailability();
+            //LicenseSetup();
+            //LoadConnections();
+            //SetTopMenuAvailability();
+            ProcessConnectionChanged();
         }
 
         #endregion

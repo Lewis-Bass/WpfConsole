@@ -32,7 +32,7 @@
                     <MenuItem Name="Search" Header="{x:Static lang:Resource.Search}" Click="Search_Click"/>
                     <!--<MenuItem Name="SearchAdvanced" Header="Advanced" Click="SearchAdvanced_Click"/>-->
                     <MenuItem Name="SearchFilter" Header="{x:Static lang:Resource.Filter}" Click="Search_Filter"/>
-                    <MenuItem Name="SearchTree" Header="Tree" Click="SearchTreeMain_Click"/>
+                    <MenuItem Name="SearchTree" Header="{x:Static lang:Resource.FilterTree}" Click="SearchTreeMain_Click"/>
                     <!--<MenuItem Name="CreateArk" Header="{x:Static lang:Resource.CreateArk}" Click="CreateArk_Click"/>-->
                     <MenuItem Name="AddFiles" Header="{x:Static lang:Resource.AddFiles}" Click="FileDisplay_Click"/>
                     <MenuItem Name="CheckedOutFiles" Header="{x:Static lang:Resource.CheckedOut}" Click="CheckedOut_Click"/>

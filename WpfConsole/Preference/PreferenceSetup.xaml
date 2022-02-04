@@ -9,7 +9,7 @@
              Style="{DynamicResource StandardUserControl}"
              d:DesignHeight="750" d:DesignWidth="800">
     <StackPanel IsVisibleChanged="StackPanel_IsVisibleChanged">
-        <GroupBox Header="Preferences">
+        <GroupBox Header="{x:Static lang:Resource.Preferences}">
             <Grid Margin="10,10,10,10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -121,7 +121,7 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox x:Name="grpLicense" Header="License" IsEnabled="False">
+        <GroupBox x:Name="grpLicense" Header="{x:Static lang:Resource.License}" IsEnabled="False">
             <Grid Margin="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

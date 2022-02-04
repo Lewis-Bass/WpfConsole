@@ -123,23 +123,23 @@ namespace WpfConsole.Connection
         /// <param name="e"></param>
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            ////if (sender is Button)
-            ////{
-            ////    var btn = (Button)sender;
-            ////    if (btn.DataContext is ConnectionInformation)
-            ////    {
-            ////        var data = (ConnectionInformation)btn.DataContext;
-            ////        var mbox = MessageBox.Show($"{Resource.DeleteMessageBox} {data.AccessKeyName} {Resource.Connection}", Resource.Confirm, MessageBoxButton.YesNo, MessageBoxImage.Question);
-            ////        if (mbox == MessageBoxResult.Yes)
-            ////        {
-            ////            LanAddressInfo.Remove(data);
-            ////            var settings = LocalSettings.Load();
-            ////            settings.RemoveConnection(data);
+            if (sender is Button)
+            {
+                var btn = (Button)sender;
+                if (btn.DataContext is ConnectionInformation)
+                {
+                    var data = (ConnectionInformation)btn.DataContext;
+                    var mbox = MessageBox.Show($"{Resource.DeleteMessageBox} {data.AccessKeyName} {Resource.Connection}", Resource.Confirm, MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (mbox == MessageBoxResult.Yes)
+                    {
+                        LanAddressInfo.Remove(data);
+                        var settings = LocalSettings.Load();
+                        settings.RemoveConnection(data);
 
-            ////            RaiseEvent(new RoutedEventArgs(ConnectionChangedEvent));
-            ////        }
-            ////    }
-            ////}
+                        RaiseEvent(new RoutedEventArgs(ConnectionChangedEvent));
+                    }
+                }
+            }
         }
 
         /// <summary>

@@ -10,15 +10,7 @@
 			 Style="{DynamicResource StandardUserControl}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-	<UserControl.Resources>
-		<!--<ResourceDictionary>-->
-			<!--<ResourceDictionary.MergedDictionaries>-->
-				<!--<ResourceDictionary Source="Resources/GlyphBrush.xaml"/>-->
-				<!--<ResourceDictionary Source="pack://application:,,,/{YourAssemblyWhereResourceDictionaryIsLocated};component/Resources/GlyphBrush.xaml" />-->
-				<!--<ResourceDictionary Source="pack://application:,,,/WpfConsole;component/Resources/GlyphBrush.xaml" />-->
-				<!--<ResourceDictionary Source="component/Resources/GlyphBrush.xaml" />-->
-			<!--</ResourceDictionary.MergedDictionaries>-->
-		
+	<UserControl.Resources>		
 		<converters:BooleanToVisibilityConverter x:Key="b2vconv"/>
 		<Style x:Key="CollapsedHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
 			<Setter Property="Visibility" Value="Collapsed" />
@@ -29,13 +21,11 @@
                    HorizontalAlignment="Center" 
                    Height="23"/>
 		</DataTemplate>
-
-		<!--</ResourceDictionary>-->
 	</UserControl.Resources>
 	<Grid>
 
 		<TabControl x:Name="MainTabs" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10">
-			<TabItem Name="Binders" Header="Previous Searches">
+            <TabItem Name="Binders" Header="{x:Static lang:Resource.PreviousSearches}">
 				<ListView x:Name="DocumentList" 
                         ItemsSource="{Binding BinderList}"
                         VerticalAlignment="Stretch" 
@@ -104,7 +94,7 @@
 					</ListView.View>
 				</ListView>
 			</TabItem>
-			<TabItem Name="Criteria" Header="Criteria">
+            <TabItem Name="Criteria" Header="{x:Static lang:Resource.Criteria}">
 				<Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 					<Grid.RowDefinitions>
 						<RowDefinition Height="40"/>
@@ -275,7 +265,7 @@
 					</TreeView>
 				</Grid>
 			</TabItem>
-			<TabItem Name="Results" Header="Results">
+            <TabItem Name="Results" Header="{x:Static lang:Resource.Results}">
 				<StackPanel>
 					<WrapPanel Height="40" 
                                VerticalAlignment="Center" 

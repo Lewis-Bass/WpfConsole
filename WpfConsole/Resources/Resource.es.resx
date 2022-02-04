@@ -629,4 +629,19 @@
   <data name="OkButton" xml:space="preserve">
     <value>Ok - ES</value>
   </data>
+  <data name="Criteria" xml:space="preserve">
+    <value>Criteria - ES</value>
+  </data>
+  <data name="FilterTree" xml:space="preserve">
+    <value>Tree - ES</value>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>License - ES</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Results - ES</value>
+  </data>
+  <data name="UploadFiles" xml:space="preserve">
+    <value>Upload Files - ES</value>
+  </data>
 </root>

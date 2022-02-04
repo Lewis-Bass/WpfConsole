@@ -632,4 +632,19 @@
   <data name="LocalAdminName" xml:space="preserve">
     <value>Local Admin</value>
   </data>
+  <data name="Criteria" xml:space="preserve">
+    <value>Criteria</value>
+  </data>
+  <data name="FilterTree" xml:space="preserve">
+    <value>Tree</value>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="UploadFiles" xml:space="preserve">
+    <value>Upload Files</value>
+  </data>
 </root>

@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <GroupBox Grid.Row="0" 
-                  x:Name="grpAutoLoad" Header="Upload Files">
+                  x:Name="grpAutoLoad" Header="{x:Static lang:Resource.UploadFiles}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="158*"/>

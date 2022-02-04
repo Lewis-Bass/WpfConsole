@@ -403,6 +403,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Criteria.
+        /// </summary>
+        public static string Criteria {
+            get {
+                return ResourceManager.GetString("Criteria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Beginning Date.
         /// </summary>
         public static string DateBegin {
@@ -754,6 +763,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tree.
+        /// </summary>
+        public static string FilterTree {
+            get {
+                return ResourceManager.GetString("FilterTree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Group.
         /// </summary>
         public static string Group {
@@ -1020,6 +1038,15 @@ namespace WpfConsole.Resources {
         public static string LibraryCardTextMessage {
             get {
                 return ResourceManager.GetString("LibraryCardTextMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to License.
+        /// </summary>
+        public static string License {
+            get {
+                return ResourceManager.GetString("License", resourceCulture);
             }
         }
         
@@ -1384,6 +1411,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Results.
+        /// </summary>
+        public static string Results {
+            get {
+                return ResourceManager.GetString("Results", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save and Execute.
         /// </summary>
         public static string SaveAndExecute {
@@ -1578,6 +1614,15 @@ namespace WpfConsole.Resources {
         public static string Update {
             get {
                 return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Files.
+        /// </summary>
+        public static string UploadFiles {
+            get {
+                return ResourceManager.GetString("UploadFiles", resourceCulture);
             }
         }
         
