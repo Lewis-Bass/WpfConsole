@@ -2,6 +2,7 @@
 using Common.ServerCommunication;
 using Common.ServerCommunication.Requests;
 using Common.ServerCommunication.Response;
+using Common.Settings;
 using System;
 using System.Collections.Generic;
 using System.Text;

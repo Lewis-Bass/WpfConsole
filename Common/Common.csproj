@@ -106,13 +106,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Settings\AutoLoadSettings.cs" />
     <Compile Include="Encryption\EncryptDecrypt.cs" />
     <Compile Include="EnumHelpers.cs" />
     <Compile Include="GlobalValues.cs" />
     <Compile Include="Licenses\LicenseChecks.cs" />
     <Compile Include="Licenses\WindowsInformation.cs" />
-    <Compile Include="LocalFiles.cs" />
-    <Compile Include="LocalSettings.cs" />
+    <Compile Include="Settings\BaseSettings.cs" />
+    <Compile Include="Settings\LocalFiles.cs" />
+    <Compile Include="Settings\LocalSettings.cs" />
     <Compile Include="MailSend\Send.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

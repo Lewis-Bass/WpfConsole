@@ -1,6 +1,7 @@
 ﻿using Common;
 using Common.ServerCommunication.Helpers;
 using Common.ServerCommunication.Requests;
+using Common.Settings;
 using Serilog;
 using System;
 using System.Collections.ObjectModel;

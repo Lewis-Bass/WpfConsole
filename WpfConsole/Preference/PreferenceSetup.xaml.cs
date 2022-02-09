@@ -23,6 +23,7 @@ using Themes.Helpers;
 using static Themes.Enumerations.ThemeEnums;
 
 using System.IO;
+using Common.Settings;
 
 namespace WpfConsole.Preference
 {

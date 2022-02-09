@@ -41,6 +41,11 @@ namespace Common
 		private const string USERSETTINGSFILE = "usersettings";
 
 		/// <summary>
+		/// Name of the user settings file
+		/// </summary>
+		private const string FILESANNERSETTINGSFILE = "filesettings";
+
+		/// <summary>
 		/// Name of the license file
 		/// </summary>
 		private const string LICENSEFILENAME = "license";
@@ -92,6 +97,17 @@ namespace Common
 			get
 			{
 				return Path.Combine(GetBaseDirectory(), USERSETTINGSFILE);
+			}
+		}
+
+		/// <summary>
+		/// Physical Location of the output file on the disk
+		/// </summary>
+		public static string FileScannerSettingsStorageLocation
+		{
+			get
+			{
+				return FILESANNERSETTINGSFILE;
 			}
 		}
 

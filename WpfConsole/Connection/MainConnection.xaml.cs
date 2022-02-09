@@ -21,6 +21,7 @@ using Common.ServerCommunication.Helpers;
 using WpfConsole.Resources;
 using System.ComponentModel;
 using WpfConsole.Dialogs;
+using Common.Settings;
 
 namespace WpfConsole.Connection
 {

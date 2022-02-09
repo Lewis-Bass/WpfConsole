@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Settings;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

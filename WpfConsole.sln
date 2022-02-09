@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1321
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{DDD1D8E7-D84C-45F8-BA54-9E337AAF2807}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Themes", "Themes\Themes.csproj", "{6A9AF8DD-FA02-4E76-A743-E007BE845371}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfConsole", "WpfConsole\WpfConsole.csproj", "{ABFDBD08-B118-48A1-B96A-87DF3F1EF020}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileScaner", "FileScaner\FileScaner.csproj", "{0E165480-B9A0-41B6-A381-00A381FC7E19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{ABFDBD08-B118-48A1-B96A-87DF3F1EF020}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABFDBD08-B118-48A1-B96A-87DF3F1EF020}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABFDBD08-B118-48A1-B96A-87DF3F1EF020}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E165480-B9A0-41B6-A381-00A381FC7E19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E165480-B9A0-41B6-A381-00A381FC7E19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E165480-B9A0-41B6-A381-00A381FC7E19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E165480-B9A0-41B6-A381-00A381FC7E19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

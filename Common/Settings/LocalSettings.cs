@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using WindowsData;
 
-namespace Common
+namespace Common.Settings
 {
     public class LocalSettings
     {
@@ -293,12 +293,12 @@ namespace Common
 
         #region Constructor
 
-        /// <summary>
-        /// stop the default constructor from being executed - use the load function instead!
-        /// </summary>
-        private LocalSettings()
-        {
-        }
+        ///// <summary>
+        ///// stop the default constructor from being executed - use the load function instead!
+        ///// </summary>
+        //public LocalSettings()
+        //{          
+        //}
 
         #endregion
 

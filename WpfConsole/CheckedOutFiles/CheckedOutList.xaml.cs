@@ -20,6 +20,7 @@ using Microsoft.Win32;
 using System.Collections.ObjectModel;
 using WpfConsole.Search;
 using WpfConsole.Resources;
+using Common.Settings;
 
 namespace WpfConsole.CheckedOutFiles
 {
