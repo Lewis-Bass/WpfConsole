@@ -286,6 +286,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update Configuration.
+        /// </summary>
+        public static string ConfigureAutoload {
+            get {
+                return ResourceManager.GetString("ConfigureAutoload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         public static string Confirm {

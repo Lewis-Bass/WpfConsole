@@ -1,12 +1,14 @@
 ﻿using Common.Settings;
-using FileScaner.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using WindowsData;
 
 namespace FileScaner.Controllers
 {
@@ -19,18 +21,35 @@ namespace FileScaner.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public IActionResult ReadSettings()
+        [HttpPost]
+        public async Task<IActionResult> ReadSettings() ///LoginData data)
         {
-            AutoLoadSettings settings = AutoLoadSettings.Load();
+
+            string jsonString = string.Empty;
+            using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
+            {
+                jsonString = await reader.ReadToEndAsync(); //reader.ReadToEnd();
+            }
+            var request = Newtonsoft.Json.JsonConvert.DeserializeObject<LoginData>(jsonString);
+
+            AutoLoadSettings settings = AutoLoadSettings.Load(true);
 
             return Json(settings);            
         }
 
         [HttpPost]
-        public IActionResult WriteSettings(AutoLoadSettings newSettings)
+        public async Task<IActionResult> WriteSettings() //AutoLoadSettings newSettings)
         {
-            AutoLoadSettings oldsettings = AutoLoadSettings.Load();
+
+            string jsonString = string.Empty;
+            using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
+            {
+                jsonString = await reader.ReadToEndAsync(); 
+            }
+            var newSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<AutoLoadSettings>(jsonString);
+
+
+            AutoLoadSettings oldsettings = AutoLoadSettings.Load(true);
             oldsettings.AutoLoadPin = newSettings.AutoLoadPin;
             oldsettings.AutoLoadEndTime = newSettings.AutoLoadEndTime; 
             //oldsettings.AutoLoadLastTotalUpload = newSettings.AutoLoadLastTotalUpload;
@@ -39,6 +58,7 @@ namespace FileScaner.Controllers
             oldsettings.AutoLoadConnection = newSettings.AutoLoadConnection;
             oldsettings.AutoLoadDirectories = newSettings.AutoLoadDirectories;
             oldsettings.AutoLoadPin = newSettings.AutoLoadPin;
+            oldsettings.WriteFile();
 
             return Json("{result:true}");
         }

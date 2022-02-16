@@ -27,7 +27,8 @@ namespace WpfConsole.AutoLoad
     {
         #region Properties
 
-        LocalSettings settings = LocalSettings.Load();
+        //LocalSettings settings = LocalSettings.Load();
+        AutoLoadSettings settings = AutoLoadSettings.Load(false);
 
         public ObservableCollection<string> FileList { get; set; } = new ObservableCollection<string>();
 
@@ -61,7 +62,7 @@ namespace WpfConsole.AutoLoad
 
         #endregion
 
-        #region Constructor and initilization
+        #region Constructor and initialization
 
         public AutoLoadMain()
         {
@@ -74,11 +75,12 @@ namespace WpfConsole.AutoLoad
 
         private void LoadScreenValues()
         {
-            cbConnection.ItemsSource = settings.ConnectionsData;
+            var globalSettings = LocalSettings.Load();
+            cbConnection.ItemsSource = globalSettings.ConnectionsData;            
             for (int i = 0; i < cbConnection.Items.Count; i++)
             {
                 var connect = cbConnection.Items[i] as ConnectionInformation;
-                if (connect.AccessKeyName == ((settings.AutoLoadConnection == null) ? settings.LastConnection : settings.AutoLoadConnection).AccessKeyName)
+                if (connect.AccessKeyName == ((settings.AutoLoadConnection == null) ? globalSettings.LastConnection : settings.AutoLoadConnection).AccessKeyName)
                 {
                     cbConnection.SelectedIndex = i;
                     break;
@@ -86,7 +88,7 @@ namespace WpfConsole.AutoLoad
             }
 
             SetTimeControl(cbStartTime, timeValues, settings.AutoLoadStartTime);
-            SetTimeControl(cbEndTime, timeValues, settings.AutoLoadEndTIme);
+            SetTimeControl(cbEndTime, timeValues, settings.AutoLoadEndTime);
 
             tbLastProcessed.Text = settings.AutoLoadLastProcessed.ToShortDateString();
             tbTotalUpload.Text = settings.AutoLoadLastTotalUpload.ToString();
@@ -179,7 +181,7 @@ namespace WpfConsole.AutoLoad
                 if (cb.SelectedItem is KeyValuePair<int, string>)
                 {
                     var val = (KeyValuePair<int, string>)cb.SelectedItem;
-                    settings.AutoLoadEndTIme = val.Key;
+                    settings.AutoLoadEndTime = val.Key;
                 }
             }
         }
@@ -194,6 +196,7 @@ namespace WpfConsole.AutoLoad
             }
         }
 
+
         //private void tbPin_PasswordChanged(object sender, RoutedEventArgs e)
         //{
         //    if (sender is PasswordBox)
@@ -204,6 +207,9 @@ namespace WpfConsole.AutoLoad
         //}
         #endregion
 
-
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            settings.WriteToWebSite();
+        }
     }
 }

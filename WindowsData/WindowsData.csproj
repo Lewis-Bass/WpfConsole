@@ -52,6 +52,7 @@
     <Compile Include="License.cs" />
     <Compile Include="LocalFileList.cs" />
     <Compile Include="LocalFileStatus.cs" />
+    <Compile Include="LoginData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelationshipCriteria.cs" />
     <Compile Include="Resources\Resource.Designer.cs">

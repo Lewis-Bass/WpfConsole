@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="125"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
         <GroupBox Grid.Row="0" 
@@ -159,6 +160,11 @@
             </ScrollViewer>
         </GroupBox>
 
+        <Button Grid.Row="2" Name="btnSave" 
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Click="btnSave_Click">
+            <TextBlock Text="{x:Static lang:Resource.ConfigureAutoload}"/>
+        </Button>
     </Grid>
 
 </UserControl>

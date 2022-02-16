@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.ServerCommunication;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,14 +10,14 @@ using WindowsData;
 
 namespace Common.Settings
 {
-   public class AutoLoadSettings 
+    public class AutoLoadSettings
     {
 
         #region Properties
 
         ConnectionInformation _AutoLoadConnection = null;
         /// <summary>
-        /// Autoload connection
+        /// AutoLoad connection
         /// </summary>
         public ConnectionInformation AutoLoadConnection
         {
@@ -26,7 +27,7 @@ namespace Common.Settings
                 if (_AutoLoadConnection != value)
                 {
                     _AutoLoadConnection = value;
-                    WriteFile();
+                    //WriteFile();
                 }
             }
         }
@@ -43,7 +44,7 @@ namespace Common.Settings
                 if (_AutoLoadStartTime != value)
                 {
                     _AutoLoadStartTime = value;
-                    WriteFile();
+                    //WriteFile();
                 }
             }
         }
@@ -60,7 +61,7 @@ namespace Common.Settings
                 if (_AutoLoadEndTime != value)
                 {
                     _AutoLoadEndTime = value;
-                    WriteFile();
+                    //WriteFile();
                 }
             }
         }
@@ -77,7 +78,7 @@ namespace Common.Settings
                 if (_AutoLoadPIN != value)
                 {
                     _AutoLoadPIN = value;
-                    WriteFile();
+                    //WriteFile();
                 }
             }
         }
@@ -94,7 +95,7 @@ namespace Common.Settings
                 if (_AutoLoadLastProcessed != value)
                 {
                     _AutoLoadLastProcessed = value;
-                    WriteFile();
+                    //WriteFile();
                 }
             }
         }
@@ -110,7 +111,7 @@ namespace Common.Settings
                 if (_AutoLoadLastTotalUpload != value)
                 {
                     _AutoLoadLastTotalUpload = value;
-                    WriteFile();
+                    //WriteFile();
                 }
             }
         }
@@ -127,12 +128,12 @@ namespace Common.Settings
                 if (_AutoLoadDirectories != value)
                 {
                     _AutoLoadDirectories = value;
-                    WriteFile();
+                    //WriteFile();
                 }
             }
         }
 
-#endregion
+        #endregion
 
         #region File Handlers
 
@@ -144,11 +145,62 @@ namespace Common.Settings
         /// <summary>
         /// read the configuration from the local storage
         /// </summary>
-        public static AutoLoadSettings Load()
+        public static AutoLoadSettings Load(bool loadFromFile)
+        {
+            if (loadFromFile)
+            {
+                return ReadFromFile();
+            }
+            else
+            {
+                return ReadFromWebSite();
+            }
+        }
+
+        // TODO: Async method
+        private static AutoLoadSettings ReadFromWebSite()
+        {
+            LoginData loginData = SetupLogin();
+            //https://localhost:5001/settings/readsettings
+            var uri = new Uri($"https://{loginData.IPAddress}:{loginData.Port}/settings/readsettings");
+            var returnStr = SendToServer.SendRest(loginData, uri).Result;
+            var response = Newtonsoft.Json.JsonConvert.DeserializeObject<AutoLoadSettings>(returnStr.ToString());
+            return response;
+        }
+
+        private static LoginData SetupLogin()
+        {
+            // TODO: Use Global Connection?????
+            return new LoginData
+            {
+                AccessKeyName = "Local Admin",
+                Port = 5001,
+                IPAddress = "localhost",
+                Pin = string.Empty
+            };
+        }
+
+        public bool WriteToWebSite()
+        {
+            LoginData loginData = SetupLogin();
+            //https://localhost:5001/settings/readsettings
+            var uri = new Uri($"https://{loginData.IPAddress}:{loginData.Port}/settings/writesettings");
+            var returnStr = SendToServer.SendRest(this, uri).Result;
+            //var response = Newtonsoft.Json.JsonConvert.DeserializeObject<AutoLoadSettings>(returnStr.ToString());
+            //return response;
+            return true;
+        }
+
+        /// <summary>
+        /// Read from the local file - should only be used by a service!
+        /// </summary>
+        /// <returns></returns>
+        private static AutoLoadSettings ReadFromFile()
         {
             AutoLoadSettings settings = null;
+            string filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, GlobalValues.FileScannerSettingsStorageLocation);
             readingFile = true;
-            if (!File.Exists(GlobalValues.FileScannerSettingsStorageLocation))
+            if (!File.Exists(filename))
             {
                 settings = new AutoLoadSettings();
             }
@@ -158,7 +210,7 @@ namespace Common.Settings
                 try
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(AutoLoadSettings));
-                    textReader = new StreamReader(GlobalValues.UserSettingsStorageLocation);
+                    textReader = new StreamReader(filename);
                     settings = (AutoLoadSettings)serializer.Deserialize(textReader);
                 }
                 catch (Exception ex)
@@ -174,7 +226,7 @@ namespace Common.Settings
                     }
                 }
             }
-            
+
             readingFile = false;
             return settings;
         }
@@ -182,21 +234,23 @@ namespace Common.Settings
         /// <summary>
         /// write the configuration to the local storage
         /// </summary>
-        private void WriteFile()
+        public void WriteFile()
         {
             if (readingFile)
             {
                 return;
             }
 
+            string filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, GlobalValues.FileScannerSettingsStorageLocation);
+
             //Monitor.TryEnter(readingFile);
-            if (File.Exists(GlobalValues.FileScannerSettingsStorageLocation))
+            if (File.Exists(filename))
             {
-                File.Delete(GlobalValues.FileScannerSettingsStorageLocation);
+                File.Delete(filename);
             }
 
             XmlSerializer serializer = new XmlSerializer(typeof(AutoLoadSettings));
-            TextWriter textWriter = new StreamWriter(GlobalValues.FileScannerSettingsStorageLocation);
+            TextWriter textWriter = new StreamWriter(filename);
             serializer.Serialize(textWriter, this);
             textWriter.Close();
         }
