@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoLoadSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<AutoLoadConnection>
+		<IPAddress>localhost</IPAddress>
+		<AccessKeyName>Green</AccessKeyName>
+		<IsCurrentConnection>false</IsCurrentConnection>
+	</AutoLoadConnection>
+	<AutoLoadStartTime>0</AutoLoadStartTime>
+	<AutoLoadEndTime>5</AutoLoadEndTime>
+	<AutoLoadPin>asdgdfagdfg</AutoLoadPin>
+	<AutoLoadLastProcessed>0001-01-01T00:00:00</AutoLoadLastProcessed>
+	<AutoLoadLastTotalUpload>0</AutoLoadLastTotalUpload>
+	<AutoLoadDirectories>
+		<string>..</string>
+		<string>[Documents]</string>
+	</AutoLoadDirectories>
+</AutoLoadSettings>

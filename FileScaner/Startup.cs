@@ -56,7 +56,7 @@ namespace FileScaner
 
             Log.Information("Startup completed");
 
-            // startup the scan processor
+            // start up the background process
 
 
             Log.Information("File Scan Started");

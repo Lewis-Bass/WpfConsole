@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Themes", "Themes\Themes.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfConsole", "WpfConsole\WpfConsole.csproj", "{ABFDBD08-B118-48A1-B96A-87DF3F1EF020}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileScaner", "FileScaner\FileScaner.csproj", "{0E165480-B9A0-41B6-A381-00A381FC7E19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileScaner", "FileScaner\FileScaner.csproj", "{0E165480-B9A0-41B6-A381-00A381FC7E19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileScannerTests", "FileScannerTests\FileScannerTests.csproj", "{6AB72077-46D6-4818-B81F-A77880A79083}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{0E165480-B9A0-41B6-A381-00A381FC7E19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E165480-B9A0-41B6-A381-00A381FC7E19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E165480-B9A0-41B6-A381-00A381FC7E19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB72077-46D6-4818-B81F-A77880A79083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB72077-46D6-4818-B81F-A77880A79083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB72077-46D6-4818-B81F-A77880A79083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB72077-46D6-4818-B81F-A77880A79083}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
