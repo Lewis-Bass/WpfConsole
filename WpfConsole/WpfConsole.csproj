@@ -136,17 +136,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="SearchAdvanced\AdvancedMain.xaml.cs">
-      <DependentUpon>AdvancedMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SearchFilter\FilterMain.xaml.cs">
-      <DependentUpon>FilterMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SearchTree\SearchTreeMain.xaml.cs">
-      <DependentUpon>SearchTreeMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Search\MainSearch.xaml.cs">
+    <Compile Include="SearchMaster\MainSearch.xaml.cs">
       <DependentUpon>MainSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchMaster\AdvancedTree.xaml.cs">
+      <DependentUpon>AdvancedTree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchMaster\Filter.xaml.cs">
+      <DependentUpon>Filter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchMaster\Previous.xaml.cs">
+      <DependentUpon>Previous.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchMaster\Results.xaml.cs">
+      <DependentUpon>Results.xaml</DependentUpon>
     </Compile>
     <Page Include="AccountChange\MyPasswordChange.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -222,21 +225,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SearchAdvanced\AdvancedMain.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SearchFilter\FilterMain.xaml">
+    <Page Include="SearchMaster\MainSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SearchTree\SearchTreeMain.xaml">
+    <Page Include="SearchMaster\AdvancedTree.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Search\MainSearch.xaml">
+    <Page Include="SearchMaster\Filter.xaml">
       <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchMaster\Previous.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchMaster\Results.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -305,6 +312,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Create\" />
+    <Folder Include="SearchAdvanced\" />
+    <Folder Include="SearchFilter\" />
+    <Folder Include="SearchTree\" />
+    <Folder Include="Search\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />

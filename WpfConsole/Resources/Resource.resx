@@ -394,7 +394,7 @@
     <value>Port must be a number</value>
   </data>
   <data name="SaveAndExecute" xml:space="preserve">
-    <value>Save and Execute</value>
+    <value>Save Results</value>
   </data>
   <data name="ScanNetwork" xml:space="preserve">
     <value>Scan Network</value>
@@ -636,7 +636,7 @@
     <value>Criteria</value>
   </data>
   <data name="FilterTree" xml:space="preserve">
-    <value>Tree</value>
+    <value>Advanced</value>
   </data>
   <data name="License" xml:space="preserve">
     <value>License</value>

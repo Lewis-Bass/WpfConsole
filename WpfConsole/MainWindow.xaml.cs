@@ -15,8 +15,9 @@ using WpfConsole.Connection;
 using WpfConsole.FileDrop;
 using WpfConsole.KeyManagement;
 using WpfConsole.Preference;
-using WpfConsole.Search;
-using WpfConsole.SearchFilter;
+//using WpfConsole.Search;
+using WpfConsole.SearchMaster;
+//using WpfConsole.SearchFilter;
 using WpfConsole.Resources;
 using WpfConsole.AutoLoad;
 using static Themes.Enumerations.ThemeEnums;
@@ -36,10 +37,11 @@ namespace WpfConsole
     {
         #region globals
 
-        UserControl _Search;
-        UserControl _SearchAdvanced;
-        UserControl _SearchTree;
-        UserControl _SearchFilter;
+        //UserControl _Search;
+        UserControl _SearchMaster;
+        //UserControl _SearchAdvanced;
+        //UserControl _SearchTree;
+        //UserControl _SearchFilter;
         UserControl _Connections;
         UserControl _FileDisplay;
         UserControl _AutoLoad;
@@ -232,43 +234,53 @@ namespace WpfConsole
 
         #region Menu Click Events
 
-        private void Search_Click(object sender, RoutedEventArgs e)
+        private void SearchMaster_Click(object sender, RoutedEventArgs e)
         {
 
-            if (_Search == null)
+            if (_SearchMaster == null)
             {
-                _Search = new Search.MainSearch();
+                _SearchMaster = new SearchMaster.MainSearch();
             }
-            DisplayControl(_Search);
+            DisplayControl(_SearchMaster);
         }
+
+        //private void Search_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //    if (_Search == null)
+        //    {
+        //        _Search = new Search.MainSearch();
+        //    }
+        //    DisplayControl(_Search);
+        //}
 
         private void Search_Filter(object sender, RoutedEventArgs e)
         {
 
-            if (_SearchFilter == null)
-            {
-                _SearchFilter = new SearchFilter.FilterMain();
-            }
-            DisplayControl(_SearchFilter);
+            //if (_SearchFilter == null)
+            //{
+            //    _SearchFilter = new SearchFilter.FilterMain();
+            //}
+            //DisplayControl(_SearchFilter);
         }
 
 
         private void SearchAdvanced_Click(object sender, RoutedEventArgs e)
         {
-            if (_SearchAdvanced == null)
-            {
-                _SearchAdvanced = new SearchAdvanced.AdvancedMain();
-            }
-            DisplayControl(_SearchAdvanced);
+            //if (_SearchAdvanced == null)
+            //{
+            //    _SearchAdvanced = new SearchAdvanced.AdvancedMain();
+            //}
+            //DisplayControl(_SearchAdvanced);
         }
 
         private void SearchTreeMain_Click(object sender, RoutedEventArgs e)
         {
-            if (_SearchTree == null)
-            {
-                _SearchTree = new SearchTree.SearchTreeMain();
-            }
-            DisplayControl(_SearchTree);
+            //if (_SearchTree == null)
+            //{
+            //    _SearchTree = new SearchTree.SearchTreeMain();
+            //}
+            //DisplayControl(_SearchTree);
         }
 
         //////private void CreateArk_Click(object sender, RoutedEventArgs e)
@@ -454,9 +466,10 @@ namespace WpfConsole
 
         private void SetTopMenuAvailability()
         {
-            Search.IsEnabled = GlobalValues.IsConnectionValid;
-            SearchTree.IsEnabled = GlobalValues.IsConnectionValid;
-            SearchFilter.IsEnabled = GlobalValues.IsConnectionValid;
+            SearchMaster.IsEnabled = GlobalValues.IsConnectionValid;
+            //Search.IsEnabled = GlobalValues.IsConnectionValid;
+            //SearchTree.IsEnabled = GlobalValues.IsConnectionValid;
+            //SearchFilter.IsEnabled = GlobalValues.IsConnectionValid;
             AddFiles.IsEnabled = GlobalValues.IsConnectionValid;
             CheckedOutFiles.IsEnabled = GlobalValues.IsConnectionValid;
             Keys.IsEnabled = GlobalValues.IsConnectionValid;

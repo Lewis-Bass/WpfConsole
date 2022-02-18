@@ -32,7 +32,8 @@
                 <!--<TextBlock Grid.Row="0" Grid.Column="0" Margin="5px" VerticalAlignment="Center" Text="{x:Static lang:Resource.SearchFieldPath}"/>
                 <TextBox Grid.Row="0" Grid.Column="1" Margin="5px" x:Name="txtPath"/>-->
 
-                <TextBlock Grid.Row="1" Grid.Column="0" Margin="5px" VerticalAlignment="Center"  Text="{x:Static lang:Resource.FileName}"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Margin="5px" VerticalAlignment="Center"  Text="{x:Static lang:Resource.FileName}"
+                            Style="{DynamicResource TextBlockNormal3Style}"/>
                 <TextBox Grid.Row="1" Grid.Column="1" Margin="5px" x:Name="txtFileName"/>
 
                 <TextBlock Grid.Row="2" Grid.Column="0" Margin="5px"  VerticalAlignment="Center" Text="{x:Static lang:Resource.FileExtension}"/>

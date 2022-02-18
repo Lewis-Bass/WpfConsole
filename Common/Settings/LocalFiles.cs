@@ -8,6 +8,7 @@ using System.Text;
 using System.Xml.Serialization;
 using WindowsData;
 using Common.ServerCommunication.Helpers;
+using System.Diagnostics;
 
 namespace Common
 {
@@ -156,7 +157,7 @@ namespace Common
 
 
                 // view the file
-                System.Diagnostics.Process.Start("cmd.exe ", $"/c {filePath}");
+                ViewLocalFile(viewFile);
 
                 // Add the file to the recently viewed process
                 AddFile(viewFile);
@@ -164,8 +165,7 @@ namespace Common
                 // TODO: Purge local file down to the max view count
                 WriteFile();
 
-                // TODO: Add some kind of purge to the directory we do not need to keep view files around forever...
-
+                // TODO: Add some kind of purge to the directory we do not need to keep view files around forever...???
             }
         }
 
@@ -174,7 +174,23 @@ namespace Common
         {
             if (!string.IsNullOrWhiteSpace(viewFile.LocalFileLocation))
             {
-                System.Diagnostics.Process.Start("cmd.exe ", $"/c {viewFile.LocalFileLocation}");
+                //Process p = new Process();
+                //p.StartInfo.CreateNoWindow = true;
+                //p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                //p.Start($"cmd.exe /c {viewFile.LocalFileLocation}");
+
+                //var si = new System.Diagnostics.ProcessStartInfo();
+                //si.CreateNoWindow = true;
+                //si.FileName = "$cmd.exe / c { viewFile.LocalFileLocation}";
+                //System.Diagnostics.Process.Start(si);
+
+                Process fileopener = new Process();
+                fileopener.StartInfo.FileName = "explorer";
+                fileopener.StartInfo.Arguments = viewFile.LocalFileLocation;
+                fileopener.Start();
+
+
+                //System.Diagnostics.Process.Start("cmd.exe ", $"/c {viewFile.LocalFileLocation}");
             }
         }
 
@@ -202,7 +218,8 @@ namespace Common
             File.WriteAllBytes(checkOutFile.LocalFileLocation, response.FileContents);
 
             // view the file
-            System.Diagnostics.Process.Start("cmd.exe ", $"/c {filePath}");
+            //System.Diagnostics.Process.Start("cmd.exe ", $"/c {filePath}");
+            ViewFile(checkOutFile);
 
             // Add the file to the recently viewed process
             AddFile(checkOutFile);
@@ -233,7 +250,8 @@ namespace Common
             // Load the file into the ark
             string filePath = checkInFile.LocalFileLocation;
 
-            var request = new RequestCheckInChange {
+            var request = new RequestCheckInChange
+            {
                 Connection = GlobalValues.LastConnection,
                 ConnectionToken = GlobalValues.ConnectionToken,
                 IsCheckin = true,
@@ -255,7 +273,7 @@ namespace Common
             }
 
             // Add the file to the recently viewed process
-            RemoveFile(checkInFile);            
+            RemoveFile(checkInFile);
 
             return true;
         }

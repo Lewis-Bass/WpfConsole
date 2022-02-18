@@ -145,40 +145,40 @@ namespace WpfConsole.Search
 
         #region Routed Event Handlers
 
-        //////////// Create RoutedEvent
-        //////////// This creates a static property on the UserControl, ViewFileEvent, which 
-        //////////// will be used by the Window, or any control up the Visual Tree, that wants to 
-        //////////// handle the event. 
-        //////////public static readonly RoutedEvent ViewFileEvent =
-        //////////    EventManager.RegisterRoutedEvent("ViewFileEvent", RoutingStrategy.Bubble,
-        //////////    typeof(RoutedEventHandler), typeof(MainSearch));
+        // Create RoutedEvent
+        // This creates a static property on the UserControl, ViewFileEvent, which 
+        // will be used by the Window, or any control up the Visual Tree, that wants to 
+        // handle the event. 
+        public static readonly RoutedEvent ViewFileEvent =
+            EventManager.RegisterRoutedEvent("ViewFileEvent", RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler), typeof(MainSearch));
 
-        //////////// Create RoutedEventHandler
-        //////////// This adds the Custom Routed Event to the WPF Event System and allows it to be 
-        //////////// accessed as a property from within xaml if you so desire
-        //////////public event RoutedEventHandler ViewFile
-        //////////{
-        //////////    add { AddHandler(ViewFileEvent, value); }
-        //////////    remove { RemoveHandler(ViewFileEvent, value); }
-        //////////}
+        // Create RoutedEventHandler
+        // This adds the Custom Routed Event to the WPF Event System and allows it to be 
+        // accessed as a property from within xaml if you so desire
+        public event RoutedEventHandler ViewFile
+        {
+            add { AddHandler(ViewFileEvent, value); }
+            remove { RemoveHandler(ViewFileEvent, value); }
+        }
 
 
-        //////////// Create RoutedEvent
-        //////////// This creates a static property on the UserControl, CheckOutFileEvent, which 
-        //////////// will be used by the Window, or any control up the Visual Tree, that wants to 
-        //////////// handle the event. 
-        //////////public static readonly RoutedEvent CheckOutFileEvent =
-        //////////    EventManager.RegisterRoutedEvent("CheckOutFileEvent", RoutingStrategy.Bubble,
-        //////////    typeof(RoutedEventHandler), typeof(MainSearch));
+        // Create RoutedEvent
+        // This creates a static property on the UserControl, CheckOutFileEvent, which 
+        // will be used by the Window, or any control up the Visual Tree, that wants to 
+        // handle the event. 
+        public static readonly RoutedEvent CheckOutFileEvent =
+            EventManager.RegisterRoutedEvent("CheckOutFileEvent", RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler), typeof(MainSearch));
 
-        //////////// Create RoutedEventHandler
-        //////////// This adds the Custom Routed Event to the WPF Event System and allows it to be 
-        //////////// accessed as a property from within xaml if you so desire
-        //////////public event RoutedEventHandler CheckOutFile
-        //////////{
-        //////////    add { AddHandler(CheckOutFileEvent, value); }
-        //////////    remove { RemoveHandler(CheckOutFileEvent, value); }
-        //////////}
+        // Create RoutedEventHandler
+        // This adds the Custom Routed Event to the WPF Event System and allows it to be 
+        // accessed as a property from within xaml if you so desire
+        public event RoutedEventHandler CheckOutFile
+        {
+            add { AddHandler(CheckOutFileEvent, value); }
+            remove { RemoveHandler(CheckOutFileEvent, value); }
+        }
 
 
         #endregion

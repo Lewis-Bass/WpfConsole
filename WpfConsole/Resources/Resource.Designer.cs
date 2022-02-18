@@ -772,7 +772,7 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tree.
+        ///   Looks up a localized string similar to Advanced.
         /// </summary>
         public static string FilterTree {
             get {
@@ -1429,7 +1429,7 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save and Execute.
+        ///   Looks up a localized string similar to Save Results.
         /// </summary>
         public static string SaveAndExecute {
             get {
