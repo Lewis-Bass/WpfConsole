@@ -39,7 +39,7 @@ namespace Common.ServerCommunication.Helpers
 
 			// DUMMY THE RESPONSE - SOCKET DOES NOT RETURN ANYTHING YET
 			// process the login and validate it - stubbed out
-			for (int i = 1; i <= 10; i++)
+			for (int i = 1; i <= 25; i++)
 			{
 				response.Add(new BinderInformation { BinderID = i.ToString(), BinderName = $"Binder {i}" });
 			}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WindowsData;
+using static System.Windows.Forms.LinkLabel;
 
 namespace WpfConsole.SearchMaster
 {
@@ -46,6 +48,145 @@ namespace WpfConsole.SearchMaster
         ObservableCollection<SearchTreeGUI> _SearchCriteriaInfo = new ObservableCollection<SearchTreeGUI>();
         public UserControl DisplayResult { get; set; }
 
+        private string[] Colors = {
+            "AliceBlue",
+            "AntiqueWhite",
+            "Aqua",
+            "Aquamarine",
+            "Azure",
+            "Beige",
+            "Bisque",
+            "BlanchedAlmond",
+            "Blue",
+            "BlueViolet",
+            "Brown",
+            "BurlyWood",
+            "CadetBlue",
+            "Chartreuse",
+            "Chocolate",
+            "Coral",
+            "CornflowerBlue",
+            "Cornsilk",
+            "Crimson",
+            "Cyan",
+            "DarkBlue",
+            "DarkCyan",
+            "DarkGoldenrod",
+            "DarkGray",
+            "DarkGreen",
+            "DarkKhaki",
+            "DarkMagenta",
+            "DarkOliveGreen",
+            "DarkOrange",
+            "DarkOrchid",
+            "DarkRed",
+            "DarkSalmon",
+            "DarkSeaGreen",
+            "DarkSlateBlue",
+            "DarkSlateGray",
+            "DarkTurquoise",
+            "DarkViolet",
+            "DeepPink",
+            "DeepSkyBlue",
+            "DimGray",
+            "DodgerBlue",
+            "Firebrick",
+            "FloralWhite",
+            "ForestGreen",
+            "Fuchsia",
+            "Gainsboro",
+            "GhostWhite",
+            "Gold",
+            "Goldenrod",
+            "Green",
+            "GreenYellow",
+            "Honeydew",
+            "HotPink",
+            "IndianRed",
+            "Indigo",
+            "Ivory",
+            "Khaki",
+            "Lavender",
+            "LavenderBlush",
+            "LawnGreen",
+            "LemonChiffon",
+            "LightBlue",
+            "LightCoral",
+            "LightCyan",
+            "LightGoldenrodYellow",
+            "LightGray",
+            "LightGreen",
+            "LightPink",
+            "LightSalmon",
+            "LightSeaGreen",
+            "LightSkyBlue",
+            "LightSlateGray",
+            "LightSteelBlue",
+            "LightYellow",
+            "Lime",
+            "LimeGreen",
+            "Linen",
+            "Magenta",
+            "Maroon",
+            "MediumAquamarine",
+            "MediumBlue",
+            "MediumOrchid",
+            "MediumPurple",
+            "MediumSeaGreen",
+            "MediumSlateBlue",
+            "MediumSpringGreen",
+            "MediumTurquoise",
+            "MediumVioletRed",
+            "MidnightBlue",
+            "MintCream",
+            "MistyRose",
+            "Moccasin",
+            "NavajoWhite",
+            "Navy",
+            "OldLace",
+            "Olive",
+            "OliveDrab",
+            "Orange",
+            "OrangeRed",
+            "Orchid",
+            "PaleGoldenrod",
+            "PaleGreen",
+            "PaleTurquoise",
+            "PaleVioletRed",
+            "PapayaWhip",
+            "PeachPuff",
+            "Peru",
+            "Pink",
+            "Plum",
+            "PowderBlue",
+            "Purple",
+            "RosyBrown",
+            "RoyalBlue",
+            "SaddleBrown",
+            "Salmon",
+            "SandyBrown",
+            "SeaGreen",
+            "SeaShell",
+            "Sienna",
+            "Silver",
+            "SkyBlue",
+            "SlateBlue",
+            "SlateGray",
+            "Snow",
+            "SpringGreen",
+            "SteelBlue",
+            "Tan",
+            "Teal",
+            "Thistle",
+            "Tomato",
+            "Transparent",
+            "Turquoise",
+            "Violet",
+            "Wheat",
+            "Yellow",
+            "YellowGreen",
+                };
+
         #endregion
 
         #region Constructor
@@ -61,7 +202,7 @@ namespace WpfConsole.SearchMaster
 
         #endregion
 
-        #region initial load
+        #region Initial Load
 
         private void LoadCriteria()
         {
@@ -163,7 +304,7 @@ namespace WpfConsole.SearchMaster
                 }
                 else
                 {
-                    // recursive call to search sub queryies..
+                    // recursive call to search sub queries..
                     if (searchMe[i].SubQuery.Count() > 0)
                     {
                         var recs = RecursiveRemoveCriteria(searchMe[i].SubQuery.ToList(), removeMe, out isEntryRemoved);
@@ -205,13 +346,18 @@ namespace WpfConsole.SearchMaster
             {
                 if (searchMe[i] == addAfterMe)
                 {
-                    searchMe.Insert(i + 1, new SearchTreeGUI());
+                    var rec = new SearchTreeGUI()
+                    {
+                        GroupID = addAfterMe.GroupID,
+                        GroupColor = addAfterMe.GroupColor
+                    };
+                    searchMe.Insert(i + 1, rec);
                     isEntryAdded = true;
                     break;
                 }
                 else
                 {
-                    // recursive call to search sub queryies..
+                    // recursive call to search sub queries..
                     if (searchMe[i].SubQuery.Count() > 0)
                     {
                         var recs = RecursiveAddCriteria(searchMe[i].SubQuery.ToList(), addAfterMe, out isEntryAdded);
@@ -234,6 +380,7 @@ namespace WpfConsole.SearchMaster
         private void AddGroup_Click(object sender, RoutedEventArgs e)
         {
             var button = (Button)sender;
+            int maxGroupId = FindMaxGroup();
             if (button.DataContext is WindowsData.SearchTreeGUI)
             {
                 var data = (WindowsData.SearchTreeGUI)button.DataContext;
@@ -242,78 +389,38 @@ namespace WpfConsole.SearchMaster
                     data.SubQuery = new ObservableCollection<SearchTreeGUI>();
                 }
                 var rec = new SearchTreeGUI();
+
                 rec.ShowGroupRelationship = true;
                 rec.ShowRelationship = false;
+                rec.GroupID = FindMaxGroup() + 1;
+                rec.GroupColor = (rec.GroupID < Colors.Length) ? Colors[rec.GroupID] : Colors[rec.GroupID - Colors.Length];
                 data.SubQuery.Add(rec);
                 BindCriteraToControl();
             }
+            
+        }
 
-            ////// are we creating a new group or adding to an existing one?
-            ////int groupID = 0;
+        private int FindMaxGroup()
+        {
+            int maxGroupId = 0;
+            foreach (var rec in SearchCriteriaInfo)
+            {
+                maxGroupId = RecursiveMaxGroup(rec, maxGroupId);
+            }
+            return maxGroupId;
+        }
 
-
-            ////// calculate the group id - first group id selected wins!
-            ////List<SearchTreeGUI> groupRecords = new List<SearchTreeGUI>();
-            ////foreach (var rec in SearchCriteriaInfo)
-            ////{
-            ////    if (rec.Select)
-            ////    {
-            ////        if (rec.GroupID > 0)
-            ////        {
-            ////            if (groupID <= 0)
-            ////            {
-            ////                groupID = rec.GroupID;
-            ////            }
-            ////        }
-            ////    }
-            ////}
-
-            ////// did we find one to add to?
-            ////if (groupID == 0)
-            ////{
-            ////    groupID = SearchCriteriaInfo.Max(r => r.GroupID) + 1;
-            ////}
-
-            ////// remove all records from the group and set the insertion point
-            ////int firstRecordIndex = 0;
-            ////int currentIndex = 0;
-            ////bool firstRecordProcessed = true;
-            ////foreach (var rec in SearchCriteriaInfo)
-            ////{
-            ////    if (rec.Select || rec.GroupID == groupID)
-            ////    {
-            ////        if (firstRecordProcessed)
-            ////        {
-            ////            firstRecordIndex = currentIndex;
-            ////            firstRecordProcessed = false;
-            ////        }
-            ////        groupRecords.Add(rec);
-            ////    }
-            ////    currentIndex++;
-            ////}
-
-            ////// setup the records...
-            ////// 1) remove from list
-            ////foreach (var rec in groupRecords)
-            ////{
-            ////    SearchCriteriaInfo.Remove(rec);
-            ////}
-
-            ////// 2) add the selected records after the first selected one
-            ////firstRecordProcessed = true;
-            ////foreach (var rec in groupRecords)
-            ////{
-            ////    rec.ShowGroupRelationship = firstRecordProcessed;
-            ////    rec.GroupID = groupID;
-            ////    rec.Select = false;
-            ////    rec.GroupColor = GroupColors[groupID];
-            ////    rec.ShowRelationship = !firstRecordProcessed;
-            ////    SearchCriteriaInfo.Insert(firstRecordIndex, rec);
-            ////    firstRecordIndex++;
-            ////    firstRecordProcessed = false;
-            ////}
-
-            ////SetFirstRecordRelationships();
+        private int RecursiveMaxGroup(SearchTreeGUI node, int maxGroupId)
+        {
+            if (node.GroupID > maxGroupId)
+            {
+                maxGroupId = node.GroupID;
+            }
+            foreach (var rec in node.SubQuery)
+            {
+                maxGroupId = RecursiveMaxGroup(rec, maxGroupId);
+            }
+            return maxGroupId;
         }
 
         #endregion
