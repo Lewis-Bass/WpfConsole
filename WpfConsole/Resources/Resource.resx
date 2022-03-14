@@ -650,4 +650,34 @@
   <data name="ConfigureAutoload" xml:space="preserve">
     <value>Update Configuration</value>
   </data>
+  <data name="TagCombine" xml:space="preserve">
+    <value>Combine</value>
+  </data>
+  <data name="TagName" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="TagUsage" xml:space="preserve">
+    <value>Usage</value>
+  </data>
+  <data name="TagAddNew" xml:space="preserve">
+    <value>Enter the new tag name</value>
+  </data>
+  <data name="TagAttemptDuplicateAdd" xml:space="preserve">
+    <value>{0} already exists and can not be added</value>
+  </data>
+  <data name="TagRename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="ErrorEmptyTag" xml:space="preserve">
+    <value>Can not continue - no tag name was selected</value>
+  </data>
+  <data name="TagCombineString" xml:space="preserve">
+    <value>Tag {0} will be combined with the value selected below</value>
+  </data>
+  <data name="TagDeleteRecord" xml:space="preserve">
+    <value>Please Confirm the deletion of tag {0}</value>
+  </data>
+  <data name="TagRenameString" xml:space="preserve">
+    <value>Enter a new name for {0}</value>
+  </data>
 </root>

@@ -11,27 +11,27 @@
 			 mc:Ignorable="d" 
 			 d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <WrapPanel Height="40" Grid.Row="0" 
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<WrapPanel Height="40" Grid.Row="0" 
 							   VerticalAlignment="Center" 
 							   Margin="5,5,5,5">
-            <!--<Button x:Name="Execute" Width="150"                         
+			<!--<Button x:Name="Execute" Width="150"                         
 								Click="Execute_Click">
 					<TextBlock Text="{x:Static lang:Resource.Execute}"/>
 				</Button>-->
-            <Button x:Name="ExecuteSave" Width="150"                         
+			<Button x:Name="ExecuteSave" Width="150"                         
 								Margin="10 0 10 0"
 								Click="ExecuteSave_Click">
-                <TextBlock Text="{x:Static lang:Resource.SaveAndExecute}"/>
-            </Button>
-        </WrapPanel>
+				<TextBlock Text="{x:Static lang:Resource.SaveAndExecute}"/>
+			</Button>
+		</WrapPanel>
 
 
-        <ScrollViewer Name="FileScroll" Grid.Row="1"
+		<ScrollViewer Name="FileScroll" Grid.Row="1"
 								  Margin="5,5,5,5"
 								  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 								  HorizontalScrollBarVisibility="Auto"                                  
@@ -39,71 +39,71 @@
 								  BorderBrush="Black"
 								  BorderThickness="1px">
 
-            <ListView x:Name="DisplayResults"
+			<ListView x:Name="DisplayResults"
 								  VerticalAlignment="Stretch"
 								  HorizontalAlignment="Stretch"
 								  ScrollViewer.CanContentScroll="True"
 								  ScrollViewer.HorizontalScrollBarVisibility="Auto"
 								  ScrollViewer.VerticalScrollBarVisibility="Visible">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn>
-                            <GridViewColumn.Header>
-                                <TextBlock Text="{x:Static lang:Resource.DocumentName}"/>
-                            </GridViewColumn.Header>
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding DocumentName}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn>
-                            <GridViewColumn.Header>
-                                <TextBlock Text="{x:Static lang:Resource.DocumentDate}"/>
-                            </GridViewColumn.Header>
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding DocumentDate}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn>
-                            <GridViewColumn.Header>
-                                <TextBlock Text="{x:Static lang:Resource.DocumentPath}"/>
-                            </GridViewColumn.Header>
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding PathName}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn>
-                            <GridViewColumn.Header>
-                                <TextBlock Text=""/>
-                            </GridViewColumn.Header>
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <WrapPanel>
-                                        <Button x:Name="View" 
+				<ListView.View>
+					<GridView>
+						<GridViewColumn>
+							<GridViewColumn.Header>
+								<TextBlock Text="{x:Static lang:Resource.DocumentName}"/>
+							</GridViewColumn.Header>
+							<GridViewColumn.CellTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding DocumentName}"/>
+								</DataTemplate>
+							</GridViewColumn.CellTemplate>
+						</GridViewColumn>
+						<GridViewColumn>
+							<GridViewColumn.Header>
+								<TextBlock Text="{x:Static lang:Resource.DocumentDate}"/>
+							</GridViewColumn.Header>
+							<GridViewColumn.CellTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding DocumentDate}"/>
+								</DataTemplate>
+							</GridViewColumn.CellTemplate>
+						</GridViewColumn>
+						<GridViewColumn>
+							<GridViewColumn.Header>
+								<TextBlock Text="{x:Static lang:Resource.DocumentPath}"/>
+							</GridViewColumn.Header>
+							<GridViewColumn.CellTemplate>
+								<DataTemplate>
+									<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding PathName}"/>
+								</DataTemplate>
+							</GridViewColumn.CellTemplate>
+						</GridViewColumn>
+						<GridViewColumn>
+							<GridViewColumn.Header>
+								<TextBlock Text=""/>
+							</GridViewColumn.Header>
+							<GridViewColumn.CellTemplate>
+								<DataTemplate>
+									<WrapPanel>
+										<Button x:Name="View" 
 															Grid.Column="3" 
 															Margin="5"
 															Click="View_Click">
-                                            <TextBlock Text="{x:Static lang:Resource.View}"/>
-                                        </Button>
-                                        <Button x:Name="CheckOut" 
+											<TextBlock Text="{x:Static lang:Resource.View}"/>
+										</Button>
+										<Button x:Name="CheckOut" 
 															Grid.Column="4" 
 															Margin="5"
 															Click="CheckOut_Click">
-                                            <TextBlock Text="{x:Static lang:Resource.CheckOut}"/>
-                                        </Button>
-                                    </WrapPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </ScrollViewer>
-    </Grid>
+											<TextBlock Text="{x:Static lang:Resource.CheckOut}"/>
+										</Button>
+									</WrapPanel>
+								</DataTemplate>
+							</GridViewColumn.CellTemplate>
+						</GridViewColumn>
+					</GridView>
+				</ListView.View>
+			</ListView>
+		</ScrollViewer>
+	</Grid>
 
 </UserControl>

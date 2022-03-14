@@ -106,6 +106,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ServerCommunication\Requests\RequestFileTag.cs" />
     <Compile Include="Settings\AutoLoadSettings.cs" />
     <Compile Include="Encryption\EncryptDecrypt.cs" />
     <Compile Include="EnumHelpers.cs" />

@@ -24,7 +24,7 @@ namespace WpfConsole.SearchMaster
     /// <summary>
     /// Interaction logic for Previous.xaml
     /// </summary>
-    public partial class Previous : UserControl
+    public partial class Previous : UserControl, INotifyPropertyChanged
     {
         #region Properties
 

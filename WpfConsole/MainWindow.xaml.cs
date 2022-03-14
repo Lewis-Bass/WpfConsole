@@ -27,6 +27,7 @@ using System.Linq;
 using WpfConsole.Dialogs;
 using System.Windows.Interop;
 using System.Windows.Markup;
+using WpfConsole.TagManagement;
 
 namespace WpfConsole
 {
@@ -47,6 +48,7 @@ namespace WpfConsole
         UserControl _AutoLoad;
         UserControl _PreferenceSetup;
         UserControl _KeyManagement;
+        UserControl _TagManagement;
         UserControl _CheckedOut;
         UserControl _MyPassword;
 
@@ -328,6 +330,15 @@ namespace WpfConsole
             DisplayControl(_KeyManagement);
         }
 
+        private void TagManagement_Click(object sender, RoutedEventArgs e)
+        {
+            if (_TagManagement == null)
+            {
+                _TagManagement = new TagMain();
+            }
+            DisplayControl(_TagManagement);
+        }
+
 
         private void CheckedOut_Click(object sender, RoutedEventArgs e)
         {
@@ -473,6 +484,7 @@ namespace WpfConsole
             AddFiles.IsEnabled = GlobalValues.IsConnectionValid;
             CheckedOutFiles.IsEnabled = GlobalValues.IsConnectionValid;
             Keys.IsEnabled = GlobalValues.IsConnectionValid;
+            Tags.IsEnabled = GlobalValues.IsConnectionValid;
             Logout.IsEnabled = GlobalValues.IsConnectionValid;
             AutoLoad.IsEnabled = GlobalValues.IsConnectionValid;
         }

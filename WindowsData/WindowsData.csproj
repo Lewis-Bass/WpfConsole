@@ -45,7 +45,9 @@
     <Compile Include="BinderInformation.cs" />
     <Compile Include="ConnectionInformation.cs" />
     <Compile Include="DeviceInfo.cs" />
+    <Compile Include="DropDownRecords.cs" />
     <Compile Include="FileListModel.cs" />
+    <Compile Include="FileTags.cs" />
     <Compile Include="FileTrack.cs" />
     <Compile Include="AccessKey.cs" />
     <Compile Include="LibraryCard.cs" />

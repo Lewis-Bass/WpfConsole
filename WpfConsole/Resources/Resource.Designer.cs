@@ -646,6 +646,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can not continue - no tag name was selected.
+        /// </summary>
+        public static string ErrorEmptyTag {
+            get {
+                return ResourceManager.GetString("ErrorEmptyTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Library Card was not found.
         /// </summary>
         public static string ErrorMissingLibraryCard {
@@ -1614,6 +1623,87 @@ namespace WpfConsole.Resources {
         public static string StorageLocation {
             get {
                 return ResourceManager.GetString("StorageLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the new tag name.
+        /// </summary>
+        public static string TagAddNew {
+            get {
+                return ResourceManager.GetString("TagAddNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} already exists and can not be added.
+        /// </summary>
+        public static string TagAttemptDuplicateAdd {
+            get {
+                return ResourceManager.GetString("TagAttemptDuplicateAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combine.
+        /// </summary>
+        public static string TagCombine {
+            get {
+                return ResourceManager.GetString("TagCombine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tag {0} will be combined with the value selected below.
+        /// </summary>
+        public static string TagCombineString {
+            get {
+                return ResourceManager.GetString("TagCombineString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Confirm the deletion of tag {0}.
+        /// </summary>
+        public static string TagDeleteRecord {
+            get {
+                return ResourceManager.GetString("TagDeleteRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tag.
+        /// </summary>
+        public static string TagName {
+            get {
+                return ResourceManager.GetString("TagName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename.
+        /// </summary>
+        public static string TagRename {
+            get {
+                return ResourceManager.GetString("TagRename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a new name for {0}.
+        /// </summary>
+        public static string TagRenameString {
+            get {
+                return ResourceManager.GetString("TagRenameString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usage.
+        /// </summary>
+        public static string TagUsage {
+            get {
+                return ResourceManager.GetString("TagUsage", resourceCulture);
             }
         }
         

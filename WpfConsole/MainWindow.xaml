@@ -37,7 +37,8 @@
                     <!--<MenuItem Name="CreateArk" Header="{x:Static lang:Resource.CreateArk}" Click="CreateArk_Click"/>-->
                     <MenuItem Name="AddFiles" Header="{x:Static lang:Resource.AddFiles}" Click="FileDisplay_Click"/>
                     <MenuItem Name="CheckedOutFiles" Header="{x:Static lang:Resource.CheckedOut}" Click="CheckedOut_Click"/>
-                    <!--<MenuItem Name="Password" Header="{x:Static lang:Resource.Password}" Click="Password_Click" />-->                    
+                    <!--<MenuItem Name="Password" Header="{x:Static lang:Resource.Password}" Click="Password_Click" />-->
+                    <MenuItem Name="Tags"  Header="{x:Static lang:Resource.TagName}" Click="TagManagement_Click"/>
                     <MenuItem Name="Keys"  Header="{x:Static lang:Resource.Keys}" Click="KeyManagement_Click"/>
                     <MenuItem Name="AutoLoad" Header="{x:Static lang:Resource.AutoLoad}" Click="AutoLoad_Click"/>
                     <MenuItem Name="Preferences" Header="{x:Static lang:Resource.Preferences}" Click="Preferences_Click"/>
