@@ -19,6 +19,7 @@ using Common.ServerCommunication.Requests;
 using WpfConsole.Dialogs;
 using System.Windows.Markup;
 using WindowsData.Resources;
+using WpfConsole.SearchMaster;
 
 namespace WpfConsole.TagManagement
 {
@@ -45,6 +46,7 @@ namespace WpfConsole.TagManagement
                 }
             }
         }
+
         public UserControl DisplayResult { get; set; }
 
         #endregion
@@ -196,6 +198,40 @@ namespace WpfConsole.TagManagement
                     _TagList.Remove(tag);
                 }
             }
+        }
+
+        /// <summary>
+        /// Search Button - display the search screen and its results
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = (Button)sender;
+            var tag = (FileTags)btn.DataContext;
+            if (tag == null || string.IsNullOrWhiteSpace(tag.TagName))
+            {
+                Serilog.Log.Logger.Error("Can not combine an empty tag name");
+                MessageBox.Show(Application.Current.MainWindow, WpfConsole.Resources.Resource.ErrorEmptyTag, WpfConsole.Resources.Resource.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+
+            }
+
+            // convert the base to the gui model
+            var newGui = new List<SearchCriteriaGUI> {
+                new SearchCriteriaGUI {
+                    Field = "Tag",
+                    Criteria = "Matches",
+                    Relationship = "&",
+                    ValueMin = tag.TagName
+                }
+            };
+            newGui[0].ShowRelationship = false;
+            newGui[0].ShowGroupRelationship = false;
+
+            // pass the query to the main screen - this is needed because the search screen may not be visible
+            RaiseEvent(new RoutedEventArgs(MainWindow.NewSearchEvent, newGui));
+
         }
 
         #endregion

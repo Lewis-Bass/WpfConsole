@@ -35,16 +35,14 @@
 				<TextBlock Text="{x:Static lang:Resource.Execute}"/>
 			</Button>
 		</WrapPanel>
-		<!--ItemsSource="{Binding SearchCriteriaInfo}"-->
 		<TreeView Name="CriteriaTree"
 				  Grid.Row="1"
-					Margin="0,5,5,5"
-					HorizontalAlignment="Stretch"
-					VerticalAlignment="Stretch"						     						  
-					ScrollViewer.CanContentScroll="True"
-					ScrollViewer.VerticalScrollBarVisibility="Visible"
-					ScrollViewer.HorizontalScrollBarVisibility="Visible"
-					>
+				  Margin="0,5,5,5"
+				  HorizontalAlignment="Stretch"
+				  VerticalAlignment="Stretch"						     						  
+				  ScrollViewer.CanContentScroll="True"
+				  ScrollViewer.VerticalScrollBarVisibility="Visible"
+				  ScrollViewer.HorizontalScrollBarVisibility="Visible">
 			<TreeView.ItemContainerStyle>
 				<Style>
 					<Setter Property="TreeViewItem.IsExpanded" Value="True"/>
@@ -69,28 +67,19 @@
 								<ColumnDefinition Width="80"/>
 								<ColumnDefinition Width="80"/>
 							</Grid.ColumnDefinitions>
-
-							<!--<CheckBox x:Name="cbSelect" 
-												  Grid.Row="0"
-												  Grid.Column="0"
-												  IsChecked="{Binding Select}"
-												  Margin="0,0,5,0"
-												  Background="White"
-												  VerticalAlignment="Center"
-												  Click="cbSelect_Click"
-											  />-->
+					
 							<WrapPanel Grid.Column="1" Grid.Row="0" >
-                                <ComboBox 
+								<ComboBox 
 									Height="25"
 									DisplayMemberPath="Value"
 									SelectedValuePath="Key"
 									Margin="3 3 0 0"
-                                    VerticalAlignment="Center"
+									VerticalAlignment="Center"
 									Visibility="{Binding ShowGroupRelationship, Converter={StaticResource b2vconv}}"
 									ItemTemplate="{StaticResource cmbTemplate}"
 									ItemsSource="{Binding GroupRelationshipFields}"
 									SelectedValue="{Binding GroupRelationship}" >
-                                    <ComboBox.ItemContainerStyle>
+									<ComboBox.ItemContainerStyle>
 										<Style TargetType="ComboBoxItem">
 											<Setter Property="ToolTip">
 												<Setter.Value>
@@ -100,17 +89,17 @@
 										</Style>
 									</ComboBox.ItemContainerStyle>
 								</ComboBox>
-                                <ComboBox 
+								<ComboBox 
 									Height="25"
 									DisplayMemberPath="Value"
 									SelectedValuePath="Key"    
-                                    Margin="3 3 0 0"
-                                    VerticalAlignment="Center"
+									Margin="3 3 0 0"
+									VerticalAlignment="Center"
 									ItemTemplate="{StaticResource cmbTemplate}"
 									ItemsSource="{Binding RelationshipFields}"
 									SelectedValue="{Binding Relationship}"
 									Visibility="{Binding ShowRelationship, Converter={StaticResource b2vconv}}" >
-                                    <ComboBox.ItemContainerStyle>
+									<ComboBox.ItemContainerStyle>
 										<Style TargetType="ComboBoxItem">
 											<Setter Property="ToolTip">
 												<Setter.Value>
@@ -128,53 +117,53 @@
 									HorizontalAlignment="Stretch"
 									DisplayMemberPath="Value"
 									SelectedValuePath="Key"
-                                    Margin="3 3 0 0"
-                                    VerticalAlignment="Center"									
+									Margin="3 3 0 0"
+									VerticalAlignment="Center"									
 									ItemsSource="{Binding SearchFields}"
 									SelectedValue="{Binding Field}">
 								</ComboBox>
 							</WrapPanel>
 
 							<WrapPanel Grid.Column="3" Grid.Row="0">
-                                <ComboBox 
+								<ComboBox 
 									Width="125"
 									DisplayMemberPath="Value"
 									SelectedValuePath="Key"
 									Margin="3 3 0 0"
-                                    VerticalAlignment="Center"									
+									VerticalAlignment="Center"									
 									ItemsSource="{Binding SearchHow}"
 									SelectedValue="{Binding Criteria}"
 									Visibility="{Binding ShowCriteria, Converter={StaticResource b2vconv}}">
-                                </ComboBox>
+								</ComboBox>
 							</WrapPanel>
 
 							<WrapPanel Grid.Column="4" Grid.Row="0">
 								<TextBox Width="150" 
-                                         Margin="3 3 0 0"
-                                    VerticalAlignment="Center"									
+										 Margin="3 3 0 0"
+									VerticalAlignment="Center"									
 									
 														Text="{Binding ValueMin}" 
 														Visibility="{Binding ShowValueMin, Converter={StaticResource b2vconv}}" />
 								<DatePicker Width="150" 
 									Margin="3 3 0 0"
-                                    VerticalAlignment="Center"									
+									VerticalAlignment="Center"									
 									SelectedDate="{Binding ValueMinDate}" 
 									Visibility="{Binding ShowValueMinDate, Converter={StaticResource b2vconv}}"/>
 								<TextBlock Text=" To "
 									Visibility="{Binding ShowTo, Converter={StaticResource b2vconv}}"/>
 								<TextBox Width="150" 
 									Margin="3 3 0 0"
-                                    VerticalAlignment="Center"									
+									VerticalAlignment="Center"									
 									Text="{Binding ValueMax}" 
 									Visibility="{Binding ShowValueMax, Converter={StaticResource b2vconv}}" />
 								<DatePicker Width="150" 
 									Margin="3 3 0 0"
-                                    VerticalAlignment="Center"									
+									VerticalAlignment="Center"									
 									SelectedDate="{Binding ValueMaxDate}" 
 									Visibility="{Binding ShowValueMaxDate, Converter={StaticResource b2vconv}}"/>
 								<CheckBox IsChecked="{Binding ValueBool}"
 									Margin="3 3 0 0"
-                                    VerticalAlignment="Center"									
+									VerticalAlignment="Center"									
 									Visibility="{Binding ShowValueBool, Converter={StaticResource b2vconv}}"/>
 							</WrapPanel>
 

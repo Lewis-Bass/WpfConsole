@@ -161,12 +161,14 @@
   </data>
   <data name="Range" xml:space="preserve">
     <value>Range  - ES</value>
-    <comment> </comment>
   </data>
   <data name="RelationshipAndHelp" xml:space="preserve">
     <value>All Search Critera must be met  - ES</value>
   </data>
   <data name="RelationshipOrHelp" xml:space="preserve">
     <value>One Search Critera must be met  - ES</value>
+  </data>
+  <data name="TagName" xml:space="preserve">
+    <value>Tag - ES</value>
   </data>
 </root>

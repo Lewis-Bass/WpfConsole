@@ -168,4 +168,7 @@
   <data name="RelationshipOrHelp" xml:space="preserve">
     <value>One Search Critera must be met</value>
   </data>
+  <data name="TagName" xml:space="preserve">
+    <value>Tag</value>
+  </data>
 </root>

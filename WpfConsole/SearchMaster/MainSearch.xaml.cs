@@ -37,6 +37,41 @@ namespace WpfConsole.SearchMaster
                new RoutedEventHandler(HandlePerformSearch));
         }
 
+        #region 
+
+        public void InitialSearch(List<SearchCriteriaBase> criteria)
+        {
+            if (criteria == null) { return; }
+            // move the criteria to the filter screen, or advanced screen
+            if (criteria.Count == criteria.Count(r=>r.Criteria == "Matches"))
+            {
+                // filter
+                Filter.BindInitialValues(criteria);
+            }
+            else
+            {
+                // advanced
+                var advCriteria = criteria.Select(r => new SearchTreeGUI
+                {
+                    Criteria = r.Criteria,
+                    Field = r.Field,
+                    GroupID = r.GroupID,
+                    GroupRelationship = r.GroupRelationship,
+                    Relationship = r.Relationship,
+                    ValueBool = r.ValueBool,
+                    ValueMax = r.ValueMax,
+                    ValueMin = r.ValueMin,
+                    ValueMaxDate = r.ValueMaxDate,
+                    ValueMinDate = r.ValueMinDate,
+                });
+                Advanced.SearchCriteriaInfo = new ObservableCollection<SearchTreeGUI>( advCriteria);
+            }
+            MainTabControl.SelectedIndex = 3;
+            Results.PerformSearch(criteria);
+        }
+
+        #endregion
+
         #region Events
 
         // Create RoutedEvent
@@ -104,5 +139,6 @@ namespace WpfConsole.SearchMaster
             MainTabControl.SelectedIndex = 3;            
             Results.PerformSearch(criteria);
         }
+
     }
 }

@@ -31,11 +31,6 @@
 
         <Label Name="lblQuestion" Grid.Column="1">Question:</Label>
 
-        <!--<ComboBox Name="cbAnswer" Grid.Column="1" Grid.Row="1" MinWidth="250"
-                  ItemTemplate="{StaticResource cmbTemplate}"
-                  SelectedValue="{Binding Key}"
-                  ItemsSource="{Binding DropdownValues}">            
-        </ComboBox>-->
         <ComboBox Name="cbAnswer" Grid.Column="1" Grid.Row="1" MinWidth="250"
                    ItemTemplate="{StaticResource cmbTemplate}">
         </ComboBox>

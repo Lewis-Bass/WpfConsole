@@ -28,6 +28,7 @@ using WpfConsole.Dialogs;
 using System.Windows.Interop;
 using System.Windows.Markup;
 using WpfConsole.TagManagement;
+using System.Collections.Generic;
 
 namespace WpfConsole
 {
@@ -38,11 +39,7 @@ namespace WpfConsole
     {
         #region globals
 
-        //UserControl _Search;
         UserControl _SearchMaster;
-        //UserControl _SearchAdvanced;
-        //UserControl _SearchTree;
-        //UserControl _SearchFilter;
         UserControl _Connections;
         UserControl _FileDisplay;
         UserControl _AutoLoad;
@@ -131,6 +128,9 @@ namespace WpfConsole
             AddHandler(MainConnection.ConnectionChangedEvent,
                 new RoutedEventHandler(MainSearch_ConnectionChangedMethod));
 
+            AddHandler(MainWindow.NewSearchEvent,
+               new RoutedEventHandler(MainWindow_HandleNewSearchMethod));
+
         }
 
         /// <summary>
@@ -171,6 +171,28 @@ namespace WpfConsole
             {
                 ProcessLogin(settings.LastConnection);
             }
+        }
+
+        #endregion
+
+
+        #region Global Routed events
+
+        // Create RoutedEvent
+        // This creates a static property on the UserControl, ViewFileEvent, which 
+        // will be used by the Window, or any control up the Visual Tree, that wants to 
+        // handle the event. 
+        public static readonly RoutedEvent NewSearchEvent =
+            EventManager.RegisterRoutedEvent("NewSearch", RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler), typeof(MainSearch));
+
+        // Create RoutedEventHandler
+        // This adds the Custom Routed Event to the WPF Event System and allows it to be 
+        // accessed as a property from within xaml if you so desire
+        public event RoutedEventHandler NewSearch
+        {
+            add { AddHandler(NewSearchEvent, value); }
+            remove { RemoveHandler(NewSearchEvent, value); }
         }
 
         #endregion
@@ -232,11 +254,37 @@ namespace WpfConsole
             SetTopMenuAvailability();
         }
 
+        /// <summary>
+        /// Handle the event from the MainConnection user control - a new search has been initiated
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainWindow_HandleNewSearchMethod(object sender, RoutedEventArgs e)
+        {
+            // display the search screen
+            SearchMaster_Click(sender, null);
+            var criteria = ((List<SearchCriteriaGUI>)e.OriginalSource)
+                .Select(r => new SearchCriteriaBase {
+                    Criteria = r.Criteria,
+                    Field = r.Field,
+                    GroupID = r.GroupID,
+                    GroupRelationship = r.GroupRelationship,
+                    Relationship = r.Relationship,
+                    ValueBool = r.ValueBool,
+                    ValueMax = r.ValueMax,
+                    ValueMin = r.ValueMin,
+                    ValueMaxDate = r.ValueMaxDate,
+                    ValueMinDate = r.ValueMinDate,                            
+                });
+            // perform the search - tried to use events but couldn't get them to fire
+            ((MainSearch)_SearchMaster).InitialSearch(criteria.ToList());
+        }
+
         #endregion
 
         #region Menu Click Events
 
-        private void SearchMaster_Click(object sender, RoutedEventArgs e)
+        public void SearchMaster_Click(object sender, RoutedEventArgs e)
         {
 
             if (_SearchMaster == null)
@@ -244,45 +292,6 @@ namespace WpfConsole
                 _SearchMaster = new SearchMaster.MainSearch();
             }
             DisplayControl(_SearchMaster);
-        }
-
-        //private void Search_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //    if (_Search == null)
-        //    {
-        //        _Search = new Search.MainSearch();
-        //    }
-        //    DisplayControl(_Search);
-        //}
-
-        private void Search_Filter(object sender, RoutedEventArgs e)
-        {
-
-            //if (_SearchFilter == null)
-            //{
-            //    _SearchFilter = new SearchFilter.FilterMain();
-            //}
-            //DisplayControl(_SearchFilter);
-        }
-
-
-        private void SearchAdvanced_Click(object sender, RoutedEventArgs e)
-        {
-            //if (_SearchAdvanced == null)
-            //{
-            //    _SearchAdvanced = new SearchAdvanced.AdvancedMain();
-            //}
-            //DisplayControl(_SearchAdvanced);
-        }
-
-        private void SearchTreeMain_Click(object sender, RoutedEventArgs e)
-        {
-            //if (_SearchTree == null)
-            //{
-            //    _SearchTree = new SearchTree.SearchTreeMain();
-            //}
-            //DisplayControl(_SearchTree);
         }
 
         //////private void CreateArk_Click(object sender, RoutedEventArgs e)
@@ -332,6 +341,11 @@ namespace WpfConsole
 
         private void TagManagement_Click(object sender, RoutedEventArgs e)
         {
+            // the search master must be instantiated because TagManagement
+            if (_SearchMaster == null)
+            {
+                _SearchMaster = new SearchMaster.MainSearch();
+            }
             if (_TagManagement == null)
             {
                 _TagManagement = new TagMain();

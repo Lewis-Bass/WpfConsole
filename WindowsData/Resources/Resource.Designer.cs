@@ -212,5 +212,14 @@ namespace WindowsData.Resources {
                 return ResourceManager.GetString("RelationshipOrHelp", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tag.
+        /// </summary>
+        public static string TagName {
+            get {
+                return ResourceManager.GetString("TagName", resourceCulture);
+            }
+        }
     }
 }

@@ -77,7 +77,8 @@
 									</Button>
 									<Button x:Name="btnSearch"
 											Width="100"
-											Margin="5,5,0,5">
+											Margin="5,5,0,5"
+											Click="btnSearch_Click">
 										<TextBlock Text="{x:Static lang:Resource.Search}"/>
 									</Button>
 								</WrapPanel>

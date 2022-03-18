@@ -28,6 +28,7 @@ namespace WindowsData
 					{ "FileName", Resources.Resource.FileName },
 					{ "Extension", Resources.Resource.Extension },
 					{ "Date", Resources.Resource.Date },
+					{ "Tag", Resources.Resource.TagName },
 					{ "Locked", Resources.Resource.Locked},
 					{ "Prior Versions", Resources.Resource.Prior_Versions },
 
