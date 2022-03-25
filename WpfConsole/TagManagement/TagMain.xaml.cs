@@ -30,11 +30,11 @@ namespace WpfConsole.TagManagement
     {
         #region Properties
 
-        ObservableCollection<FileTags> _TagList = new ObservableCollection<FileTags>();
+        ObservableCollection<MetaTags> _TagList = new ObservableCollection<MetaTags>();
         /// <summary>
         /// Collection of binders to show on the screen
         /// </summary>
-        public ObservableCollection<FileTags> TagList
+        public ObservableCollection<MetaTags> TagList
         {
             get { return _TagList; }
             set
@@ -72,20 +72,20 @@ namespace WpfConsole.TagManagement
             var request = new RequestFileTag();
             // wire up the communication
 
-            var dummy = new List<FileTags>
+            var dummy = new List<MetaTags>
             {
-                new FileTags{ TagId = "1", TagName = "one", TotalTagUsage = 1 },
-                new FileTags{ TagId = "2", TagName = "Two", TotalTagUsage = 2 },
-                new FileTags{ TagId = "3", TagName = "Three", TotalTagUsage = 3 },
-                new FileTags{ TagId = "4", TagName = "Four", TotalTagUsage = 4 },
-                new FileTags{  TagId = "5", TagName = "Five", TotalTagUsage = 5 },
-                new FileTags{  TagId = "6", TagName = "Six", TotalTagUsage = 6 },
-                new FileTags{  TagId = "7", TagName = "Seven", TotalTagUsage = 7 },
-                new FileTags{  TagId = "8", TagName = "Eight", TotalTagUsage = 8 },
-                new FileTags{  TagId = "9", TagName = "Nine", TotalTagUsage = 9 },
-                new FileTags{  TagId = "10", TagName = "Ten", TotalTagUsage = 10 },
+                new MetaTags{ TagId = "1", TagName = "one", TotalTagUsage = 1 },
+                new MetaTags{ TagId = "2", TagName = "Two", TotalTagUsage = 2 },
+                new MetaTags{ TagId = "3", TagName = "Three", TotalTagUsage = 3 },
+                new MetaTags{ TagId = "4", TagName = "Four", TotalTagUsage = 4 },
+                new MetaTags{  TagId = "5", TagName = "Five", TotalTagUsage = 5 },
+                new MetaTags{  TagId = "6", TagName = "Six", TotalTagUsage = 6 },
+                new MetaTags{  TagId = "7", TagName = "Seven", TotalTagUsage = 7 },
+                new MetaTags{  TagId = "8", TagName = "Eight", TotalTagUsage = 8 },
+                new MetaTags{  TagId = "9", TagName = "Nine", TotalTagUsage = 9 },
+                new MetaTags{  TagId = "10", TagName = "Ten", TotalTagUsage = 10 },
             };
-            TagList = new ObservableCollection<FileTags>(dummy.OrderBy(r => r.TagName));
+            TagList = new ObservableCollection<MetaTags>(dummy.OrderBy(r => r.TagName));
         }
 
 
@@ -118,7 +118,7 @@ namespace WpfConsole.TagManagement
                 }
                 // add a new record
                 // TODO: Send it to the back end and get the tagid                 
-                _TagList.Add(new FileTags { TagName = newTagName, TagId = newTagName, TotalTagUsage = 0 });
+                _TagList.Add(new MetaTags { TagName = newTagName, TagId = newTagName, TotalTagUsage = 0 });
             }
         }
 
@@ -146,7 +146,7 @@ namespace WpfConsole.TagManagement
                     return;
                 }
                 var btn = (Button)sender;
-                var tag = (FileTags)btn.DataContext;
+                var tag = (MetaTags)btn.DataContext;
                 // TODO: Send it to the back end to change the name
                 tag.TagName = newTagName;
                 OnPropertyChanged("FileList");
@@ -161,7 +161,7 @@ namespace WpfConsole.TagManagement
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             var btn = (Button)sender;
-            var tag = (FileTags)btn.DataContext;
+            var tag = (MetaTags)btn.DataContext;
             var result = MessageBox.Show(Application.Current.MainWindow, string.Format(WpfConsole.Resources.Resource.TagDeleteRecord, tag.TagName),
                 WpfConsole.Resources.Resource.Delete, MessageBoxButton.YesNo, MessageBoxImage.Error);
             if (result == MessageBoxResult.Yes)
@@ -179,7 +179,7 @@ namespace WpfConsole.TagManagement
         private void btnCombine_Click(object sender, RoutedEventArgs e)
         {
             var btn = (Button)sender;
-            var tag = (FileTags)btn.DataContext;
+            var tag = (MetaTags)btn.DataContext;
             if (tag == null || string.IsNullOrWhiteSpace(tag.TagName))
             {
                 Serilog.Log.Logger.Error("Can not combine an empty tag name");
@@ -208,7 +208,7 @@ namespace WpfConsole.TagManagement
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             var btn = (Button)sender;
-            var tag = (FileTags)btn.DataContext;
+            var tag = (MetaTags)btn.DataContext;
             if (tag == null || string.IsNullOrWhiteSpace(tag.TagName))
             {
                 Serilog.Log.Logger.Error("Can not combine an empty tag name");

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 
@@ -26,6 +27,83 @@ namespace WindowsData
             }
         }
 
+        string _DocumentName = string.Empty;
+        public string DocumentName
+        {
+            get { return _DocumentName; }
+            set
+            {
+                if (_DocumentName != value)
+                {
+                    _DocumentName = value;
+                    OnPropertyChanged("DocumentName");
+                }
+            }
+        }
+
+        string _PathName = string.Empty;
+        public string PathName
+        {
+            get { return _PathName; }
+            set
+            {
+                if (_PathName != value)
+                {
+                    _PathName = value;
+                    OnPropertyChanged("PathName");
+                }
+            }
+        }
+
+        string _DocumentDate = string.Empty;
+        public string DocumentDate
+        {
+            get { return _DocumentDate; }
+            set
+            {
+                if (_DocumentDate != value)
+                {
+                    _DocumentDate = value;
+                    OnPropertyChanged("DocumentDate");
+                }
+            }
+        }
+
+        bool _DocumentLocked = false;
+        public bool DocumentLocked
+        {
+            get { return _DocumentLocked; }
+            set
+            {
+                if (_DocumentLocked != value)
+                {
+                    _DocumentLocked = value;
+                    OnPropertyChanged("DocumentLocked");
+                }
+            }
+        }
+
+        //List<MetaTags> _Tags = new List<MetaTags>();
+        //public List<MetaTags> Tags
+        ObservableCollection<MetaTags> _Tags = new ObservableCollection<MetaTags>();
+        public ObservableCollection<MetaTags> Tags
+        {
+            get { return _Tags; }
+            set
+            {
+                if (Tags != value)
+                {
+                    _Tags = value;
+                    OnPropertyChanged("Tags");
+                    OnPropertyChanged("TagDisplay");
+                }
+            }
+        }
+
+        #endregion
+
+        #region GUI Only
+
         public bool ShowDetails
         {
             get
@@ -41,14 +119,29 @@ namespace WindowsData
             }
         }
 
-        public string DocumentName { get; set; }
-        public string PathName { get; set; }
-        public string DocumentDate { get; set; }
+        public string TagDisplay
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                bool firstTime = true;
+                foreach (var tag in Tags)
+                {
+                    if (firstTime)
+                    {
+                        sb.Append(tag.TagName);
+                    }
+                    else
+                    {
+                        sb.Append($", {tag.TagName}");
+                    }
+                    firstTime = false;
+                }
+                return sb.ToString();
 
-        public string[] Tags { get; set; }
+            }
+        }
 
-        public bool DocumentLocked { get; set; }
-        
         #endregion
 
         #region Prior Version Info

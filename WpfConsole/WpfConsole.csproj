@@ -124,6 +124,9 @@
       <DependentUpon>LibraryCardConnection.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\GetPinValue.cs" />
+    <Compile Include="Dialogs\TagChange.xaml.cs">
+      <DependentUpon>TagChange.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\UserDropdownSelect.xaml.cs">
       <DependentUpon>UserDropdownSelect.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
     <Page Include="Connection\MainConnection.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\TagChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\UserDropdownSelect.xaml">
       <SubType>Designer</SubType>

@@ -19,10 +19,7 @@
 		<WrapPanel Height="40" Grid.Row="0" 
 							   VerticalAlignment="Center" 
 							   Margin="5,5,5,5">
-			<!--<Button x:Name="Execute" Width="150"                         
-								Click="Execute_Click">
-					<TextBlock Text="{x:Static lang:Resource.Execute}"/>
-				</Button>-->
+			
 			<Button x:Name="ExecuteSave" Width="150"                         
 								Margin="10 0 10 0"
 								Click="ExecuteSave_Click">
@@ -39,13 +36,14 @@
 								  BorderBrush="Black"
 								  BorderThickness="1px">
 
-			<ListView x:Name="DisplayResults"
-								  VerticalAlignment="Stretch"
-								  HorizontalAlignment="Stretch"
-								  ScrollViewer.CanContentScroll="True"
-								  ScrollViewer.HorizontalScrollBarVisibility="Auto"
-								  ScrollViewer.VerticalScrollBarVisibility="Visible">
-				<ListView.View>
+            <ListView x:Name="DisplayResults"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					ScrollViewer.CanContentScroll="True"
+					ScrollViewer.HorizontalScrollBarVisibility="Auto"
+					ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    ItemsSource="{Binding SearchResultsInfo}">
+                <ListView.View>
 					<GridView>
 						<GridViewColumn>
 							<GridViewColumn.Header>
@@ -77,7 +75,18 @@
 								</DataTemplate>
 							</GridViewColumn.CellTemplate>
 						</GridViewColumn>
-						<GridViewColumn>
+                        <GridViewColumn Width="200">
+                            <GridViewColumn.Header>
+                                <TextBlock Text="{x:Static lang:Resource.TagName}"/>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Grid.Row="0" Grid.Column="0"  TextWrapping="Wrap"  Text="{Binding TagDisplay}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn>
 							<GridViewColumn.Header>
 								<TextBlock Text=""/>
 							</GridViewColumn.Header>
@@ -85,18 +94,24 @@
 								<DataTemplate>
 									<WrapPanel>
 										<Button x:Name="View" 
-															Grid.Column="3" 
-															Margin="5"
-															Click="View_Click">
+												Grid.Column="3" 
+												Margin="5"
+												Click="View_Click">
 											<TextBlock Text="{x:Static lang:Resource.View}"/>
 										</Button>
 										<Button x:Name="CheckOut" 
-															Grid.Column="4" 
-															Margin="5"
-															Click="CheckOut_Click">
+												Grid.Column="4" 
+												Margin="5"
+												Click="CheckOut_Click">
 											<TextBlock Text="{x:Static lang:Resource.CheckOut}"/>
 										</Button>
-									</WrapPanel>
+                                        <Button x:Name="TagChange" 
+												Grid.Column="4" 
+												Margin="5"
+												Click="TagChange_Click">
+                                            <TextBlock Text="{x:Static lang:Resource.TagChange}"/>
+                                        </Button>
+                                    </WrapPanel>
 								</DataTemplate>
 							</GridViewColumn.CellTemplate>
 						</GridViewColumn>

@@ -1600,6 +1600,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        public static string Select {
+            get {
+                return ResourceManager.GetString("Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Theme.
         /// </summary>
         public static string SelectTheme {
@@ -1627,6 +1636,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string TagAdd {
+            get {
+                return ResourceManager.GetString("TagAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the new tag name.
         /// </summary>
         public static string TagAddNew {
@@ -1641,6 +1659,15 @@ namespace WpfConsole.Resources {
         public static string TagAttemptDuplicateAdd {
             get {
                 return ResourceManager.GetString("TagAttemptDuplicateAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Tags.
+        /// </summary>
+        public static string TagChange {
+            get {
+                return ResourceManager.GetString("TagChange", resourceCulture);
             }
         }
         
@@ -1668,6 +1695,24 @@ namespace WpfConsole.Resources {
         public static string TagDeleteRecord {
             get {
                 return ResourceManager.GetString("TagDeleteRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Tag Name.
+        /// </summary>
+        public static string TagEnterName {
+            get {
+                return ResourceManager.GetString("TagEnterName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Existing Tags.
+        /// </summary>
+        public static string TagExisting {
+            get {
+                return ResourceManager.GetString("TagExisting", resourceCulture);
             }
         }
         

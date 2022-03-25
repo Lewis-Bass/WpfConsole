@@ -680,4 +680,19 @@
   <data name="TagRenameString" xml:space="preserve">
     <value>Enter a new name for {0}</value>
   </data>
+  <data name="TagChange" xml:space="preserve">
+    <value>Change Tags</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="TagAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="TagExisting" xml:space="preserve">
+    <value>Existing Tags</value>
+  </data>
+  <data name="TagEnterName" xml:space="preserve">
+    <value>New Tag Name</value>
+  </data>
 </root>

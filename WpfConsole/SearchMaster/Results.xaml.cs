@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WindowsData;
 using WpfConsole.Resources;
+using WpfConsole.Dialogs;
 
 namespace WpfConsole.SearchMaster
 {
@@ -28,10 +29,9 @@ namespace WpfConsole.SearchMaster
 	public partial class Results : UserControl
 	{
 
-		List<SearchCriteriaBase> Criterias;
-
-
 		#region Properties
+
+		List<SearchCriteriaBase> Criterias;
 
 		ObservableCollection<BinderInformation> _BinderList = new ObservableCollection<BinderInformation>();
 
@@ -53,37 +53,38 @@ namespace WpfConsole.SearchMaster
 			}
 		}
 
-        #endregion
+		#endregion
 
-        #region Constructor
+		#region Constructor
 
-        public Results()
+		public Results()
 		{
 			InitializeComponent();
+			this.DataContext = this;
 		}
 
-        #endregion
+		#endregion
 
-        #region External Event
+		#region External Event
 
-        /// <summary>
-        /// update the screen display with the results of the search
-        /// </summary>
-        /// <param name="criteria"></param>
-        /// <returns></returns>
-        public bool PerformSearch (List<SearchCriteriaBase> criteria)
-        {
+		/// <summary>
+		/// update the screen display with the results of the search
+		/// </summary>
+		/// <param name="criteria"></param>
+		/// <returns></returns>
+		public bool PerformSearch (List<SearchCriteriaBase> criteria)
+		{
 			Criterias = criteria;
 			BinderInformation binder = null;
 			GoToWebSiteSearch(binder, false);
 			return true;
-        }
+		}
 
-        #endregion
+		#endregion
 
-        #region Search buttons
+		#region Search buttons
 
-        private void ExecuteSave_Click(object sender, RoutedEventArgs e)
+		private void ExecuteSave_Click(object sender, RoutedEventArgs e)
 		{
 			// get a name for the search
 			Dialogs.UserInput userInput = new Dialogs.UserInput(Resource.SearchSaveName, "");
@@ -110,81 +111,104 @@ namespace WpfConsole.SearchMaster
 			var criteria = SearchHelpers.ProcessSearch(request);
 			SearchResultsInfo = new ObservableCollection<SearchResults>(criteria);
 			DisplayResults.ItemsSource = SearchResultsInfo;
-			//MainTabs.SelectedIndex = 2;
 		}
 
-        #endregion
-
-        #region View File
-
-        private void View_Click(object sender, RoutedEventArgs e)
+		/// <summary>
+		/// Change the tags associated with the document
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void TagChange_Click(object sender, RoutedEventArgs e)
 		{
-            if (sender is Button)
-            {
-                var button = (Button)sender;
-                if (button.DataContext != null && button.DataContext is SearchResults)
-                {
-                    var searchResult = (SearchResults)button.DataContext;
+			var btn = sender as Button;
+			// show the tag change window
+			var dlg = new TagChange();
+			dlg.ResultInfo = (SearchResults)btn.DataContext;
+			dlg.ShowDialog();
 
-                    var file = new LocalFileStatus
-                    {
-                        //VaultID = searchResult.
-                        DocumentName = searchResult.DocumentName,
-                        IsCheckedOut = false,
-                        DateRecieved = DateTime.Now
-                    };
+			// update the display source with the new tag values
+			foreach(var rec in SearchResultsInfo)
+			{
+				if (rec.DocumentName == dlg.ResultInfo.DocumentName)
+				{
+					rec.Tags = new ObservableCollection<MetaTags>(dlg.ResultInfo.Tags);
+				}
+			}
+			OnPropertyChanged("SearchResultsInfo");
+		}
 
-                    // ask the user where the file is to be placed
-                    var saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-                    saveFileDialog.OverwritePrompt = true;
-                    saveFileDialog.CheckPathExists = true;
-                    saveFileDialog.FileName = searchResult.DocumentName;
-                    if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    {
-                        file.LocalFileLocation = saveFileDialog.FileName;
-                        var localFiles = new Common.LocalFiles();
-                        RaiseEvent(new RoutedEventArgs(MainSearch.ViewFileEvent, null));
-                    }
+		#endregion
 
-                }
-            }
-        }
+		#region View File
 
-        #endregion
-
-        #region Checkout file
-        private void CheckOut_Click(object sender, RoutedEventArgs e)
+		private void View_Click(object sender, RoutedEventArgs e)
 		{
-            if (sender is Button)
-            {
-                var button = (Button)sender;
-                if (button.DataContext != null && button.DataContext is SearchResults)
-                {
-                    var searchResult = (SearchResults)button.DataContext;
+			if (sender is Button)
+			{
+				var button = (Button)sender;
+				if (button.DataContext != null && button.DataContext is SearchResults)
+				{
+					var searchResult = (SearchResults)button.DataContext;
 
-                    var file = new LocalFileStatus
-                    {
-                        //VaultID = searchResult.
-                        DocumentName = searchResult.DocumentName,
-                        IsCheckedOut = true,
-                        DateRecieved = DateTime.Now
-                    };
+					var file = new LocalFileStatus
+					{
+						//VaultID = searchResult.
+						DocumentName = searchResult.DocumentName,
+						IsCheckedOut = false,
+						DateRecieved = DateTime.Now
+					};
 
-                    // ask the user where the file is to be placed
-                    var saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-                    saveFileDialog.OverwritePrompt = true;
-                    saveFileDialog.CheckPathExists = true;
-                    saveFileDialog.FileName = searchResult.DocumentName;
-                    if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    {
-                        file.LocalFileLocation = saveFileDialog.FileName;
-                        var localFiles = new Common.LocalFiles();
-                        localFiles.CheckOutFile(file);
-                        RaiseEvent(new RoutedEventArgs(MainSearch.CheckOutFileEvent, null));
-                    }
-                }
-            }
-        }
+					// ask the user where the file is to be placed
+					var saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+					saveFileDialog.OverwritePrompt = true;
+					saveFileDialog.CheckPathExists = true;
+					saveFileDialog.FileName = searchResult.DocumentName;
+					if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+					{
+						file.LocalFileLocation = saveFileDialog.FileName;
+						var localFiles = new Common.LocalFiles();
+						RaiseEvent(new RoutedEventArgs(MainSearch.ViewFileEvent, null));
+					}
+
+				}
+			}
+		}
+
+		#endregion
+
+		#region Checkout file
+		private void CheckOut_Click(object sender, RoutedEventArgs e)
+		{
+			if (sender is Button)
+			{
+				var button = (Button)sender;
+				if (button.DataContext != null && button.DataContext is SearchResults)
+				{
+					var searchResult = (SearchResults)button.DataContext;
+
+					var file = new LocalFileStatus
+					{
+						//VaultID = searchResult.
+						DocumentName = searchResult.DocumentName,
+						IsCheckedOut = true,
+						DateRecieved = DateTime.Now
+					};
+
+					// ask the user where the file is to be placed
+					var saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+					saveFileDialog.OverwritePrompt = true;
+					saveFileDialog.CheckPathExists = true;
+					saveFileDialog.FileName = searchResult.DocumentName;
+					if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+					{
+						file.LocalFileLocation = saveFileDialog.FileName;
+						var localFiles = new Common.LocalFiles();
+						localFiles.CheckOutFile(file);
+						RaiseEvent(new RoutedEventArgs(MainSearch.CheckOutFileEvent, null));
+					}
+				}
+			}
+		}
 
 		#endregion
 
@@ -203,5 +227,6 @@ namespace WpfConsole.SearchMaster
 
 		#endregion
 
+	   
 	}
 }
