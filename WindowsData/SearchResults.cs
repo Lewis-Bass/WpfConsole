@@ -83,8 +83,6 @@ namespace WindowsData
             }
         }
 
-        //List<MetaTags> _Tags = new List<MetaTags>();
-        //public List<MetaTags> Tags
         ObservableCollection<MetaTags> _Tags = new ObservableCollection<MetaTags>();
         public ObservableCollection<MetaTags> Tags
         {

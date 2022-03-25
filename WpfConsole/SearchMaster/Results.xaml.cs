@@ -123,6 +123,7 @@ namespace WpfConsole.SearchMaster
 			var btn = sender as Button;
 			// show the tag change window
 			var dlg = new TagChange();
+			dlg.Owner = Application.Current.MainWindow;
 			dlg.ResultInfo = (SearchResults)btn.DataContext;
 			dlg.ShowDialog();
 

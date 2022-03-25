@@ -95,6 +95,7 @@ namespace WpfConsole.Dialogs
                 add.Selected = false;
                 ResultInfo.Tags.Add(add);
             }
+            SetupExisingTags();
         }
 
         #endregion
@@ -132,6 +133,11 @@ namespace WpfConsole.Dialogs
 
         private void btnAddNew_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty (tbNewTag.Text))
+            {
+                return;
+            }
+
             // TODO: Send to back end
             // TODO: Get TagId from the back end
             var newTag = new MetaTags

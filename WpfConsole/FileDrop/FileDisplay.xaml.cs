@@ -20,6 +20,7 @@ using Common;
 using Common.ServerCommunication.Helpers;
 using System.ComponentModel;
 using WpfConsole.Resources;
+using WpfConsole.Dialogs;
 
 namespace WpfConsole.FileDrop
 {
@@ -291,6 +292,38 @@ namespace WpfConsole.FileDrop
             MessageBox.Show(Resource.FileTransferCompleted, Resource.Notice, MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
 
+        /// <summary>
+        /// Add tags to the file 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnTags_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.Write("DDD");
+            var data = (FileTrack)((Button)sender).DataContext;
+
+            var dlg = new TagChange();
+            var results = new SearchResults
+            {
+                DocumentName = data.FileName
+            };
+            results.Tags = data.Tags;
+            dlg.ResultInfo = results;
+            dlg.Owner = Application.Current.MainWindow;
+            dlg.ShowDialog();
+
+
+            // update the display source with the new tag values
+            foreach (var rec in FileList)
+            {
+                if (rec.FileName == dlg.ResultInfo.DocumentName)
+                {
+                    rec.Tags = new ObservableCollection<MetaTags>(dlg.ResultInfo.Tags);
+                }
+            }
+            OnPropertyChanged("FileList");
+        }
+
         #endregion
 
         #region Helpers
@@ -310,5 +343,6 @@ namespace WpfConsole.FileDrop
 
 
         #endregion
+
     }
 }

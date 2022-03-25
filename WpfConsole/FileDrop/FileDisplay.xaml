@@ -99,6 +99,42 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
+                        <GridViewColumn Width="150">
+                            <GridViewColumn.Header>                                
+                                <TextBlock 
+                                    VerticalAlignment="Center"
+                                    Text="{x:Static lang:Resource.TagName}"/>                                
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        <TextBlock 
+                                            VerticalAlignment="Center"
+                                            TextWrapping="Wrap"
+                                            Text="{Binding TagDisplay}"/>
+                                    </WrapPanel>
+                                </DataTemplate>
+
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn>
+                            <GridViewColumn.Header>
+                                <TextBlock Text=""/>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        <Button x:Name="BtnTags"
+                                                Click="BtnTags_Click">
+                                            <TextBlock 
+                                                VerticalAlignment="Center"                                                
+                                                Text="{x:Static lang:Resource.TagChange}"/>
+                                        </Button>
+                                    </WrapPanel>
+                                </DataTemplate>
+
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
