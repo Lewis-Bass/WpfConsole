@@ -27,11 +27,16 @@ namespace WpfConsole.AutoLoad
     {
         #region Properties
 
-        //LocalSettings settings = LocalSettings.Load();
         AutoLoadSettings settings = AutoLoadSettings.Load(false);
 
-        public ObservableCollection<string> FileList { get; set; } = new ObservableCollection<string>();
+        /// <summary>
+        /// List of directories to scan
+        /// </summary>
+        public ObservableCollection<DirectoriesToScan> FileList { get; set; } = new ObservableCollection<DirectoriesToScan>();
 
+        /// <summary>
+        /// start and end time values
+        /// </summary>
         public Dictionary<int, string> timeValues = new Dictionary<int, string>()
         {
             {0, "Midnight" },
@@ -76,7 +81,7 @@ namespace WpfConsole.AutoLoad
         private void LoadScreenValues()
         {
             var globalSettings = LocalSettings.Load();
-            cbConnection.ItemsSource = globalSettings.ConnectionsData;            
+            cbConnection.ItemsSource = globalSettings.ConnectionsData;
             for (int i = 0; i < cbConnection.Items.Count; i++)
             {
                 var connect = cbConnection.Items[i] as ConnectionInformation;
@@ -92,21 +97,8 @@ namespace WpfConsole.AutoLoad
 
             tbLastProcessed.Text = settings.AutoLoadLastProcessed.ToShortDateString();
             tbTotalUpload.Text = settings.AutoLoadLastTotalUpload.ToString();
-            //tbPin.Password = settings.AutoLoadPin;
             tbPin.Text = settings.AutoLoadPin;
 
-            if (settings.AutoLoadDirectories == null || settings.AutoLoadDirectories.Count <= 0)
-            {
-                settings.AutoLoadDirectories = new List<string>
-                {
-                    WpfConsole.Resources.Resource.MyDocuments,
-                    WpfConsole.Resources.Resource.MyMusic,
-                    WpfConsole.Resources.Resource.MyPictures,
-                    WpfConsole.Resources.Resource.MyVideo,
-                };
-            }
-
-            FileList = new ObservableCollection<string>(settings.AutoLoadDirectories);
             lvDirectories.ItemsSource = FileList;
         }
 
@@ -120,16 +112,26 @@ namespace WpfConsole.AutoLoad
 
         #region Button Clicks
 
+        /// <summary>
+        /// remove an entry from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button)
             {
                 var btn = (Button)sender;
-                FileList.Remove(btn.DataContext.ToString());
+                FileList.Remove((DirectoriesToScan)btn.DataContext);
                 settings.AutoLoadDirectories = FileList.Select(r => r).ToList();
             }
         }
 
+        /// <summary>
+        /// browse windows for the directory
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnDirectoryBrowse_Click(object sender, RoutedEventArgs e)
         {
             var openFileDialog = new System.Windows.Forms.FolderBrowserDialog()
@@ -139,9 +141,54 @@ namespace WpfConsole.AutoLoad
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 var dirName = openFileDialog.SelectedPath;
-                FileList.Add(dirName);
+                CreateEntry(dirName);
+            }
+        }
+
+        /// <summary>
+        /// Create an entry in the directories list
+        /// if the entry already exists it is skipped
+        /// </summary>
+        /// <param name="pathName"></param>
+        private void CreateEntry(string pathName)
+        {
+            var userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            if (!FileList.Any(r => r.PathName == pathName && r.UserName == userName))
+            {
+                var dirSplit = pathName.Split(new char[] { '/', '\\' });
+
+                var dirScan = new DirectoriesToScan
+                {
+                    DirectoryName = dirSplit[(dirSplit.Length - 1)],
+                    PathName = pathName,
+                    UserName = userName,
+                };
+                FileList.Add(dirScan);
                 settings.AutoLoadDirectories = FileList.Select(r => r).ToList();
             }
+        }
+
+        /// <summary>
+        /// Save the configuration - send it to the back end
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            settings.WriteToWebSite();
+        }
+
+        /// <summary>
+        /// Get the system directories and make certain that they are in the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSystemDirectory_Click(object sender, RoutedEventArgs e)
+        {
+            CreateEntry(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            CreateEntry(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
+            CreateEntry(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
+            CreateEntry(Environment.GetFolderPath(Environment.SpecialFolder.MyVideos));
         }
 
         #endregion
@@ -159,7 +206,7 @@ namespace WpfConsole.AutoLoad
                 }
             }
         }
-        
+
         private void cbStartTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is ComboBox)
@@ -197,6 +244,7 @@ namespace WpfConsole.AutoLoad
         }
 
 
+
         //private void tbPin_PasswordChanged(object sender, RoutedEventArgs e)
         //{
         //    if (sender is PasswordBox)
@@ -207,9 +255,6 @@ namespace WpfConsole.AutoLoad
         //}
         #endregion
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
-            settings.WriteToWebSite();
-        }
+        
     }
 }

@@ -26,11 +26,11 @@ namespace Common.Licenses
 		protected List<DeviceInfo> PullAllStats()
 		{
 			GetDeviceStatistics();
-			//GetStorageStatistics();
-			//GetProcessorStatistics(); // cant use serial number
-			//GetBIOSStatistics(); // cant use serial number
-			//GetMotherBoardStatistics();
-			//GetNetworkAdapter();
+			GetStorageStatistics();
+			GetProcessorStatistics(); // cant use serial number
+			GetBIOSStatistics(); // cant use serial number
+			GetMotherBoardStatistics();
+			GetNetworkAdapter();
 			return stats;
 		}
 

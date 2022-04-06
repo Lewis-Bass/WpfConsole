@@ -116,11 +116,11 @@ namespace Common.Settings
             }
         }
 
-        List<String> _AutoLoadDirectories = new List<String>();
+        List<DirectoriesToScan> _AutoLoadDirectories = new List<DirectoriesToScan>();
         /// <summary>
         /// AutoLoad service will scan these directories
         /// </summary>
-        public List<string> AutoLoadDirectories
+        public List<DirectoriesToScan> AutoLoadDirectories
         {
             get { return _AutoLoadDirectories; }
             set

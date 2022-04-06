@@ -157,6 +157,9 @@
     <Compile Include="SearchMaster\Results.xaml.cs">
       <DependentUpon>Results.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Statistics\StatisticsMain.xaml.cs">
+      <DependentUpon>StatisticsMain.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TagManagement\TagMain.xaml.cs">
       <DependentUpon>TagMain.xaml</DependentUpon>
     </Compile>
@@ -259,6 +262,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SearchMaster\Results.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Statistics\StatisticsMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

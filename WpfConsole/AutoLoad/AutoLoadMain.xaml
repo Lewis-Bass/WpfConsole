@@ -47,7 +47,7 @@
                    Text="{x:Static lang:Resource.KeyPin}"                   
                    VerticalAlignment="Center" 
                    Margin="5,0,5,0"
-                   Style="{DynamicResource TextBlockNormal3Style}"/>                
+                   Style="{DynamicResource TextBlockNormal3Style}"/>
                 <!--<PasswordBox x:Name="tbPin" Grid.Row="0" Grid.Column="4"                              
                          PasswordChanged="tbPin_PasswordChanged"/>-->
                 <TextBox x:Name="tbPin" Grid.Row="0" Grid.Column="4"                              
@@ -71,7 +71,7 @@
                           DisplayMemberPath="Value"
                           SelectionChanged="cbEndTime_SelectionChanged"/>
 
-                
+
 
                 <!--Summary stats-->
                 <TextBlock Grid.Row="1" Grid.Column="3"
@@ -99,8 +99,32 @@
         <GroupBox Grid.Row="1"
                   x:Name="grpDirectoryes" Header="{x:Static lang:Resource.LoadFilesFromDirectory}"
                   VerticalAlignment="Stretch">
-            <!--Directories to scan-->
-            <ScrollViewer Name="PartitionScroll" 
+            <StackPanel>
+                <WrapPanel Margin="5">
+                    <Button Name="btnSave" 
+                        HorizontalAlignment="Left" VerticalAlignment="Center"
+                        Click="btnSave_Click">
+                        <TextBlock Text="{x:Static lang:Resource.ConfigureAutoload}"/>
+                    </Button>
+                    <Button x:Name="BtnDirectoryBrowse" 
+                            Width="125px"
+                            Margin="5"
+                            Click="BtnDirectoryBrowse_Click">
+                        <TextBlock 
+                            VerticalAlignment="Center"                                            
+                            Text="{x:Static lang:Resource.Browse}"/>
+                    </Button>
+                    <Button x:Name="BtnSystemDirectory" 
+                            Width="125px"
+                            Margin="5"
+                            Click="BtnSystemDirectory_Click">
+                        <TextBlock 
+                            VerticalAlignment="Center"                                            
+                            Text="{x:Static lang:Resource.SystemDirectory}"/>
+                     </Button>
+                </WrapPanel>
+                <!--Directories to scan-->
+                <ScrollViewer Name="PartitionScroll" 
                       Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="99"  
                       Margin="5,5,5,5"
                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
@@ -109,62 +133,73 @@
                       BorderBrush="Black"
                       BorderThickness="1px">
 
-                <ListView  x:Name="lvDirectories"             
+                    <ListView  x:Name="lvDirectories"             
                       ItemsSource="{Binding FileList}"
                       VerticalAlignment="Stretch" 
                       HorizontalAlignment="Stretch">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Width="115">
-                                <GridViewColumn.Header>
-                                    <Button x:Name="BtnDirectoryBrowse" 
-                                            Width="100px"
-                                            Click="BtnDirectoryBrowse_Click">
-                                        <TextBlock 
-                                            VerticalAlignment="Center"                                            
-                                            Text="{x:Static lang:Resource.Browse}"/>
-                                    </Button>
-                                </GridViewColumn.Header>
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="110">
+                                    <!-- 300 -->
+                                    <GridViewColumn.Header>
                                         <WrapPanel>
-                                            <Button x:Name="BtnRemove" 
+                                           
+
+                                        </WrapPanel>
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <WrapPanel>
+                                                <Button x:Name="BtnRemove" 
                                                     Width="100px"
                                                     Click="BtnRemove_Click">
-                                                <TextBlock 
+                                                    <TextBlock 
                                                 VerticalAlignment="Center"
                                                 Text="{x:Static lang:Resource.Remove}"/>
-                                            </Button>
-                                        </WrapPanel>
-                                    </DataTemplate>
+                                                </Button>
+                                            </WrapPanel>
+                                        </DataTemplate>
 
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn>
-                                <GridViewColumn.Header>
-                                    <TextBlock 
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn>
+                                    <GridViewColumn.Header>
+                                        <TextBlock 
                                         Width="150px"
                                         VerticalAlignment="Center"
                                         Margin="5px"
                                         Text="{x:Static lang:Resource.FileNameColumn}"/>
-                                </GridViewColumn.Header>
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </ScrollViewer>
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding DirectoryName}"
+                                                   ToolTip="{Binding PathName}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn>
+                                    <GridViewColumn.Header>
+                                        <TextBlock 
+                                        Width="150px"
+                                        VerticalAlignment="Center"
+                                        Margin="5px"
+                                        Text="{x:Static lang:Resource.UserNameColumn}"/>
+                                    </GridViewColumn.Header>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding UserName}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </StackPanel>
         </GroupBox>
 
-        <Button Grid.Row="2" Name="btnSave" 
-                HorizontalAlignment="Left" VerticalAlignment="Center"
-                Click="btnSave_Click">
-            <TextBlock Text="{x:Static lang:Resource.ConfigureAutoload}"/>
-        </Button>
+
     </Grid>
 
 </UserControl>

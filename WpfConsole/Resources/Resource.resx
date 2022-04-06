@@ -695,4 +695,10 @@
   <data name="TagEnterName" xml:space="preserve">
     <value>New Tag Name</value>
   </data>
+  <data name="UserNameColumn" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="SystemDirectory" xml:space="preserve">
+    <value>System</value>
+  </data>
 </root>

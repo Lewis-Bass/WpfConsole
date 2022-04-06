@@ -644,4 +644,7 @@
   <data name="UploadFiles" xml:space="preserve">
     <value>Upload Files - ES</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
 </root>

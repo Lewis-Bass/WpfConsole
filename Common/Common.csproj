@@ -114,6 +114,7 @@
     <Compile Include="Licenses\LicenseChecks.cs" />
     <Compile Include="Licenses\WindowsInformation.cs" />
     <Compile Include="Settings\BaseSettings.cs" />
+    <Compile Include="Settings\FileScan.cs" />
     <Compile Include="Settings\LocalFiles.cs" />
     <Compile Include="Settings\LocalSettings.cs" />
     <Compile Include="MailSend\Send.cs" />

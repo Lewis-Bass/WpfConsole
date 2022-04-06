@@ -1,0 +1,69 @@
+﻿<Window x:Class="INOSetupFileCreate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:INOSetupFileCreate"
+        mc:Ignorable="d"
+        Title="INO Setup Creation" Height="800" Width="1024">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="32*"/>
+            <ColumnDefinition Width="32*"/>
+            <ColumnDefinition Width="32*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0"
+                   Margin="5"
+                   Text="SETUP Section"/>
+        <TextBlock Grid.Row="0" Grid.Column="1"
+                   Margin="5"
+                   Text="FILES Section (directories to scan)"/>
+        <TextBlock Grid.Row="0" Grid.Column="2"
+                   Margin="5"
+                   Text="Everything Else"/>
+
+
+        <TextBox Grid.Row="1" Grid.Column="0"
+                 x:Name="tbSetup"
+                 BorderBrush="Black" BorderThickness="3px"
+                 VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                 Margin="5"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="true"
+                 />
+        <TextBox Grid.Row="1" Grid.Column="1"
+                 x:Name="tbFiles"
+                 BorderBrush="Black" BorderThickness="3px"
+                 VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                 Margin="5"                 
+                 TextWrapping="Wrap"
+                 AcceptsReturn="true"
+                 />
+        <TextBox Grid.Row="1" Grid.Column="2"
+                 x:Name="tbBottom"
+                 BorderBrush="Black" BorderThickness="3px"
+                 VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                 Margin="5"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="true"
+                 />
+
+        <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="99"
+                   Margin="5">
+            <TextBlock Margin="5" Text="Output File Name"/>
+            <TextBox Margin="5" Name="tbName" Width="200" Text="SafeHaven.iss"/>
+            <Button Margin="5" Width="200" 
+                    Name="btnCreate"
+                    Click="btnCreate_Click">
+                <TextBlock Text="Create"/>
+            </Button>
+        </WrapPanel>
+
+    </Grid>
+</Window>

@@ -47,6 +47,7 @@
     <Compile Include="DeviceInfo.cs" />
     <Compile Include="DropDownRecords.cs" />
     <Compile Include="FileListModel.cs" />
+    <Compile Include="FileScan.cs" />
     <Compile Include="FileTrack.cs" />
     <Compile Include="AccessKey.cs" />
     <Compile Include="LibraryCard.cs" />
