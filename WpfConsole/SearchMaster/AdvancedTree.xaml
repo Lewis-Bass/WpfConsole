@@ -73,7 +73,7 @@
 									Height="25"
 									DisplayMemberPath="Value"
 									SelectedValuePath="Key"
-									Margin="3 3 0 0"
+									Margin="-35 3 0 0"
 									VerticalAlignment="Center"
 									Visibility="{Binding ShowGroupRelationship, Converter={StaticResource b2vconv}}"
 									ItemTemplate="{StaticResource cmbTemplate}"
