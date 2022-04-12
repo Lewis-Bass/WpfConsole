@@ -62,6 +62,11 @@ namespace Common
 		public const int Port = 27015; //44350;
 
 		/// <summary>
+		/// Port to be used when talking to the local FileScaner service
+		/// </summary>
+		public const int FileScanPort = 55555; 
+
+		/// <summary>
 		/// gets the base directory for storing local application data
 		/// </summary>
 		/// <returns></returns>

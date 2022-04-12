@@ -23,7 +23,7 @@
                    Text="SETUP Section"/>
         <TextBlock Grid.Row="0" Grid.Column="1"
                    Margin="5"
-                   Text="FILES Section (directories to scan)"/>
+                   Text="FILES Section (directory to scan)|(install location)"/>
         <TextBlock Grid.Row="0" Grid.Column="2"
                    Margin="5"
                    Text="Everything Else"/>

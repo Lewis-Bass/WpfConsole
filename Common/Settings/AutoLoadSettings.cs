@@ -149,11 +149,11 @@ namespace Common.Settings
         {
             if (loadFromFile)
             {
-                return ReadFromFile();
+                return ReadFromFile(); // used by the file scan service
             }
             else
             {
-                return ReadFromWebSite();
+                return ReadFromWebSite(); // used by the console 
             }
         }
 
@@ -162,7 +162,8 @@ namespace Common.Settings
         {
             LoginData loginData = SetupLogin();
             //https://localhost:5001/settings/readsettings
-            var uri = new Uri($"https://{loginData.IPAddress}:{loginData.Port}/settings/readsettings");
+            //var uri = new Uri($"https://{loginData.IPAddress}:{GlobalValues.FileScanPort}/settings/readsettings");
+            var uri = new Uri($"http://{loginData.IPAddress}:{GlobalValues.FileScanPort}/settings/readsettings");
             var returnStr = SendToServer.SendRest(loginData, uri).Result;
             var response = Newtonsoft.Json.JsonConvert.DeserializeObject<AutoLoadSettings>(returnStr.ToString());
             return response;
@@ -184,7 +185,9 @@ namespace Common.Settings
         {
             LoginData loginData = SetupLogin();
             //https://localhost:5001/settings/readsettings
-            var uri = new Uri($"https://{loginData.IPAddress}:{loginData.Port}/settings/writesettings");
+            //var uri = new Uri($"https://{loginData.IPAddress}:{loginData.Port}/settings/writesettings");
+            //var uri = new Uri($"https://{loginData.IPAddress}:{GlobalValues.FileScanPort}/settings/writesettings");
+            var uri = new Uri($"http://{loginData.IPAddress}:{GlobalValues.FileScanPort}/settings/writesettings");
             var returnStr = SendToServer.SendRest(this, uri).Result;
             //var response = Newtonsoft.Json.JsonConvert.DeserializeObject<AutoLoadSettings>(returnStr.ToString());
             //return response;

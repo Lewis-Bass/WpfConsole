@@ -74,7 +74,14 @@ namespace INOSetupFileCreate
             {
                 if (!string.IsNullOrEmpty(dir))
                 {
-                    sb.AppendLine(RecursiveDirWalk(dir));
+                    // split the directory from the install location <directory>|<install location>
+                    string[] parts = dir.Split(new char[] { '|' });
+                    if (parts.Length < 2)
+                    {
+                        MessageBox.Show($"Invalid Setup on directory {dir}", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    sb.AppendLine(RecursiveDirWalk(parts[0], parts[(parts.Length - 1)]));
                 }
             }
 
@@ -82,9 +89,11 @@ namespace INOSetupFileCreate
 
             // write out the file
             File.WriteAllText(tbName.Text, sb.ToString());
+
+            MessageBox.Show($"File {tbName.Text} has been created", "Notice", MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
 
-        private string RecursiveDirWalk(string directoryName)
+        private string RecursiveDirWalk(string directoryName, string installDirectoryName)
         {
             var sb = new StringBuilder();
             if (!Directory.Exists(directoryName))
@@ -93,12 +102,24 @@ namespace INOSetupFileCreate
             }
             foreach (var file in Directory.GetFiles(directoryName))
             {
-                sb.AppendLine($"Source: \"{file}\"; DestDir: \"{{app}}\"");
+                if (string.IsNullOrWhiteSpace(installDirectoryName))
+                {
+                    sb.AppendLine($"Source: \"{file}\"; DestDir: \"{{app}}\"");
+                }
+                else
+                {
+                    sb.AppendLine($"Source: \"{file}\"; DestDir: \"{{app}}\\{installDirectoryName}\"");
+                }
             }
             // recursive call to any directories that are found
             foreach(var dir in Directory.GetDirectories(directoryName))
             {
-                var str = RecursiveDirWalk(dir);
+                string partDir = GetLastDirectory(dir);
+                if (!string.IsNullOrWhiteSpace(installDirectoryName))
+                {
+                    partDir = $"{installDirectoryName}\\{partDir}";
+                }
+                var str = RecursiveDirWalk(dir, partDir);
                 if (str != null)
                 {
                     sb.AppendLine(str);
@@ -107,6 +128,15 @@ namespace INOSetupFileCreate
 
 
             return sb.ToString();
+        }
+
+        private static string GetLastDirectory(string dir)
+        {
+            var dirs = dir.Split(new char[] { '\\', '/' });
+            var partDir = dirs[(dirs.Length - 1)];
+           
+
+            return partDir;
         }
     }
 }

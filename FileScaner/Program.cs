@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Serilog;
+using Common;
 
 namespace FileScaner
 {
@@ -25,16 +26,23 @@ namespace FileScaner
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            string url = $"http://localhost:{GlobalValues.FileScanPort}/";
+            return Host.CreateDefaultBuilder(args)
                 .UseSerilog()
+                .UseWindowsService()
                 .ConfigureLogging((context, logging) =>
                 {
                     logging.AddSerilog();
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    //webBuilder.UseUrls("https://localhost:5001/");
+                    //webBuilder.UseUrls("https://localhost:55555/");
+                    webBuilder.UseUrls(url);
                     webBuilder.UseStartup<Startup>();
                 });
+        }
     }
 }

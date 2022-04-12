@@ -98,6 +98,7 @@ namespace WpfConsole.AutoLoad
             tbLastProcessed.Text = settings.AutoLoadLastProcessed.ToShortDateString();
             tbTotalUpload.Text = settings.AutoLoadLastTotalUpload.ToString();
             tbPin.Text = settings.AutoLoadPin;
+            FileList = new ObservableCollection<DirectoriesToScan>(settings.AutoLoadDirectories);
 
             lvDirectories.ItemsSource = FileList;
         }
@@ -232,7 +233,6 @@ namespace WpfConsole.AutoLoad
                 }
             }
         }
-
 
         private void tbPin_TextChanged(object sender, TextChangedEventArgs e)
         {
