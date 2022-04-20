@@ -11,7 +11,31 @@
 	<AutoLoadLastProcessed>0001-01-01T00:00:00</AutoLoadLastProcessed>
 	<AutoLoadLastTotalUpload>0</AutoLoadLastTotalUpload>
 	<AutoLoadDirectories>
-		<string>..</string>
-		<string>[Documents]</string>
+		<DirectoriesToScan>
+			<UserName>BASSDESKTOP\lewisbass</UserName>
+			<DirectoryName>Documents</DirectoryName>
+			<PathName>C:\Users\lewisbass\Documents</PathName>
+		</DirectoriesToScan>
+		<DirectoriesToScan>
+			<UserName>BASSDESKTOP\lewisbass</UserName>
+			<DirectoryName>Pictures</DirectoryName>
+			<PathName>C:\Users\lewisbass\Pictures</PathName>
+		</DirectoriesToScan>
+		<DirectoriesToScan>
+			<UserName>BASSDESKTOP\lewisbass</UserName>
+			<DirectoryName>Music</DirectoryName>
+			<PathName>C:\Users\lewisbass\Music</PathName>
+		</DirectoriesToScan>
+		<DirectoriesToScan>
+			<UserName>BASSDESKTOP\lewisbass</UserName>
+			<DirectoryName>Videos</DirectoryName>
+			<PathName>C:\Users\lewisbass\Videos</PathName>
+		</DirectoriesToScan>
+		<DirectoriesToScan>
+			<UserName>BASSDESKTOP\lewisbass</UserName>
+			<DirectoryName>SafeHaven</DirectoryName>
+			<PathName>D:\Code\SafeHaven</PathName>
+		</DirectoriesToScan>
 	</AutoLoadDirectories>
+
 </AutoLoadSettings>

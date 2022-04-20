@@ -8,6 +8,8 @@ using System.DirectoryServices;
 using Common.Settings;
 using static System.Net.WebRequestMethods;
 using System.Linq;
+using static System.Net.Mime.MediaTypeNames;
+using System.Reflection;
 
 namespace FileScaner.Scan
 {
@@ -15,8 +17,9 @@ namespace FileScaner.Scan
     {
 
         AutoLoadSettings _settings;
-        string _SentFileLog = "Sent.txt";
-        string _SkipFileLog = "DidNotSend.txt";
+        //string _logDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Logs");
+        //string _SentFileLog = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Logs", "Sent.txt");
+        //string _SkipFileLog = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Logs", "DidNotSend.txt");
         int _FilesLoaded = 0;
         int _FilesSkipped = 0;
 
@@ -36,18 +39,22 @@ namespace FileScaner.Scan
         {
             DateTime startedAt = DateTime.Now;
 
-            // clear the log files
-            if (System.IO.File.Exists(_SentFileLog))
+            if (!Directory.Exists(Constants.LogDirectory))
             {
-                System.IO.File.Delete(_SentFileLog);
+                Directory.CreateDirectory(Constants.LogDirectory);
             }
-            if (System.IO.File.Exists(_SkipFileLog))
+
+            // clear the log files
+            if (System.IO.File.Exists(Constants.SentFileLog))
             {
-                System.IO.File.Delete(_SkipFileLog);
+                System.IO.File.Delete(Constants.SentFileLog);
+            }
+            if (System.IO.File.Exists(Constants.SkipFileLog))
+            {
+                System.IO.File.Delete(Constants.SkipFileLog);
             }
 
             // create a list of directories to process
-            //var users = FindWindowsUsers();
             var directoryList = _settings.AutoLoadDirectories.Select(r => r.PathName);
 
             // process the directories
@@ -131,14 +138,14 @@ namespace FileScaner.Scan
             if ((info.CreationTime >= lastProcessed) || (info.LastWriteTime >= lastProcessed))
             {
                 //System.Diagnostics.Debug.WriteLine($"Sent: {fileName}");
-                System.IO.File.AppendAllText(_SentFileLog, $"{fileName}\n\r");
+                System.IO.File.AppendAllText(Constants.SentFileLog, $"{fileName}\n\r");
                 _FilesLoaded++;
                 //TODO: Send to the Ark 
             }
             else
             {
                 //System.Diagnostics.Debug.WriteLine($"Skip: {fileName}");
-                System.IO.File.AppendAllText(_SkipFileLog, $"{fileName}\n\r");
+                System.IO.File.AppendAllText(Constants.SkipFileLog, $"{fileName}\n\r");
                 _FilesSkipped++;
             }
         }

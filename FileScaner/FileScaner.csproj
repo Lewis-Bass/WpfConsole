@@ -31,4 +31,10 @@
     <Folder Include="logfiles\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="filesettings">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

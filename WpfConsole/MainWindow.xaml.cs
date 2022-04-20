@@ -41,6 +41,7 @@ namespace WpfConsole
 
         UserControl _SearchMaster;
         UserControl _Connections;
+        UserControl _Statistics;
         UserControl _FileDisplay;
         UserControl _AutoLoad;
         UserControl _PreferenceSetup;
@@ -71,6 +72,7 @@ namespace WpfConsole
             LoadCheckedFiles();
 
             SetTopMenuAvailability();
+            Statistics_Click(null, null); // set the first displayed screen
         }
 
         void OnLoad(object sender, RoutedEventArgs e)
@@ -310,6 +312,15 @@ namespace WpfConsole
                 _Connections = new Connection.MainConnection();
             }
             DisplayControl(_Connections);
+        }
+
+        private void Statistics_Click(object sender, RoutedEventArgs e)
+        {
+            if (_Statistics == null)
+            {
+                _Statistics = new Statistics.StatisticsMain();
+            }
+            DisplayControl(_Statistics);
         }
 
         private void FileDisplay_Click(object sender, RoutedEventArgs e)

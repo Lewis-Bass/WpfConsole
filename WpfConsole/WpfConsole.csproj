@@ -131,6 +131,9 @@
       <DependentUpon>UserDropdownSelect.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\LoginHelper.cs" />
+    <Compile Include="Helpers\ResultsSimple.xaml.cs">
+      <DependentUpon>ResultsSimple.xaml</DependentUpon>
+    </Compile>
     <Compile Include="KeyManagement\KeyInput.xaml.cs">
       <DependentUpon>KeyInput.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,12 @@
     </Compile>
     <Compile Include="SearchMaster\Results.xaml.cs">
       <DependentUpon>Results.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\ListStat.xaml.cs">
+      <DependentUpon>ListStat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\SimpleStat.xaml.cs">
+      <DependentUpon>SimpleStat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Statistics\StatisticsMain.xaml.cs">
       <DependentUpon>StatisticsMain.xaml</DependentUpon>
@@ -198,6 +207,10 @@
     <Page Include="FileDrop\FileDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Helpers\ResultsSimple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="KeyManagement\KeyInput.xaml">
       <SubType>Designer</SubType>
@@ -262,6 +275,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SearchMaster\Results.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Statistics\ListStat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Statistics\SimpleStat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

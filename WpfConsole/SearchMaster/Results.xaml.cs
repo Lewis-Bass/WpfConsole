@@ -26,7 +26,7 @@ namespace WpfConsole.SearchMaster
 	/// <summary>
 	/// Interaction logic for Results.xaml
 	/// </summary>
-	public partial class Results : UserControl
+	public partial class Results : UserControl, INotifyPropertyChanged
 	{
 
 		#region Properties
@@ -110,109 +110,10 @@ namespace WpfConsole.SearchMaster
 
 			var criteria = SearchHelpers.ProcessSearch(request);
 			SearchResultsInfo = new ObservableCollection<SearchResults>(criteria);
-			DisplayResults.ItemsSource = SearchResultsInfo;
-		}
-
-		/// <summary>
-		/// Change the tags associated with the document
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void TagChange_Click(object sender, RoutedEventArgs e)
-		{
-			var btn = sender as Button;
-			// show the tag change window
-			var dlg = new TagChange();
-			dlg.Owner = Application.Current.MainWindow;
-			dlg.ResultInfo = (SearchResults)btn.DataContext;
-			dlg.ShowDialog();
-
-			// update the display source with the new tag values
-			foreach(var rec in SearchResultsInfo)
-			{
-				if (rec.DocumentName == dlg.ResultInfo.DocumentName)
-				{
-					rec.Tags = new ObservableCollection<MetaTags>(dlg.ResultInfo.Tags);
-				}
-			}
-			OnPropertyChanged("SearchResultsInfo");
+			DisplayResults.SearchResultsInfo = SearchResultsInfo;
 		}
 
 		#endregion
-
-		#region View File
-
-		private void View_Click(object sender, RoutedEventArgs e)
-		{
-			if (sender is Button)
-			{
-				var button = (Button)sender;
-				if (button.DataContext != null && button.DataContext is SearchResults)
-				{
-					var searchResult = (SearchResults)button.DataContext;
-
-					var file = new LocalFileStatus
-					{
-						//VaultID = searchResult.
-						DocumentName = searchResult.DocumentName,
-						IsCheckedOut = false,
-						DateRecieved = DateTime.Now
-					};
-
-					// ask the user where the file is to be placed
-					var saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-					saveFileDialog.OverwritePrompt = true;
-					saveFileDialog.CheckPathExists = true;
-					saveFileDialog.FileName = searchResult.DocumentName;
-					if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-					{
-						file.LocalFileLocation = saveFileDialog.FileName;
-						var localFiles = new Common.LocalFiles();
-						RaiseEvent(new RoutedEventArgs(MainSearch.ViewFileEvent, null));
-					}
-
-				}
-			}
-		}
-
-		#endregion
-
-		#region Checkout file
-		private void CheckOut_Click(object sender, RoutedEventArgs e)
-		{
-			if (sender is Button)
-			{
-				var button = (Button)sender;
-				if (button.DataContext != null && button.DataContext is SearchResults)
-				{
-					var searchResult = (SearchResults)button.DataContext;
-
-					var file = new LocalFileStatus
-					{
-						//VaultID = searchResult.
-						DocumentName = searchResult.DocumentName,
-						IsCheckedOut = true,
-						DateRecieved = DateTime.Now
-					};
-
-					// ask the user where the file is to be placed
-					var saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-					saveFileDialog.OverwritePrompt = true;
-					saveFileDialog.CheckPathExists = true;
-					saveFileDialog.FileName = searchResult.DocumentName;
-					if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-					{
-						file.LocalFileLocation = saveFileDialog.FileName;
-						var localFiles = new Common.LocalFiles();
-						localFiles.CheckOutFile(file);
-						RaiseEvent(new RoutedEventArgs(MainSearch.CheckOutFileEvent, null));
-					}
-				}
-			}
-		}
-
-		#endregion
-
 
 		#region INotifyPropertyChanged
 

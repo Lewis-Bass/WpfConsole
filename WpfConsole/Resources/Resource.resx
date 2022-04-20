@@ -453,8 +453,8 @@
   <data name="StorageLocation" xml:space="preserve">
     <value>Storage Location</value>
   </data>
-  <data name="View" xml:space="preserve">
-    <value>View</value>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistics</value>
   </data>
   <data name="Group" xml:space="preserve">
     <value>Group</value>
@@ -700,5 +700,14 @@
   </data>
   <data name="SystemDirectory" xml:space="preserve">
     <value>System</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Vault" xml:space="preserve">
+    <value>Vault</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
   </data>
 </root>

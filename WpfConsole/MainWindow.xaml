@@ -8,66 +8,67 @@
 		Title="MainWindow" 
 		MinHeight="768" MinWidth="1024"
 		Height="900" Width="1500"
-        Loaded="OnLoad">
+		Loaded="OnLoad">
 
-    <Grid x:Name="MainGrid">
-        <DockPanel VerticalAlignment="Stretch" 
+	<Grid x:Name="MainGrid">
+		<DockPanel VerticalAlignment="Stretch" 
 			   HorizontalAlignment="Stretch"
 			   LastChildFill="True">
 
-            <!--TOP RING MENU-->
-            <WrapPanel DockPanel.Dock="Top"                        
+			<!--TOP RING MENU-->
+			<WrapPanel DockPanel.Dock="Top"                        
 					   Background="{DynamicResource Toolbar.Static.BackgroundBrush}"
 					   HorizontalAlignment="Stretch">
-                <!-- Move the menu over so that it does not overlap the left menu -->
-                <TextBlock Text=""                           
+				<!-- Move the menu over so that it does not overlap the left menu -->
+				<TextBlock Text=""                           
 						   Width="150"
 						   VerticalAlignment="Center" 
 						   Style="{DynamicResource TextBlockNormal3Style}"/>
-                <Menu x:Name="mnuTop"
+				<Menu x:Name="mnuTop"
 					  HorizontalAlignment="Stretch"                       
 					  VerticalAlignment="Center">
-                    
-                    <MenuItem Name="Connections" Header="{x:Static lang:Resource.Connect}" Click="Connections_Click"/>
-                    <MenuItem Name="SearchMaster" Header="{x:Static lang:Resource.Search}" Click="SearchMaster_Click"/>
-                    <!--<MenuItem Name="Search" Header="{x:Static lang:Resource.Search}" Click="Search_Click"/>-->
-                    <!--<MenuItem Name="SearchAdvanced" Header="Advanced" Click="SearchAdvanced_Click"/>-->
-                    <!--<MenuItem Name="SearchFilter" Header="{x:Static lang:Resource.Filter}" Click="Search_Filter"/>-->
-                    <!--<MenuItem Name="SearchTree" Header="{x:Static lang:Resource.FilterTree}" Click="SearchTreeMain_Click"/>-->
-                    <!--<MenuItem Name="CreateArk" Header="{x:Static lang:Resource.CreateArk}" Click="CreateArk_Click"/>-->
-                    <MenuItem Name="AddFiles" Header="{x:Static lang:Resource.AddFiles}" Click="FileDisplay_Click"/>
-                    <MenuItem Name="CheckedOutFiles" Header="{x:Static lang:Resource.CheckedOut}" Click="CheckedOut_Click"/>
-                    <!--<MenuItem Name="Password" Header="{x:Static lang:Resource.Password}" Click="Password_Click" />-->
-                    <MenuItem Name="Tags"  Header="{x:Static lang:Resource.TagName}" Click="TagManagement_Click"/>
-                    <MenuItem Name="Keys"  Header="{x:Static lang:Resource.Keys}" Click="KeyManagement_Click"/>
-                    <MenuItem Name="AutoLoad" Header="{x:Static lang:Resource.AutoLoad}" Click="AutoLoad_Click"/>
-                    <MenuItem Name="Preferences" Header="{x:Static lang:Resource.Preferences}" Click="Preferences_Click"/>
-                    <MenuItem Name="Logout" Header="{x:Static lang:Resource.Logout}" Click="Logout_Click"/>
-                </Menu>
-            </WrapPanel>
 
-            <!--LEFT MENU-->
-            <Grid DockPanel.Dock="Left"
+					<MenuItem Name="Statistics" Header="{x:Static lang:Resource.Statistics}" Click="Connections_Click"/>
+					<MenuItem Name="Connections" Header="{x:Static lang:Resource.Connect}" Click="Connections_Click"/>
+					<MenuItem Name="SearchMaster" Header="{x:Static lang:Resource.Search}" Click="SearchMaster_Click"/>
+					<!--<MenuItem Name="Search" Header="{x:Static lang:Resource.Search}" Click="Search_Click"/>-->
+					<!--<MenuItem Name="SearchAdvanced" Header="Advanced" Click="SearchAdvanced_Click"/>-->
+					<!--<MenuItem Name="SearchFilter" Header="{x:Static lang:Resource.Filter}" Click="Search_Filter"/>-->
+					<!--<MenuItem Name="SearchTree" Header="{x:Static lang:Resource.FilterTree}" Click="SearchTreeMain_Click"/>-->
+					<!--<MenuItem Name="CreateArk" Header="{x:Static lang:Resource.CreateArk}" Click="CreateArk_Click"/>-->
+					<MenuItem Name="AddFiles" Header="{x:Static lang:Resource.AddFiles}" Click="FileDisplay_Click"/>
+					<MenuItem Name="CheckedOutFiles" Header="{x:Static lang:Resource.CheckedOut}" Click="CheckedOut_Click"/>
+					<!--<MenuItem Name="Password" Header="{x:Static lang:Resource.Password}" Click="Password_Click" />-->
+					<MenuItem Name="Tags"  Header="{x:Static lang:Resource.TagName}" Click="TagManagement_Click"/>
+					<MenuItem Name="Keys"  Header="{x:Static lang:Resource.Keys}" Click="KeyManagement_Click"/>
+					<MenuItem Name="AutoLoad" Header="{x:Static lang:Resource.AutoLoad}" Click="AutoLoad_Click"/>
+					<MenuItem Name="Preferences" Header="{x:Static lang:Resource.Preferences}" Click="Preferences_Click"/>
+					<MenuItem Name="Logout" Header="{x:Static lang:Resource.Logout}" Click="Logout_Click"/>
+				</Menu>
+			</WrapPanel>
+
+			<!--LEFT MENU-->
+			<Grid DockPanel.Dock="Left"
 					HorizontalAlignment="Stretch" 
 					VerticalAlignment="Stretch"
 					Width="150"
 					Background="{DynamicResource Toolbar.Static.BackgroundBrush}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0" Width="150">
-                    <Border Background="{DynamicResource TabItem.Hot.Edge.Brush}" Height="4"/>
-                    <HeaderedContentControl Style="{DynamicResource NavTitleHeaderStyle}" IsTabStop="False">
-                        <HeaderedContentControl.Header>
-                            <TextBlock Text="{x:Static lang:Resource.Connections}"/>
-                        </HeaderedContentControl.Header>
-                        <HeaderedContentControl.Content>
-                            <!--ItemsSource="{Binding PriorConnections}"-->
-                            <ListBox x:Name="lvPriorConnections" 
+				<StackPanel Grid.Row="0" Width="150">
+					<Border Background="{DynamicResource TabItem.Hot.Edge.Brush}" Height="4"/>
+					<HeaderedContentControl Style="{DynamicResource NavTitleHeaderStyle}" IsTabStop="False">
+						<HeaderedContentControl.Header>
+							<TextBlock Text="{x:Static lang:Resource.Connections}"/>
+						</HeaderedContentControl.Header>
+						<HeaderedContentControl.Content>
+							<!--ItemsSource="{Binding PriorConnections}"-->
+							<ListBox x:Name="lvPriorConnections" 
 									 Padding="0"
 									 Margin="0"      
 									 ScrollViewer.CanContentScroll="False"
@@ -76,31 +77,31 @@
 									 BorderBrush="Transparent"
 									 BorderThickness="0"
 									 Background="{DynamicResource Toolbar.Static.BackgroundBrush}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <RadioButton x:Name="LoginConnection" 
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<RadioButton x:Name="LoginConnection" 
 													 IsChecked="{Binding IsCurrentConnection}"
 													 Width="135"
 													 Style="{DynamicResource NavSelectorStyle}"
 													 Click="LoginConnection_Click">
-                                            <TextBlock Text="{Binding AccessKeyName}"/>
-                                        </RadioButton>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </HeaderedContentControl.Content>
-                    </HeaderedContentControl>
-                </StackPanel>
+											<TextBlock Text="{Binding AccessKeyName}"/>
+										</RadioButton>
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+							</ListBox>
+						</HeaderedContentControl.Content>
+					</HeaderedContentControl>
+				</StackPanel>
 
-                <StackPanel Grid.Row="1" Width="150">
-                    <Border Background="{DynamicResource TabItem.Hot.Edge.Brush}" Height="4"/>
-                    <HeaderedContentControl Style="{DynamicResource NavTitleHeaderStyle}" IsTabStop="False">
-                        <HeaderedContentControl.Header>
-                            <TextBlock Text="{x:Static lang:Resource.LastViewed}"/>
-                        </HeaderedContentControl.Header>
-                        <HeaderedContentControl.Content>
+				<StackPanel Grid.Row="1" Width="150">
+					<Border Background="{DynamicResource TabItem.Hot.Edge.Brush}" Height="4"/>
+					<HeaderedContentControl Style="{DynamicResource NavTitleHeaderStyle}" IsTabStop="False">
+						<HeaderedContentControl.Header>
+							<TextBlock Text="{x:Static lang:Resource.LastViewed}"/>
+						</HeaderedContentControl.Header>
+						<HeaderedContentControl.Content>
 
-                            <ListBox x:Name="lvPriorFiles" 
+							<ListBox x:Name="lvPriorFiles" 
 									 Padding="0"
 									 Margin="0"
 									 ScrollViewer.CanContentScroll="False"
@@ -110,32 +111,32 @@
 									 BorderThickness="0"                                     
 									 Background="{DynamicResource Toolbar.Static.BackgroundBrush}"                                     
 									 >
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <!--IsChecked="{Binding Selected}"-->
-                                        <RadioButton IsChecked="False"
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<!--IsChecked="{Binding Selected}"-->
+										<RadioButton IsChecked="False"
 													 Width="135"
 													 Style="{DynamicResource NavSelectorStyle}" 
 													 Click="RadioButton_Click"
 													 >
-                                            <TextBlock Text="{Binding DocumentName}"/>
-                                        </RadioButton>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
+											<TextBlock Text="{Binding DocumentName}"/>
+										</RadioButton>
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+							</ListBox>
 
-                        </HeaderedContentControl.Content>
-                    </HeaderedContentControl>
-                </StackPanel>
+						</HeaderedContentControl.Content>
+					</HeaderedContentControl>
+				</StackPanel>
 
-                <StackPanel Grid.Row="2" Width="150">
-                    <Border Background="{DynamicResource TabItem.Hot.Edge.Brush}" Height="4"/>
-                    <HeaderedContentControl Style="{DynamicResource NavTitleHeaderStyle}" IsTabStop="False">
-                        <HeaderedContentControl.Header>
-                            <TextBlock Text="{x:Static lang:Resource.LastCheckOuts}"/>
-                        </HeaderedContentControl.Header>
-                        <HeaderedContentControl.Content>
-                            <ListBox x:Name="lvCheckedFiles" 
+				<StackPanel Grid.Row="2" Width="150">
+					<Border Background="{DynamicResource TabItem.Hot.Edge.Brush}" Height="4"/>
+					<HeaderedContentControl Style="{DynamicResource NavTitleHeaderStyle}" IsTabStop="False">
+						<HeaderedContentControl.Header>
+							<TextBlock Text="{x:Static lang:Resource.LastCheckOuts}"/>
+						</HeaderedContentControl.Header>
+						<HeaderedContentControl.Content>
+							<ListBox x:Name="lvCheckedFiles" 
 									 Padding="0"
 									 Margin="0"
 									 ScrollViewer.CanContentScroll="False"
@@ -145,26 +146,26 @@
 									 BorderThickness="0"                                     
 									 Background="{DynamicResource Toolbar.Static.BackgroundBrush}"                                     
 									 >
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <!--IsChecked="{Binding Selected}"-->
-                                        <RadioButton IsChecked="False"
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<!--IsChecked="{Binding Selected}"-->
+										<RadioButton IsChecked="False"
 													 Width="135"
 													 Style="{DynamicResource NavSelectorStyle}" 
 													 Click="RadioButton_Click"
 													 >
-                                            <TextBlock Text="{Binding DocumentName}"/>
-                                        </RadioButton>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
+											<TextBlock Text="{Binding DocumentName}"/>
+										</RadioButton>
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+							</ListBox>
 
-                        </HeaderedContentControl.Content>
-                    </HeaderedContentControl>
-                </StackPanel>
+						</HeaderedContentControl.Content>
+					</HeaderedContentControl>
+				</StackPanel>
 
 
-                <ListBox x:Name="DragDropZone"
+				<ListBox x:Name="DragDropZone"
 						 Grid.Row="3" BorderBrush="Black" 
 						 BorderThickness="0 1 0 1" 
 						 Margin="0 15 0 0" Padding="5 15 5 0"
@@ -175,46 +176,46 @@
 						 DragDrop.Drop="DragDropZone_Drop"
 					>
 
-                    <TextBlock Text="{x:Static lang:Resource.DropFilesHere}"
+					<TextBlock Text="{x:Static lang:Resource.DropFilesHere}"
 							   VerticalAlignment="Center" 
 							   Style="{DynamicResource TextBlockNormal3Style}"/>
 
-                </ListBox>
-            </Grid>
+				</ListBox>
+			</Grid>
 
 
-            <!--BOTOM MENU-->
-            <Grid x:Name="mainGrid" DockPanel.Dock="Bottom">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition x:Name="NavColumn" Width="Auto" MinWidth="170" MaxWidth="500"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid x:Name="gridNavigationBar" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <Grid.RowDefinitions>
-                        <RowDefinition x:Name="toolBarRow" Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <ContentControl x:Name="NavBarContainer" Grid.Row="1" Width="220" IsTabStop="False"/>
-                </Grid>
-            </Grid>
+			<!--BOTOM MENU-->
+			<Grid x:Name="mainGrid" DockPanel.Dock="Bottom">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition x:Name="NavColumn" Width="Auto" MinWidth="170" MaxWidth="500"/>
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition/>
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Grid x:Name="gridNavigationBar" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<Grid.RowDefinitions>
+						<RowDefinition x:Name="toolBarRow" Height="Auto"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<ContentControl x:Name="NavBarContainer" Grid.Row="1" Width="220" IsTabStop="False"/>
+				</Grid>
+			</Grid>
 
-            <!--Main Content-->
-            <Grid x:Name="MenuSelectionDisplay"                    
+			<!--Main Content-->
+			<Grid x:Name="MenuSelectionDisplay"                    
 					DockPanel.Dock="Right"
 					Background="{DynamicResource StandardView.BackgroundBrush}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-            </Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+			</Grid>
 
-        </DockPanel>
-    </Grid>
+		</DockPanel>
+	</Grid>
 </Window>

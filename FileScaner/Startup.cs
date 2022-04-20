@@ -9,11 +9,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Serilog;
+using System.Threading;
+using FileScaner.Scan;
 
 namespace FileScaner
 {
     public class Startup
     {
+
+        private static Timer _FileScanTimer = null;
+        private static bool _enteredAlready = false;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -58,9 +64,35 @@ namespace FileScaner
             Log.Information("Startup completed");
 
             // start up the background process
-
+            //RunFileScanTimer();
+            var runScan = new ScanTimers();
+            runScan.StartTimer();
 
             Log.Information("File Scan Started");
         }
+
+
+
+        //public void RunFileScanTimer()
+        //{
+        //    // we only want one timer running
+        //    if (_FileScanTimer != null)
+        //        return;
+
+        //    _FileScanTimer = ScanTimers.ExecuteTheTimer((o) =>
+        //    {
+        //        // This will catch most of the threads that want to come in here...
+        //        if (_enteredAlready)
+        //            return;
+
+        //        _enteredAlready = true;
+
+        //        StartTimer();
+
+        //        _enteredAlready = false;
+        //    }, DbControlledThreading.MonthlyUpdateTimerName);
+
+        //}
+
     }
 }

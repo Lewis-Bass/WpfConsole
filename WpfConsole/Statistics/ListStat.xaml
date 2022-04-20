@@ -1,0 +1,17 @@
+﻿<UserControl xmlns:Helpers="clr-namespace:WpfConsole.Helpers"  x:Class="WpfConsole.Statistics.ListStat"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:local="clr-namespace:WpfConsole.Statistics"
+			 xmlns:lang="clr-namespace:WpfConsole.Resources"
+			 xmlns:converters="clr-namespace:WpfConsole.Converters"   
+			 xmlns:data="clr-namespace:WindowsData;assembly=WindowsData"
+             xmlns:helpers="clr-namespace:WpfConsole.Helpers"
+			 Style="{DynamicResource StandardUserControl}"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="450" d:DesignWidth="800">
+	<Grid>
+		<helpers:ResultsSimple x:Name="DisplayResults" />
+	</Grid>
+</UserControl>

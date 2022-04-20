@@ -26,11 +26,11 @@ namespace FileScaner.Controllers
         {
 
             string jsonString = string.Empty;
-            using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
-            {
-                jsonString = await reader.ReadToEndAsync(); //reader.ReadToEnd();
-            }
-            var request = Newtonsoft.Json.JsonConvert.DeserializeObject<LoginData>(jsonString);
+            //using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
+            //{
+            //    jsonString = await reader.ReadToEndAsync(); //reader.ReadToEnd();
+            //}
+            //var request = Newtonsoft.Json.JsonConvert.DeserializeObject<LoginData>(jsonString);
 
             AutoLoadSettings settings = AutoLoadSettings.Load(true);
 

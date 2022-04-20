@@ -36,15 +36,16 @@ namespace FileScaner.Scan
                 // calculate timer start to see if we can load any changed files
                 // if the current time is between the stop and start set the delay to 15 minutes
                 AutoLoadSettings settings = AutoLoadSettings.Load(true);
+
                 DateTime start;
-                if (settings.AutoLoadStartTime > DateTime.Now.Hour)
-                {
+                //if (settings.AutoLoadStartTime > DateTime.Now.Hour)
+                //{
                     start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, settings.AutoLoadStartTime, 0, 0);
-                }
-                else
-                {
-                    start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day + 1, settings.AutoLoadStartTime, 0, 0);
-                }
+                //}
+                //else
+                //{
+                //    start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day + 1, settings.AutoLoadStartTime, 0, 0);
+                //}
 
                 if (start <= DateTime.Now)
                 {
@@ -63,8 +64,9 @@ namespace FileScaner.Scan
             try
             {
                 Log.Information($"Launching the timer {threadName}");
-   
+
                 int delay = 15 * 60 * 1000; // 15 minutes * 60 seconds * 1000 milliseconds
+                //int delay = 20 * 1000; // FOR TESTING ONLY
 
                 Timer timer = new(callback, null, delay, delay);
                 return timer;
