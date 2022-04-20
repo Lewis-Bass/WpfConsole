@@ -160,6 +160,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Files Auto Loaded.
+        /// </summary>
+        public static string AutoLoadLastRun {
+            get {
+                return ResourceManager.GetString("AutoLoadLastRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Group.
         /// </summary>
         public static string BaseGroupName {

@@ -28,7 +28,7 @@
 					  HorizontalAlignment="Stretch"                       
 					  VerticalAlignment="Center">
 
-					<MenuItem Name="Statistics" Header="{x:Static lang:Resource.Statistics}" Click="Connections_Click"/>
+                    <MenuItem Name="Statistics" Header="{x:Static lang:Resource.Statistics}" Click="Statistics_Click"/>
 					<MenuItem Name="Connections" Header="{x:Static lang:Resource.Connect}" Click="Connections_Click"/>
 					<MenuItem Name="SearchMaster" Header="{x:Static lang:Resource.Search}" Click="SearchMaster_Click"/>
 					<!--<MenuItem Name="Search" Header="{x:Static lang:Resource.Search}" Click="Search_Click"/>-->

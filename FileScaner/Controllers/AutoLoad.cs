@@ -8,7 +8,7 @@ namespace FileScaner.Controllers
     public class AutoLoad : Controller
     {
         [HttpPost]
-        public async Task<IActionResult> LastProcessDetails()
+        public async Task<IActionResult> LastFilesSent()
         {
 
             var fileName = Constants.SentFileLog;

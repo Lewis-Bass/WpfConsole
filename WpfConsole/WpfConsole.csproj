@@ -169,6 +169,9 @@
     <Compile Include="Statistics\StatisticsMain.xaml.cs">
       <DependentUpon>StatisticsMain.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Statistics\StringList.xaml.cs">
+      <DependentUpon>StringList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TagManagement\TagMain.xaml.cs">
       <DependentUpon>TagMain.xaml</DependentUpon>
     </Compile>
@@ -287,6 +290,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Statistics\StatisticsMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Statistics\StringList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

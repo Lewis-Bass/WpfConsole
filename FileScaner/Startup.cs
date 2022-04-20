@@ -63,36 +63,13 @@ namespace FileScaner
 
             Log.Information("Startup completed");
 
-            // start up the background process
-            //RunFileScanTimer();
+            // start up the background 
             var runScan = new ScanTimers();
             runScan.StartTimer();
 
             Log.Information("File Scan Started");
         }
 
-
-
-        //public void RunFileScanTimer()
-        //{
-        //    // we only want one timer running
-        //    if (_FileScanTimer != null)
-        //        return;
-
-        //    _FileScanTimer = ScanTimers.ExecuteTheTimer((o) =>
-        //    {
-        //        // This will catch most of the threads that want to come in here...
-        //        if (_enteredAlready)
-        //            return;
-
-        //        _enteredAlready = true;
-
-        //        StartTimer();
-
-        //        _enteredAlready = false;
-        //    }, DbControlledThreading.MonthlyUpdateTimerName);
-
-        //}
 
     }
 }

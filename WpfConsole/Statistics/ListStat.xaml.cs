@@ -33,7 +33,7 @@ namespace WpfConsole.Statistics
             set
             {
                 _SearchResultsInfo = value;
-                //////////////////////////////////////////////DisplayResults.SearchResultsInfo = new ObservableCollection<SearchResults>( _SearchResultsInfo);
+                DisplayResults.SearchResultsInfo = new ObservableCollection<SearchResults>( _SearchResultsInfo);
                 OnPropertyChanged("SearchResultsInfo");
             }
         }
