@@ -160,13 +160,21 @@ namespace Common.Settings
         // TODO: Async method
         private static AutoLoadSettings ReadFromWebSite()
         {
-            LoginData loginData = SetupLogin();
-            //https://localhost:5001/settings/readsettings
-            //var uri = new Uri($"https://{loginData.IPAddress}:{GlobalValues.FileScanPort}/settings/readsettings");
-            var uri = new Uri($"http://{loginData.IPAddress}:{GlobalValues.FileScanPort}/settings/readsettings");
-            var returnStr = SendToServer.SendRest(loginData, uri).Result;
-            var response = Newtonsoft.Json.JsonConvert.DeserializeObject<AutoLoadSettings>(returnStr.ToString());
-            return response;
+            try
+            {
+                LoginData loginData = SetupLogin();
+                //https://localhost:5001/settings/readsettings
+                //var uri = new Uri($"https://{loginData.IPAddress}:{GlobalValues.FileScanPort}/settings/readsettings");
+                var uri = new Uri($"http://{loginData.IPAddress}:{GlobalValues.FileScanPort}/settings/readsettings");
+                var returnStr = SendToServer.SendRest(loginData, uri).Result;
+                var response = Newtonsoft.Json.JsonConvert.DeserializeObject<AutoLoadSettings>(returnStr.ToString());
+                return response;
+            }
+            catch (Exception ex)
+            {
+                Serilog.Log.Error(ex, "AutoLoadSettings");
+            }
+            return null;
         }
 
         private static LoginData SetupLogin()

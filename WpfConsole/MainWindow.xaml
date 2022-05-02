@@ -43,6 +43,7 @@
 					<MenuItem Name="Keys"  Header="{x:Static lang:Resource.Keys}" Click="KeyManagement_Click"/>
 					<MenuItem Name="AutoLoad" Header="{x:Static lang:Resource.AutoLoad}" Click="AutoLoad_Click"/>
 					<MenuItem Name="Preferences" Header="{x:Static lang:Resource.Preferences}" Click="Preferences_Click"/>
+                    <MenuItem Name="ExportVault" Header="{x:Static lang:Resource.Export}" Click="ExportVault_Click"/>
 					<MenuItem Name="Logout" Header="{x:Static lang:Resource.Logout}" Click="Logout_Click"/>
 				</Menu>
 			</WrapPanel>

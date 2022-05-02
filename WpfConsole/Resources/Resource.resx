@@ -713,4 +713,13 @@
   <data name="AutoLoadLastRun" xml:space="preserve">
     <value>Files Auto Loaded</value>
   </data>
+  <data name="TagsNotFound" xml:space="preserve">
+    <value>Files without tags</value>
+  </data>
+  <data name="AdminExpiredLicense" xml:space="preserve">
+    <value>The license is expired, administrators can only search and view items.</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
 </root>

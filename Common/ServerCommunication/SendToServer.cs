@@ -27,6 +27,10 @@ namespace Common.ServerCommunication
         /// <returns></returns>
         public static string Send(Object data)
         {
+            if (!GlobalValues.IsConnectionValid)
+            {
+                return null;
+            }
             try
             {
                 string dataString = Newtonsoft.Json.JsonConvert.SerializeObject(data);
@@ -36,7 +40,7 @@ namespace Common.ServerCommunication
                 string outputString = string.Empty;
                 if (GlobalValues.IsConnectionValid)
                 {
-                    outputString = AsynchronousClient.StartClient(dataString, GlobalValues.LastConnection.IPAddress, GlobalValues.Port);
+                    outputString = AsynchronousClient.StartClient(dataString, GlobalValues.LastConnection.IPAddress, GlobalValues.Port);                    
                 }
                 else if (data is ConnectionInformation)
                 {

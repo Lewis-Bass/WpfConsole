@@ -29,6 +29,7 @@ using System.Windows.Interop;
 using System.Windows.Markup;
 using WpfConsole.TagManagement;
 using System.Collections.Generic;
+using static Common.Licenses.LicenseChecks;
 
 namespace WpfConsole
 {
@@ -49,9 +50,21 @@ namespace WpfConsole
         UserControl _TagManagement;
         UserControl _CheckedOut;
         UserControl _MyPassword;
+        UserControl _ExportVault;
 
+        /// <summary>
+        /// Prior Connections - left nav item
+        /// </summary>
         public ObservableCollection<ConnectionInformation> PriorConnections { get; set; } = new ObservableCollection<ConnectionInformation>();
+
+        /// <summary>
+        /// Last (x) Prior Viewed Files  - left nav item
+        /// </summary>
         public LocalFileList PriorFiles { get; set; } = new LocalFileList();
+
+        /// <summary>
+        /// Last (x) Checked out files - left nav
+        /// </summary>
         public LocalFileList CheckFiles { get; set; } = new LocalFileList();
 
         #endregion
@@ -84,8 +97,10 @@ namespace WpfConsole
         /// <summary>
         /// License Issues
         /// </summary>
-        private void LicenseSetup()
+        private string LicenseSetup()
         {
+            string message = string.Empty;
+
             // do we have a license file?
             var chk = new LicenseChecks();
             var licenseStatus = chk.GetLicenseStatus();
@@ -97,9 +112,13 @@ namespace WpfConsole
             {
                 // local admin can always connect
                 var settings = LocalSettings.Load();
-                if (!settings.LastConnection.IsLocalAdmin)
+                if (settings.LastConnection.IsLocalAdmin)
                 {
-                    MessageBox.Show(Resource.ExpiredLicense, Resource.Error, MessageBoxButton.OK, MessageBoxImage.Stop);
+                    message = Resource.AdminExpiredLicense;
+                }
+                else
+                {
+                    message = Resource.ExpiredLicense;
                     GlobalValues.LastConnection = null;
                 }
             }
@@ -108,8 +127,9 @@ namespace WpfConsole
                 var expireDate = chk.GetExpirationDate();
                 int daysRemain = (int)expireDate.Subtract(DateTime.Now).TotalDays;
                 // Demo License - display the warning
-                MessageBox.Show(string.Format(Resource.DemoLicense, daysRemain), Resource.Notice, MessageBoxButton.OK, MessageBoxImage.Information);
+                message = string.Format(Resource.DemoLicense, daysRemain);
             }
+            return message;
         }
 
         /// <summary>
@@ -166,6 +186,9 @@ namespace WpfConsole
             Log.Logger.Error($"Starting Application {DateTime.Now.ToLongTimeString()}");
         }
 
+        /// <summary>
+        /// When the screen initially loads, reconnect to the ark that was last used
+        /// </summary>
         private void ReconnectIfPossible()
         {
             LocalSettings settings = LocalSettings.Load();
@@ -241,12 +264,12 @@ namespace WpfConsole
         /// <param name="e"></param>
         private void MainSearch_ConnectionChangedMethod(object sender, RoutedEventArgs e)
         {
-            ProcessConnectionChanged();
+            var message = ProcessConnectionChanged();
         }
 
-        private void ProcessConnectionChanged()
+        private string ProcessConnectionChanged()
         {
-            LicenseSetup();
+            string message = LicenseSetup();
             LoadConnections();
             // make certain that the last connection still has a valid value (it might have been deleted by MainConnection.xaml)
             if (!PriorConnections.Any(r => r.AccessKeyName == GlobalValues.LastConnection?.AccessKeyName))
@@ -254,6 +277,7 @@ namespace WpfConsole
                 GlobalValues.LastConnection = null;
             }
             SetTopMenuAvailability();
+            return message;
         }
 
         /// <summary>
@@ -266,7 +290,8 @@ namespace WpfConsole
             // display the search screen
             SearchMaster_Click(sender, null);
             var criteria = ((List<SearchCriteriaGUI>)e.OriginalSource)
-                .Select(r => new SearchCriteriaBase {
+                .Select(r => new SearchCriteriaBase
+                {
                     Criteria = r.Criteria,
                     Field = r.Field,
                     GroupID = r.GroupID,
@@ -276,7 +301,7 @@ namespace WpfConsole
                     ValueMax = r.ValueMax,
                     ValueMin = r.ValueMin,
                     ValueMaxDate = r.ValueMaxDate,
-                    ValueMinDate = r.ValueMinDate,                            
+                    ValueMinDate = r.ValueMinDate,
                 });
             // perform the search - tried to use events but couldn't get them to fire
             ((MainSearch)_SearchMaster).InitialSearch(criteria.ToList());
@@ -316,6 +341,10 @@ namespace WpfConsole
 
         private void Statistics_Click(object sender, RoutedEventArgs e)
         {
+            if (!AdminMenuCheck() && !UserMenuCheck())
+            {
+                return;
+            }
             if (_Statistics == null)
             {
                 _Statistics = new Statistics.StatisticsMain();
@@ -404,6 +433,21 @@ namespace WpfConsole
         }
 
         /// <summary>
+        /// Top Menu Export option
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ExportVault_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Wire up the form
+            if (_AutoLoad == null)
+            {
+                _AutoLoad = new AutoLoadMain();
+            }
+            DisplayControl(_AutoLoad);
+        }
+
+        /// <summary>
         /// logout of the current session
         /// </summary>
         /// <param name="sender"></param>
@@ -436,10 +480,12 @@ namespace WpfConsole
             {
                 MenuSelectionDisplay.Children.RemoveAt(i);
             }
-
             MenuSelectionDisplay.Children.Add(displayControl);
         }
 
+        /// <summary>
+        /// Load (X) files that have been viewed previous
+        /// </summary>
         private void LoadPriorFiles()
         {
             LocalSettings settings = LocalSettings.Load();
@@ -459,6 +505,9 @@ namespace WpfConsole
             lvPriorFiles.ItemsSource = PriorFiles.Files;
         }
 
+        /// <summary>
+        /// Load checked out files
+        /// </summary>
         private void LoadCheckedFiles()
         {
             LocalSettings settings = LocalSettings.Load();
@@ -478,6 +527,9 @@ namespace WpfConsole
             lvCheckedFiles.ItemsSource = CheckFiles.Files;
         }
 
+        /// <summary>
+        /// Load the connections from the settings file. If the local admin account is missing its added
+        /// </summary>
         private void LoadConnections()
         {
             LocalSettings settings = LocalSettings.Load();
@@ -500,18 +552,53 @@ namespace WpfConsole
             lvPriorConnections.ItemsSource = PriorConnections;
         }
 
+        /// <summary>
+        /// Setup the top nav visibility options
+        /// </summary>
         private void SetTopMenuAvailability()
         {
-            SearchMaster.IsEnabled = GlobalValues.IsConnectionValid;
-            //Search.IsEnabled = GlobalValues.IsConnectionValid;
-            //SearchTree.IsEnabled = GlobalValues.IsConnectionValid;
-            //SearchFilter.IsEnabled = GlobalValues.IsConnectionValid;
-            AddFiles.IsEnabled = GlobalValues.IsConnectionValid;
-            CheckedOutFiles.IsEnabled = GlobalValues.IsConnectionValid;
-            Keys.IsEnabled = GlobalValues.IsConnectionValid;
-            Tags.IsEnabled = GlobalValues.IsConnectionValid;
-            Logout.IsEnabled = GlobalValues.IsConnectionValid;
-            AutoLoad.IsEnabled = GlobalValues.IsConnectionValid;
+            bool adminMenu = AdminMenuCheck();
+            bool userMenu = UserMenuCheck();
+            Statistics.IsEnabled = userMenu;
+            SearchMaster.IsEnabled = userMenu;
+            AddFiles.IsEnabled = userMenu;
+            CheckedOutFiles.IsEnabled = userMenu;
+            Keys.IsEnabled = userMenu;
+            Tags.IsEnabled = userMenu;
+            Logout.IsEnabled = userMenu || adminMenu;
+            AutoLoad.IsEnabled = userMenu;
+            ExportVault.IsEnabled = (userMenu || adminMenu);
+
+        }
+
+        /// <summary>
+        /// check to see if the user menu items should be shown
+        /// </summary>
+        /// <returns></returns>
+        private static bool UserMenuCheck()
+        {
+            var chk = new LicenseChecks();
+            var licenseStatus = chk.GetLicenseStatus();
+            return GlobalValues.IsConnectionValid &&
+                            (licenseStatus != LicenseChecks.LicenseStatus.Expired);
+        }
+
+        /// <summary>
+        /// Check to see if the admin user items should be shown
+        /// </summary>
+        /// <returns></returns>
+        private static bool AdminMenuCheck()
+        {
+            var chk = new LicenseChecks();
+            var licenseStatus = chk.GetLicenseStatus();
+            var settings = LocalSettings.Load();
+            var adminMenu = GlobalValues.IsConnectionValid &&
+                            (
+                                (licenseStatus == LicenseChecks.LicenseStatus.Expired && settings.LastConnection.IsLocalAdmin)
+                                || licenseStatus != LicenseChecks.LicenseStatus.Expired)
+                            && (GlobalValues.LastConnection.IPAddress.ToLowerInvariant().Contains("localhost")
+                                || GlobalValues.LastConnection.IPAddress.ToLowerInvariant().Contains("127.0.0.1")); ;
+            return adminMenu;
         }
 
         #endregion
@@ -562,7 +649,6 @@ namespace WpfConsole
                     lf.ViewLocalFile(data);
                 }
                 rb.IsChecked = false;
-
             }
         }
 
@@ -579,23 +665,41 @@ namespace WpfConsole
                 if (btn.DataContext is ConnectionInformation)
                 {
                     var data = (ConnectionInformation)btn.DataContext;
-                    ProcessLogin(data);
+                    if (!ProcessLogin(data))
+                    {
+                        //lvPriorConnections.SelectedItem = null;
+                        //LoadConnections();
+                        Logout_Click(sender, e);
+                    }
                 }
             }
         }
 
-        private void ProcessLogin(ConnectionInformation data)
+        /// <summary>
+        /// Handle the login event
+        /// </summary>
+        /// <param name="data"></param>
+        private bool ProcessLogin(ConnectionInformation data)
         {
+            bool retval = false;
             var helper = new Helpers.LoginHelper();
-            helper.ProcessLogin(data);
+            var loginStatus = helper.ProcessLogin(data);
+            string message = string.Empty;
+            if (loginStatus != null && loginStatus.Result == LoginResult.ResultList.Success)
+            {
+                message = ProcessConnectionChanged();
+                retval = true;
+            }
 
-            //LicenseSetup();
-            //LoadConnections();
-            //SetTopMenuAvailability();
-            ProcessConnectionChanged();
+            //TODO: Write my own so that the messagebox will center over the application
+            MessageBox.Show(Application.Current.MainWindow, 
+                $"{loginStatus.Message}. {message}", 
+                WpfConsole.Resources.Resource.LoginName, 
+                MessageBoxButton.OK, 
+                MessageBoxImage.Asterisk);
+            return retval;
         }
 
         #endregion
-
     }
 }

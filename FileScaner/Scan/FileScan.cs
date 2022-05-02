@@ -68,7 +68,11 @@ namespace FileScaner.Scan
             {
                 foreach (string fileName in Directory.EnumerateFiles(dirName, matchPattern, opts))
                 {
-                    SendFile(fileName);
+                    // double check and make certain that the file exists
+                    if (System.IO.File.Exists(fileName))
+                    {
+                        SendFile(fileName);
+                    }
                 }
             }
 

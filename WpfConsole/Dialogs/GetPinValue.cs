@@ -27,10 +27,10 @@ namespace WpfConsole.Dialogs
                 {
                     pin = dlg.Answer;
                 }
-                if (string.IsNullOrEmpty(pin))
-                { 
-                    MessageBox.Show(Resource.PINRequired, Resource.LoginName, MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                }
+                //if (string.IsNullOrEmpty(pin))
+                //{ 
+                //    MessageBox.Show(Resource.PINRequired, Resource.LoginName, MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                //}
             }
             return pin;
         }

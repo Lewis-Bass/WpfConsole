@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WindowsData;
+using Common.ServerCommunication.Helpers;
 
 namespace WpfConsole.Statistics
 {
@@ -38,7 +39,13 @@ namespace WpfConsole.Statistics
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            // parallel run
+            //Parallel.Invoke(
+            //    () => LoadLastAutoLoad(), 
+            //    () => LoadUntagedFiles()
+            //    );
             LoadLastAutoLoad();
+            LoadUntagedFiles();
         }
 
         #endregion
@@ -76,6 +83,18 @@ namespace WpfConsole.Statistics
             };
         }
 
-       
+
+        private void LoadUntagedFiles()
+        {
+            // dummy up the data
+            var results = SearchHelpers.ProcessSearch( null);
+            foreach(var result in results)
+            {
+                result.Tags = new System.Collections.ObjectModel.ObservableCollection<MetaTags>();
+            }
+            MissingTags.SearchResultsInfo = results;
+        }
+
+
     }
 }

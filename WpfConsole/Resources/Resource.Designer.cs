@@ -115,6 +115,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The license is expired, administrators can only search and view items..
+        /// </summary>
+        public static string AdminExpiredLicense {
+            get {
+                return ResourceManager.GetString("AdminExpiredLicense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Administrative Account.
         /// </summary>
         public static string AdministrativeAccount {
@@ -723,6 +732,15 @@ namespace WpfConsole.Resources {
         public static string ExpiredLicense {
             get {
                 return ResourceManager.GetString("ExpiredLicense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        public static string Export {
+            get {
+                return ResourceManager.GetString("Export", resourceCulture);
             }
         }
         
@@ -1776,6 +1794,15 @@ namespace WpfConsole.Resources {
         public static string Tags {
             get {
                 return ResourceManager.GetString("Tags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Files without tags.
+        /// </summary>
+        public static string TagsNotFound {
+            get {
+                return ResourceManager.GetString("TagsNotFound", resourceCulture);
             }
         }
         

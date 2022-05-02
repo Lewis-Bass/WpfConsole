@@ -16,27 +16,30 @@ namespace WpfConsole.Helpers
     public class LoginHelper : UserControl
     {
 
-        public void ProcessLogin(ConnectionInformation data)
+        public LoginResult ProcessLogin(ConnectionInformation data)
         {
             string pin = string.Empty;
             bool isPinValid = false;
+            LoginResult result = new LoginResult();
+
             if (data.IsLocalAdmin)
             {
                 isPinValid = true;
             }
             else
             {
+                // TODO: Push pin retrieval to GUI level
                 pin = GetPinValue.GetPinValueFromUser(data);
                 isPinValid = !string.IsNullOrWhiteSpace(pin);
             }
 
             Common.ServerCommunication.Response.ResponseLogin response = null;
-            string msg = string.Empty;
             if (!isPinValid)
             {
                 GlobalValues.LastConnection = null;
                 GlobalValues.ConnectionToken = null;
-                msg = WpfConsole.Resources.Resource.LoginFailed;
+                result.Result = LoginResult.ResultList.Failure;
+                result.Message = $"{WpfConsole.Resources.Resource.LoginFailed}. {WpfConsole.Resources.Resource.PINRequired}";
             }
             else
             {
@@ -48,36 +51,35 @@ namespace WpfConsole.Helpers
                 {
                     GlobalValues.LastConnection = data;
                     GlobalValues.ConnectionToken = response.ConnectionToken;
-                    msg = WpfConsole.Resources.Resource.LoginSuccessful;
+                    result.Result = LoginResult.ResultList.Success;
+                    result.Message = WpfConsole.Resources.Resource.LoginSuccessful;
+
                 }
                 else
                 {
                     GlobalValues.LastConnection = null;
                     GlobalValues.ConnectionToken = null;
-                    msg = WpfConsole.Resources.Resource.LoginFailed;
+                    result.Result = LoginResult.ResultList.Failure;
+                    result.Message = WpfConsole.Resources.Resource.LoginFailed;
                 }
 
             }
-            MessageBox.Show(Application.Current.MainWindow, msg, WpfConsole.Resources.Resource.LoginName, MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                       
-            //RaiseEvent(new RoutedEventArgs(LoginChangedEvent));
-
-
+            return result;
         }
 
         #region Routed Event Handlers
 
-        ////// Create RoutedEvent
-        ////// This creates a static property on the UserControl, ViewFileEvent, which 
-        ////// will be used by the Window, or any control up the Visual Tree, that wants to 
-        ////// handle the event. 
+        /// Create RoutedEvent
+        /// This creates a static property on the UserControl, ViewFileEvent, which 
+        /// will be used by the Window, or any control up the Visual Tree, that wants to 
+        /// handle the event. 
         public static readonly RoutedEvent LoginChangedEvent =
             EventManager.RegisterRoutedEvent("ViewFileEvent", RoutingStrategy.Bubble,
             typeof(RoutedEventHandler), typeof(LoginHelper));
 
-        ////// Create RoutedEventHandler
-        ////// This adds the Custom Routed Event to the WPF Event System and allows it to be 
-        ////// accessed as a property from within xaml if you so desire
+        /// Create RoutedEventHandler
+        /// This adds the Custom Routed Event to the WPF Event System and allows it to be 
+        /// accessed as a property from within xaml if you so desire
         public event RoutedEventHandler LoginChanged
         {
             add { AddHandler(LoginChangedEvent, value); }
