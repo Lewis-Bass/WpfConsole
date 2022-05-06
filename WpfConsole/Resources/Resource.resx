@@ -722,4 +722,10 @@
   <data name="Export" xml:space="preserve">
     <value>Export</value>
   </data>
+  <data name="ExportVaultDirectory" xml:space="preserve">
+    <value>Export Vault to Directory</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
 </root>

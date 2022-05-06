@@ -30,6 +30,7 @@ using System.Windows.Markup;
 using WpfConsole.TagManagement;
 using System.Collections.Generic;
 using static Common.Licenses.LicenseChecks;
+using WpfConsole.ExportVault;
 
 namespace WpfConsole
 {
@@ -50,7 +51,7 @@ namespace WpfConsole
         UserControl _TagManagement;
         UserControl _CheckedOut;
         UserControl _MyPassword;
-        UserControl _ExportVault;
+        UserControl _ExportMain;
 
         /// <summary>
         /// Prior Connections - left nav item
@@ -195,6 +196,7 @@ namespace WpfConsole
             if (settings.LastConnection != null)
             {
                 ProcessLogin(settings.LastConnection);
+                Statistics_Click(null, null);
             }
         }
 
@@ -440,11 +442,11 @@ namespace WpfConsole
         private void ExportVault_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Wire up the form
-            if (_AutoLoad == null)
+            if (_ExportMain == null)
             {
-                _AutoLoad = new AutoLoadMain();
+                _ExportMain = new ExportMain();
             }
-            DisplayControl(_AutoLoad);
+            DisplayControl(_ExportMain);
         }
 
         /// <summary>
@@ -689,6 +691,10 @@ namespace WpfConsole
             {
                 message = ProcessConnectionChanged();
                 retval = true;
+            }
+            else
+            {
+                Connections_Click(null, null);
             }
 
             //TODO: Write my own so that the messagebox will center over the application

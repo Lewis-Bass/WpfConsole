@@ -1,4 +1,5 @@
-﻿using Common.Settings;
+﻿using Common.Licenses;
+using Common.Settings;
 using Serilog;
 using System;
 using System.Threading;
@@ -30,28 +31,27 @@ namespace FileScaner.Scan
 
                 _enteredAlready = true;
 
-
-                // ToDo: run the scan when the cpu is idle????
-
-                // calculate timer start to see if we can load any changed files
-                // if the current time is between the stop and start set the delay to 15 minutes
-                AutoLoadSettings settings = AutoLoadSettings.Load(true);
-
-                DateTime start;
-                //if (settings.AutoLoadStartTime > DateTime.Now.Hour)
-                //{
-                    start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, settings.AutoLoadStartTime, 0, 0);
-                //}
-                //else
-                //{
-                //    start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day + 1, settings.AutoLoadStartTime, 0, 0);
-                //}
-
-                if (start <= DateTime.Now)
+                // License check - do not run if the license is expired
+                var chk = new LicenseChecks();
+                var licenseStatus = chk.GetLicenseStatus();
+                if (licenseStatus != LicenseChecks.LicenseStatus.Expired)
                 {
-                    using (FileScan filescan = new FileScan(settings))
+
+                    // ToDo: run the scan when the cpu is idle????
+
+                    // calculate timer start to see if we can load any changed files
+                    // if the current time is between the stop and start set the delay to 15 minutes
+                    AutoLoadSettings settings = AutoLoadSettings.Load(true);
+
+                    DateTime start;
+                    start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, settings.AutoLoadStartTime, 0, 0);
+
+                    if (start <= DateTime.Now)
                     {
-                        filescan.ExecuteScan();
+                        using (FileScan filescan = new FileScan(settings))
+                        {
+                            filescan.ExecuteScan();
+                        }
                     }
                 }
                 _enteredAlready = false;
@@ -64,9 +64,11 @@ namespace FileScaner.Scan
             try
             {
                 Log.Information($"Launching the timer {threadName}");
-
+#if DEBUG
+                int delay = 20 * 1000; // FOR TESTING ONLY
+#else
                 int delay = 15 * 60 * 1000; // 15 minutes * 60 seconds * 1000 milliseconds
-                //int delay = 20 * 1000; // FOR TESTING ONLY
+#endif
 
                 Timer timer = new(callback, null, delay, delay);
                 return timer;

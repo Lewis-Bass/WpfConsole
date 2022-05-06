@@ -27,7 +27,7 @@ namespace WpfConsole.AutoLoad
     {
         #region Properties
 
-        AutoLoadSettings settings = AutoLoadSettings.Load(false);
+        AutoLoadSettings settings;
 
         /// <summary>
         /// List of directories to scan
@@ -73,6 +73,12 @@ namespace WpfConsole.AutoLoad
         {
             InitializeComponent();
 
+            settings = AutoLoadSettings.Load(false);
+            if (settings == null)
+            {
+                settings = new AutoLoadSettings();
+            }
+
             DataContext = this;
 
             LoadScreenValues();
@@ -85,21 +91,24 @@ namespace WpfConsole.AutoLoad
             for (int i = 0; i < cbConnection.Items.Count; i++)
             {
                 var connect = cbConnection.Items[i] as ConnectionInformation;
-                if (connect.AccessKeyName == ((settings.AutoLoadConnection == null) ? globalSettings.LastConnection : settings.AutoLoadConnection).AccessKeyName)
+                if (settings != null &&
+                    (connect.AccessKeyName == ((settings.AutoLoadConnection == null) ? globalSettings.LastConnection : settings.AutoLoadConnection).AccessKeyName))
                 {
                     cbConnection.SelectedIndex = i;
                     break;
                 }
             }
 
-            SetTimeControl(cbStartTime, timeValues, settings.AutoLoadStartTime);
-            SetTimeControl(cbEndTime, timeValues, settings.AutoLoadEndTime);
+            if (settings != null)
+            {
+                SetTimeControl(cbStartTime, timeValues, settings.AutoLoadStartTime);
+                SetTimeControl(cbEndTime, timeValues, settings.AutoLoadEndTime);
 
-            tbLastProcessed.Text = settings.AutoLoadLastProcessed.ToShortDateString();
-            tbTotalUpload.Text = settings.AutoLoadLastTotalUpload.ToString();
-            tbPin.Text = settings.AutoLoadPin;
-            FileList = new ObservableCollection<DirectoriesToScan>(settings.AutoLoadDirectories);
-
+                tbLastProcessed.Text = settings.AutoLoadLastProcessed.ToShortDateString();
+                tbTotalUpload.Text = settings.AutoLoadLastTotalUpload.ToString();
+                tbPin.Text = settings.AutoLoadPin;
+                FileList = new ObservableCollection<DirectoriesToScan>(settings.AutoLoadDirectories);
+            }
             lvDirectories.ItemsSource = FileList;
         }
 

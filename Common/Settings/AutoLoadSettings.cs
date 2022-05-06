@@ -174,7 +174,7 @@ namespace Common.Settings
             {
                 Serilog.Log.Error(ex, "AutoLoadSettings");
             }
-            return null;
+            return new AutoLoadSettings();
         }
 
         private static LoginData SetupLogin()
@@ -192,9 +192,6 @@ namespace Common.Settings
         public bool WriteToWebSite()
         {
             LoginData loginData = SetupLogin();
-            //https://localhost:5001/settings/readsettings
-            //var uri = new Uri($"https://{loginData.IPAddress}:{loginData.Port}/settings/writesettings");
-            //var uri = new Uri($"https://{loginData.IPAddress}:{GlobalValues.FileScanPort}/settings/writesettings");
             var uri = new Uri($"http://{loginData.IPAddress}:{GlobalValues.FileScanPort}/settings/writesettings");
             var returnStr = SendToServer.SendRest(this, uri).Result;
             //var response = Newtonsoft.Json.JsonConvert.DeserializeObject<AutoLoadSettings>(returnStr.ToString());
@@ -208,15 +205,11 @@ namespace Common.Settings
         /// <returns></returns>
         private static AutoLoadSettings ReadFromFile()
         {
-            AutoLoadSettings settings = null;
+            AutoLoadSettings settings = new AutoLoadSettings(); 
             string filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, GlobalValues.FileScannerSettingsStorageLocation);
             readingFile = true;
-            if (!File.Exists(filename))
-            {
-                settings = new AutoLoadSettings();
-            }
-            else
-            {
+            if (File.Exists(filename))
+            { 
                 TextReader textReader = null;
                 try
                 {

@@ -647,4 +647,10 @@
   <data name="UserName" xml:space="preserve">
     <value>User Name</value>
   </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportVaultDirectory" xml:space="preserve">
+    <value>Export Vault to Directory</value>
+  </data>
 </root>

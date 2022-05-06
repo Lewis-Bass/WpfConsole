@@ -130,6 +130,9 @@
     <Compile Include="Dialogs\UserDropdownSelect.xaml.cs">
       <DependentUpon>UserDropdownSelect.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExportVault\ExportMain.xaml.cs">
+      <DependentUpon>ExportMain.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\LoginHelper.cs" />
     <Compile Include="Helpers\ResultsSimple.xaml.cs">
       <DependentUpon>ResultsSimple.xaml</DependentUpon>
@@ -206,6 +209,10 @@
     <Page Include="Dialogs\UserInput.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExportVault\ExportMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FileDrop\FileDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>

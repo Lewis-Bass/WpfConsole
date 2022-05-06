@@ -745,6 +745,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export Vault to Directory.
+        /// </summary>
+        public static string ExportVaultDirectory {
+            get {
+                return ResourceManager.GetString("ExportVaultDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Matching File.
         /// </summary>
         public static string FileBrowserTypeTitle {
@@ -1668,6 +1677,15 @@ namespace WpfConsole.Resources {
         public static string StorageLocation {
             get {
                 return ResourceManager.GetString("StorageLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         
