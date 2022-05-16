@@ -46,10 +46,7 @@ namespace FileScaner.Scan
 
                     DateTime startTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, settings.AutoLoadStartTime, 0, 0);
                     DateTime endTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, settings.AutoLoadEndTime, 0, 0);
-                    //DateTime nextProcess = DateTime.MinValue;
-                    //DateTime.TryParse(settings.AutoLoadNextProcess, out nextProcess);
-                    //DateTime.TryParse(settings.AutoLoadStartTime, out endTime);
-
+                   
                     if (startTime <= DateTime.Now && endTime > DateTime.Now && settings.AutoLoadNextProcess < endTime)
                     {
                         using (FileScan filescan = new FileScan(settings))
