@@ -98,6 +98,16 @@ namespace WpfConsole.Dialogs
             SetupExisingTags();
         }
 
+        /// <summary>
+        /// Close the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         #endregion
 
         #region Helpers
@@ -166,5 +176,6 @@ namespace WpfConsole.Dialogs
 
         #endregion
 
+       
     }
 }

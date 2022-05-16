@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WindowsData;
 using Common.ServerCommunication.Helpers;
+using WpfConsole.SearchMaster;
 
 namespace WpfConsole.Statistics
 {
@@ -40,18 +41,26 @@ namespace WpfConsole.Statistics
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             // parallel run
-            //Parallel.Invoke(
-            //    () => LoadLastAutoLoad(), 
-            //    () => LoadUntagedFiles()
-            //    );
-            LoadLastAutoLoad();
-            LoadUntagedFiles();
+            List<string> lastAuto = new List<string>();
+            List<SearchResults> missingTags = new List<SearchResults>();
+            Parallel.Invoke(
+                () => lastAuto = LoadLastAutoLoad(), 
+                () => missingTags = LoadUntagedFiles()
+                );
+            
+            AutoLoadLastFiles.Results = lastAuto;
+            foreach (var result in missingTags)
+            {
+                result.Tags = new System.Collections.ObjectModel.ObservableCollection<MetaTags>();
+            }
+            MissingTags.SearchResultsInfo = missingTags;
         }
 
         #endregion
 
-        private void LoadLastAutoLoad()
+        private List<string> LoadLastAutoLoad()
         {
+            List<string> retval = new List<string>();
             try
             {
                 LoginData loginData = SetupAutoLoadLogin();
@@ -61,14 +70,14 @@ namespace WpfConsole.Statistics
                 if (!string.IsNullOrEmpty(returnStr))
                 {
                     var response = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(returnStr.ToString());
-
-                    AutoLoadLastFiles.Results = response.ToList();
+                    retval = response.ToList();
                 }
             }
             catch (Exception ex)
             {
                
             }
+            return retval;
         }
 
         private LoginData SetupAutoLoadLogin()
@@ -84,15 +93,12 @@ namespace WpfConsole.Statistics
         }
 
 
-        private void LoadUntagedFiles()
+        private List<SearchResults> LoadUntagedFiles()
         {
             // dummy up the data
             var results = SearchHelpers.ProcessSearch( null);
-            foreach(var result in results)
-            {
-                result.Tags = new System.Collections.ObjectModel.ObservableCollection<MetaTags>();
-            }
-            MissingTags.SearchResultsInfo = results;
+            return results;
+           
         }
 
 

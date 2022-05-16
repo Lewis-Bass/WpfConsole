@@ -99,6 +99,24 @@ namespace Common.Settings
                 }
             }
         }
+
+        DateTime _AutoLoadNextProcess = DateTime.MinValue;
+        /// <summary>
+        /// AutoLoad Service was last run on this day
+        /// </summary>
+        public DateTime AutoLoadNextProcess
+        {
+            get { return _AutoLoadNextProcess; }
+            set
+            {
+                if (_AutoLoadNextProcess != value)
+                {
+                    _AutoLoadNextProcess = value;
+                    //WriteFile();
+                }
+            }
+        }
+
         int _AutoLoadLastTotalUpload = 0;
         /// <summary>
         /// AutoLoad Service Total Number of files loaded

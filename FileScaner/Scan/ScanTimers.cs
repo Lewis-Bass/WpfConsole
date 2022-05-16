@@ -21,6 +21,7 @@ namespace FileScaner.Scan
                 return;
             }
 
+
             _timer = ExecuteTheTimer((o) =>
             {
                 // This will catch most of the threads that want to come in here...
@@ -43,18 +44,28 @@ namespace FileScaner.Scan
                     // if the current time is between the stop and start set the delay to 15 minutes
                     AutoLoadSettings settings = AutoLoadSettings.Load(true);
 
-                    DateTime start;
-                    start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, settings.AutoLoadStartTime, 0, 0);
+                    DateTime startTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, settings.AutoLoadStartTime, 0, 0);
+                    DateTime endTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, settings.AutoLoadEndTime, 0, 0);
+                    //DateTime nextProcess = DateTime.MinValue;
+                    //DateTime.TryParse(settings.AutoLoadNextProcess, out nextProcess);
+                    //DateTime.TryParse(settings.AutoLoadStartTime, out endTime);
 
-                    if (start <= DateTime.Now)
+                    if (startTime <= DateTime.Now && endTime > DateTime.Now && settings.AutoLoadNextProcess < endTime)
                     {
                         using (FileScan filescan = new FileScan(settings))
                         {
                             filescan.ExecuteScan();
                         }
+                        // don't process again until this time is past
+                        // needed to stop multiple runs during the same day
+                        settings.AutoLoadNextProcess = (startTime < endTime) ?
+                            new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, settings.AutoLoadEndTime, 1, 0) :
+                            new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day + 1, settings.AutoLoadEndTime, 1, 0);
+                        settings.WriteFile();
                     }
                 }
                 _enteredAlready = false;
+                
             }, TimerName);
 
         }

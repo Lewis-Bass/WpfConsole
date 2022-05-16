@@ -16,17 +16,40 @@
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40"/>
-			<RowDefinition Height="75*"/>
 			<RowDefinition Height="25*"/>
+			<RowDefinition Height="75*"/>
+			<RowDefinition Height="35"/>
 		</Grid.RowDefinitions>
 
 		<TextBlock Grid.Row="0" Grid.Column="0" Name="tbDocumentName" 
 				   Margin="5"
 				   Text="{Binding ResultInfo.DocumentName}"/>
 
-		<GroupBox Grid.Row="1" Grid.Column="0" Grid.RowSpan="99" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+		<GroupBox Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+				  Header="{x:Static lang:Resource.TagAddNew}">
+			<Grid VerticalAlignment="Center">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="25*"/>
+					<ColumnDefinition Width="50*"/>
+					<ColumnDefinition Width="25*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="35"/>
+				</Grid.RowDefinitions>
+				<TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{x:Static lang:Resource.TagEnterName}"/>
+				<TextBox Grid.Row="0" Grid.Column="1" Margin="5" x:Name="tbNewTag"/>
+				<Button Grid.Row="0" Grid.Column="2" x:Name="btnAddNew"
+						Width="100" Height="30"
+						Margin="5"
+						Click="btnAddNew_Click"	>
+					<TextBlock Text="{x:Static lang:Resource.Add}"/>
+				</Button>
+			</Grid>
+		</GroupBox>
+
+		<GroupBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 				  Margin="0 0 5 0"
-				  Header="{x:Static lang:Resource.TagExisting}">
+				  Header="{x:Static lang:Resource.TagRemove}">
 			<ScrollViewer 
 						Margin="5,5,5,5"
 						VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
@@ -78,10 +101,8 @@
 			</ScrollViewer>
 		</GroupBox>
 
-		<GroupBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+		<GroupBox Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 					  Header="{x:Static lang:Resource.TagAdd}">
-
-
 			<ScrollViewer 
 						Margin="5,5,5,5"
 						VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
@@ -134,28 +155,15 @@
 
 
 		</GroupBox>
-
-		<GroupBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-				  Header="{x:Static lang:Resource.TagAddNew}">
-			<Grid VerticalAlignment="Center">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="25*"/>
-					<ColumnDefinition Width="50*"/>
-					<ColumnDefinition Width="25*"/>
-				</Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                </Grid.RowDefinitions>
-				<TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{x:Static lang:Resource.TagEnterName}"/>
-                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" x:Name="tbNewTag"/>
-                <Button Grid.Row="0" Grid.Column="2" x:Name="btnAddNew"
-						Width="100"
-						Margin="5"
-						Click="btnAddNew_Click"	>
-					<TextBlock Text="{x:Static lang:Resource.Add}"/>
-				</Button>
-			</Grid>
-		</GroupBox>
-
+		
+		<Button Grid.Row="3" Grid.Column="2" Name="btnClose"
+				Width="100" Height="30"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Stretch"
+				Click="btnClose_Click">
+			<TextBlock Grid.Row="0" Grid.Column="0"
+				   Margin="5"
+				   Text="{x:Static lang:Resource.Close}"/>
+		</Button>
 	</Grid>
 </Window>

@@ -687,7 +687,7 @@
     <value>Select</value>
   </data>
   <data name="TagAdd" xml:space="preserve">
-    <value>Add</value>
+    <value>Use existing Tags</value>
   </data>
   <data name="TagExisting" xml:space="preserve">
     <value>Existing Tags</value>
@@ -727,5 +727,11 @@
   </data>
   <data name="String1" xml:space="preserve">
     <value />
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="TagRemove" xml:space="preserve">
+    <value>Remove Tags</value>
   </data>
 </root>

@@ -304,6 +304,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Configuration.
         /// </summary>
         public static string ConfigureAutoload {
@@ -1699,7 +1708,7 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add.
+        ///   Looks up a localized string similar to Use existing Tags.
         /// </summary>
         public static string TagAdd {
             get {
@@ -1785,6 +1794,15 @@ namespace WpfConsole.Resources {
         public static string TagName {
             get {
                 return ResourceManager.GetString("TagName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Tags.
+        /// </summary>
+        public static string TagRemove {
+            get {
+                return ResourceManager.GetString("TagRemove", resourceCulture);
             }
         }
         
