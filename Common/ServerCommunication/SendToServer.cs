@@ -72,6 +72,9 @@ namespace Common.ServerCommunication
         public static async Task<string> SendRest(Object data, Uri destination)
         {
             string dataString = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+
+            System.Diagnostics.Debug.WriteLine(dataString);
+
             //dataString = EncrypDecrypt.EncryptString(dataString);
             //dataString = System.Net.WebUtility.HtmlEncode(dataString);
 

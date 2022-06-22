@@ -1789,6 +1789,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maintain Tags used in the system.
+        /// </summary>
+        public static string TagMainDescription {
+            get {
+                return ResourceManager.GetString("TagMainDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tag.
         /// </summary>
         public static string TagName {

@@ -8,8 +8,9 @@
 			 Style="{DynamicResource StandardUserControl}"
 			 mc:Ignorable="d" 
 			 d:DesignHeight="450" d:DesignWidth="800">
-	<Grid>
-		<ListView x:Name="DocumentList" 
+	<StackPanel>
+        <TextBlock Text="{x:Static lang:Resource.TagMainDescription}" />
+        <ListView x:Name="DocumentList" 
 				  Margin="5"
 				  ItemsSource="{Binding TagList}"
 				  VerticalAlignment="Stretch" 
@@ -88,7 +89,7 @@
 				</GridView>
 			</ListView.View>
 		</ListView>
-	</Grid>
+	</StackPanel>
 </UserControl>
 
 

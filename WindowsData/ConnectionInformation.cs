@@ -71,7 +71,6 @@ namespace WindowsData
             }
         }
 
-        bool _IsLocalAdmin = false;
         /// <summary>
         /// GUI ONLY PROPERTY - IS THIS CONNECTION THE CURRENT ONE?
         /// </summary>

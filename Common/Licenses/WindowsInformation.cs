@@ -23,14 +23,14 @@ namespace Common.Licenses
 
 		private List<DeviceInfo> stats = new List<DeviceInfo>();
 
-		protected List<DeviceInfo> PullAllStats()
+		public List<DeviceInfo> PullAllStats()
 		{
 			GetDeviceStatistics();
-			GetStorageStatistics();
-			GetProcessorStatistics(); // cant use serial number
-			GetBIOSStatistics(); // cant use serial number
-			GetMotherBoardStatistics();
-			GetNetworkAdapter();
+			//GetStorageStatistics();
+			//GetProcessorStatistics(); // cant use serial number
+			//GetBIOSStatistics(); // cant use serial number
+			//GetMotherBoardStatistics();
+			//GetNetworkAdapter();
 			return stats;
 		}
 

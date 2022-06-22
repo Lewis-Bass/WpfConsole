@@ -17,9 +17,6 @@ namespace FileScaner
     public class Startup
     {
 
-        private static Timer _FileScanTimer = null;
-        private static bool _enteredAlready = false;
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;

@@ -22,6 +22,8 @@ using WpfConsole.Resources;
 using System.ComponentModel;
 using WpfConsole.Dialogs;
 using Common.Settings;
+using WpfConsole.Properties;
+using Common.ConnectionInfo;
 
 namespace WpfConsole.Connection
 {
@@ -30,18 +32,26 @@ namespace WpfConsole.Connection
     /// </summary>
     public partial class MainConnection : UserControl
     {
+        #region Globals
 
-        ObservableCollection<ConnectionInformation> _LanAddress;
+        ObservableCollection<ConnectionInformation> _LanAddresInfo;
         public ObservableCollection<ConnectionInformation> LanAddressInfo
         {
-            get { return _LanAddress; }
+            get { return _LanAddresInfo; }
             set
             {
-                _LanAddress = value;
+                _LanAddresInfo = value;
                 OnPropertyChanged("LanAddressInfo");
             }
         }
 
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MainConnection()
         {
             InitializeComponent();
@@ -55,10 +65,12 @@ namespace WpfConsole.Connection
         /// </summary>
         private void GetLanAddress()
         {
-            var settings = LocalSettings.Load();
-            LanAddressInfo = new ObservableCollection<ConnectionInformation>(settings.ConnectionsData);
-            lanPrior.ItemsSource = LanAddressInfo; 
+            var conHelper = new ConnectionHelper();
+            LanAddressInfo = new ObservableCollection<ConnectionInformation>(conHelper.GetAllConnections());
+            lanPrior.ItemsSource = LanAddressInfo;
         }
+
+        #endregion
 
         #region Routed Event Handlers
 
@@ -163,7 +175,7 @@ namespace WpfConsole.Connection
 
         #endregion
 
-        #region helpers
+        #region Helpers
 
         /// <summary>
         /// Try the connection 
@@ -173,7 +185,7 @@ namespace WpfConsole.Connection
         {
             var helper = new Helpers.LoginHelper();
             helper.ProcessLogin(data);
-            RaiseEvent(new RoutedEventArgs(ConnectionChangedEvent));           
+            RaiseEvent(new RoutedEventArgs(ConnectionChangedEvent));
         }
 
         #endregion

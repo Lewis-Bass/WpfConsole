@@ -30,6 +30,7 @@ namespace WpfConsole.CheckedOutFiles
     /// </summary>
     public partial class CheckedOutList : UserControl
     {
+
         #region Globals and Constructor
 
         /// <summary>
@@ -46,6 +47,7 @@ namespace WpfConsole.CheckedOutFiles
 
             DataContext = this;
 
+            // TODO: There might be a problem here dealing with multiple users
             var settings = LocalSettings.Load();
             cbUserFile.IsChecked = settings.CheckOutShowOnlyMyFiles;
             cbRemoveFile.IsChecked = settings.CheckOutRemoveFileAtCheckin;
@@ -142,7 +144,6 @@ namespace WpfConsole.CheckedOutFiles
                     lf.ViewFile(file);
                 }
             }
-
         }
 
         #endregion

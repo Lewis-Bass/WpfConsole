@@ -25,12 +25,24 @@ namespace WpfConsole.Connection
     /// </summary>
     public partial class LibraryCardConnection : Window
     {
+        /// <summary>
+        /// card that is being created
+        /// </summary>
         public LibraryCard LibraryCard { get; set; }
+        
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public LibraryCardConnection()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Browse to the file on the local box - this allows the user to add a file created somewhere else and probably came from an email
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFileBrowser_Click(object sender, RoutedEventArgs e)
         {
             var openFileDialog = new OpenFileDialog
@@ -53,6 +65,11 @@ namespace WpfConsole.Connection
             }
         }
 
+        /// <summary>
+        /// Connect to the library connection pasted into the text box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnString_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtMessage.Text))
@@ -66,6 +83,10 @@ namespace WpfConsole.Connection
 
         }
 
+        /// <summary>
+        /// connect to the card
+        /// </summary>
+        /// <param name="cardString"></param>
         private void ProcessConnection(string cardString)
         {
             LibraryCard card = null;

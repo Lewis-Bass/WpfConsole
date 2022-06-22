@@ -75,7 +75,7 @@ namespace WpfConsole.Statistics
             }
             catch (Exception ex)
             {
-               
+                Serilog.Log.Error(ex, "LoadLastAutoLoad Failure");
             }
             return retval;
         }

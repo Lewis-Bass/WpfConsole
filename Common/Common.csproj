@@ -106,7 +106,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectionsInfo\ConnectionHelper.cs" />
+    <Compile Include="Resources\Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="ServerCommunication\Requests\RequestFileTag.cs" />
+    <Compile Include="ServerCommunication\Requests\RequestLicense.cs" />
     <Compile Include="Settings\AutoLoadSettings.cs" />
     <Compile Include="Encryption\EncryptDecrypt.cs" />
     <Compile Include="EnumHelpers.cs" />
@@ -119,7 +126,6 @@
     <Compile Include="Settings\LocalSettings.cs" />
     <Compile Include="MailSend\Send.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="ServerCommunication\Helpers\AccountHelpers.cs" />
     <Compile Include="ServerCommunication\Helpers\BinderHelpers.cs" />
     <Compile Include="ServerCommunication\Helpers\CheckInOutHelpers.cs" />
@@ -142,7 +148,10 @@
     <Compile Include="ServerCommunication\SocketClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Resource.resx" />
+    <EmbeddedResource Include="Resources\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WindowsData\WindowsData.csproj">

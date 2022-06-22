@@ -42,7 +42,7 @@ namespace FileScaner.Controllers
         {
 
             string jsonString = string.Empty;
-            using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
+            using (StreamReader reader = new(Request.Body, Encoding.UTF8))
             {
                 jsonString = await reader.ReadToEndAsync(); 
             }

@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
+using Common.ServerCommunication.Requests;
+using Common.ServerCommunication;
+using System.Security.Policy;
+using WindowsData;
+using System.ComponentModel;
 
 namespace Common.Licenses
 {
@@ -51,10 +56,16 @@ namespace Common.Licenses
             //byte[] licenseBytes = File.ReadAllBytes(GlobalValues.LicenseFileName);
             //string licenseString = Encryption.EncrypDecrypt.DecryptStringFromBytes_Aes(licenseBytes, decryptKey["key"], decryptKey["iv"]);
 
+            ////// xml file
+            //////var licenseString = File.ReadAllText(GlobalValues.LicenseFileName);
+            //////XmlSerializer serializer = new XmlSerializer(typeof(WindowsData.License));
+            //////StringReader rdr = new StringReader(licenseString);
+            //////WindowsData.License license = (WindowsData.License)serializer.Deserialize(rdr);
+            ///
+
             var licenseString = File.ReadAllText(GlobalValues.LicenseFileName);
-            XmlSerializer serializer = new XmlSerializer(typeof(WindowsData.License));
-            StringReader rdr = new StringReader(licenseString);
-            WindowsData.License license = (WindowsData.License)serializer.Deserialize(rdr);
+            var license = Newtonsoft.Json.JsonConvert.DeserializeObject<WindowsData.License>(licenseString);
+
             return license;
         }
 
@@ -66,38 +77,68 @@ namespace Common.Licenses
 
         public bool CreateDemoLicense()
         {
-            //TODO: reach out to the server to get the information - passing in the security keys
 
-            var wi = new WindowsInformation();
-            var systemName = wi.GetValue("DNSHostName");
-            var decryptKey = GetDecyrptionKey();
+            var winInfo = new WindowsInformation();
+            var devInfo = winInfo.PullAllStats()
+                .Select(r => new LicenseDeviceInfo(r.StatisticType, r.StatisticCategory, r.StatisticName, r.StatisticValue)).ToList();
+            var requestInfo = new RequestLicense
+            {
+                LicenseType = "Demo",
+                DeviceName = Environment.MachineName,
+                DeviceInfo = devInfo,
+                Product = "Vault",
+            };
 
-            string license = @"<License>
-            	<Type>Demo</Type>
-            	<Expiration>" + DateTime.Now.AddDays(10).ToShortDateString() + @"</Expiration>
-            	<DeviceName>" + systemName.StatisticValue + @"</DeviceName>
-            	<Permissions>
-            		<MaxKeys>5</MaxKeys>
-            	</Permissions>
-            </License>";
+            var uri = new UriBuilder(Common.Resources.Resource.LicenseServerCreateAddress).Uri;
 
-            //string license = @"<License>
-            //	<Type>Full</Type>
-            //	<Expiration>" + DateTime.Now.AddDays(10).ToShortDateString() + @"</Expiration>
-            //	<DeviceName>" + systemName.StatisticValue + @"</DeviceName>
-            //	<Permissions>
-            //		<MaxKeys>5</MaxKeys>
-            //	</Permissions>
-            //</License>";
+            try
+            {
+                var returnStr = SendToServer.SendRest(requestInfo, uri).Result;
 
-            File.WriteAllText(GlobalValues.LicenseFileName, license);
+                System.Diagnostics.Debug.WriteLine(returnStr);
 
-            // TODO: ENCRYPT THE LICENSE
-            //byte[] encriptLicense = Encryption.EncrypDecrypt.EncryptStringToBytes_Aes(license, decryptKey["key"], decryptKey["iv"]);
-            //// write out the file
-            //File.WriteAllBytes(GlobalValues.LicenseFileName, encriptLicense);
+                File.WriteAllText(GlobalValues.LicenseFileName, returnStr);
+            }
+            catch (Exception ex)
+            {
+                Serilog.Log.Error("CreateDemoLicense", ex);
+                return false;
+            }
 
             return true;
+
+            //////////////TODO: reach out to the server to get the information - passing in the security keys
+
+            ////////////var wi = new WindowsInformation();
+            ////////////var systemName = wi.GetValue("DNSHostName");
+            ////////////var decryptKey = GetDecyrptionKey();
+
+            ////////////string license = @"<License>
+            ////////////	<Type>Demo</Type>
+            ////////////	<Expiration>" + DateTime.Now.AddDays(10).ToShortDateString() + @"</Expiration>
+            ////////////	<DeviceName>" + systemName.StatisticValue + @"</DeviceName>
+            ////////////	<Permissions>
+            ////////////		<MaxKeys>5</MaxKeys>
+            ////////////	</Permissions>
+            ////////////</License>";
+
+            //////////////string license = @"<License>
+            //////////////	<Type>Full</Type>
+            //////////////	<Expiration>" + DateTime.Now.AddDays(10).ToShortDateString() + @"</Expiration>
+            //////////////	<DeviceName>" + systemName.StatisticValue + @"</DeviceName>
+            //////////////	<Permissions>
+            //////////////		<MaxKeys>5</MaxKeys>
+            //////////////	</Permissions>
+            //////////////</License>";
+
+            ////////////File.WriteAllText(GlobalValues.LicenseFileName, license);
+
+            ////////////// TODO: ENCRYPT THE LICENSE
+            //////////////byte[] encriptLicense = Encryption.EncrypDecrypt.EncryptStringToBytes_Aes(license, decryptKey["key"], decryptKey["iv"]);
+            //////////////// write out the file
+            //////////////File.WriteAllBytes(GlobalValues.LicenseFileName, encriptLicense);
+
+            ////////////return true;
         }
 
         private Dictionary<string, byte[]> GetDecyrptionKey()

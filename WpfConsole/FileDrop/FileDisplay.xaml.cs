@@ -211,7 +211,6 @@ namespace WpfConsole.FileDrop
         /// <param name="e"></param>
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
-            //ProcessFileList.FileList.Clear();
             FileList.Clear();
         }
 
@@ -228,7 +227,6 @@ namespace WpfConsole.FileDrop
                 if (obj is WindowsData.FileTrack)
                 {
                     var fi = (WindowsData.FileTrack)obj;
-                    //ProcessFileList.FileList.Remove(fi);
                     FileList.Remove(fi);
                 }
             }
@@ -241,7 +239,7 @@ namespace WpfConsole.FileDrop
         /// <param name="e"></param>
         private void BtnLoad_Click(object sender, RoutedEventArgs e)
         {
-            // can this be done in parallel - wait for the site to be active first!
+            // TODO: can this be done in parallel - wait for the site to be active first!
             //foreach (var userFile in ProcessFileList.FileList.ToArray())
             foreach (var userFile in FileList.ToArray())
             {
@@ -278,13 +276,10 @@ namespace WpfConsole.FileDrop
                     // did it process successfully? remove from list
                     if (result.ErrorList == null || result.ErrorList.Length <= 0)
                     {
-                        //ProcessFileList.FileList.Remove(userFile);
                         FileList.Remove(userFile);
                     }
 
-
                     //TODO:  display some kind of status to the user...
-
 
                 }
             }

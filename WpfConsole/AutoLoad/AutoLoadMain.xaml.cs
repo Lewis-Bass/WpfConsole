@@ -69,6 +69,9 @@ namespace WpfConsole.AutoLoad
 
         #region Constructor and initialization
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public AutoLoadMain()
         {
             InitializeComponent();
@@ -84,6 +87,9 @@ namespace WpfConsole.AutoLoad
             LoadScreenValues();
         }
 
+        /// <summary>
+        /// setup the screen
+        /// </summary>
         private void LoadScreenValues()
         {
             var globalSettings = LocalSettings.Load();
@@ -112,6 +118,12 @@ namespace WpfConsole.AutoLoad
             lvDirectories.ItemsSource = FileList;
         }
 
+        /// <summary>
+        /// setup the time control dropdown
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="bindSource"></param>
+        /// <param name="selection"></param>
         private void SetTimeControl(ComboBox control, Dictionary<int, string> bindSource, int selection)
         {
             control.ItemsSource = bindSource;
@@ -199,12 +211,19 @@ namespace WpfConsole.AutoLoad
             CreateEntry(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
             CreateEntry(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
             CreateEntry(Environment.GetFolderPath(Environment.SpecialFolder.MyVideos));
+
+            settings.WriteToWebSite();
         }
 
         #endregion
 
         #region Selection Changed Events
 
+        /// <summary>
+        /// connection changed - record in autoload properties
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbConnection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is ComboBox)
@@ -213,10 +232,17 @@ namespace WpfConsole.AutoLoad
                 if (cb.SelectedItem is ConnectionInformation)
                 {
                     settings.AutoLoadConnection = cb.SelectedItem as ConnectionInformation;
+
+                    settings.WriteToWebSite();
                 }
             }
         }
 
+        /// <summary>
+        /// Start time changed - record in autoload properties
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbStartTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is ComboBox)
@@ -226,10 +252,17 @@ namespace WpfConsole.AutoLoad
                 {
                     var val = (KeyValuePair<int, string>)cb.SelectedItem;
                     settings.AutoLoadStartTime = val.Key;
+
+                    settings.WriteToWebSite();
                 }
             }
         }
 
+        /// <summary>
+        /// end time changes - record in autoload properties
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbEndTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is ComboBox)
@@ -239,31 +272,29 @@ namespace WpfConsole.AutoLoad
                 {
                     var val = (KeyValuePair<int, string>)cb.SelectedItem;
                     settings.AutoLoadEndTime = val.Key;
+
+                    settings.WriteToWebSite();
                 }
             }
         }
 
+        /// <summary>
+        /// pin changed - record in autoload properties
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbPin_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (sender is TextBox)
             {
                 var tb = sender as TextBox;
                 settings.AutoLoadPin = tb.Text;
+
+                settings.WriteToWebSite();
             }
         }
 
-
-
-        //private void tbPin_PasswordChanged(object sender, RoutedEventArgs e)
-        //{
-        //    if (sender is PasswordBox)
-        //    {
-        //        var tb = sender as PasswordBox;
-        //        settings.AutoLoadPin = tb.Password;
-        //    }
-        //}
         #endregion
-
-        
+                
     }
 }

@@ -9,7 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Themes.Helpers;
 using WindowsData;
-using WpfConsole.AccountChange;
+//using WpfConsole.AccountChange;
 using WpfConsole.CheckedOutFiles;
 using WpfConsole.Connection;
 using WpfConsole.FileDrop;
@@ -31,6 +31,8 @@ using WpfConsole.TagManagement;
 using System.Collections.Generic;
 using static Common.Licenses.LicenseChecks;
 using WpfConsole.ExportVault;
+using WpfConsole.Properties;
+using Common.ConnectionInfo;
 
 namespace WpfConsole
 {
@@ -70,7 +72,11 @@ namespace WpfConsole
 
         #endregion
 
-        #region constructor
+        #region Constructor
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -89,6 +95,11 @@ namespace WpfConsole
             Statistics_Click(null, null); // set the first displayed screen
         }
 
+        /// <summary>
+        /// OnLoad event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void OnLoad(object sender, RoutedEventArgs e)
         {
             // reconnect to last session if possible
@@ -180,8 +191,12 @@ namespace WpfConsole
             }
             string logTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u}] [{SourceContext}] {Message}{NewLine}{Exception}";
             Log.Logger = new LoggerConfiguration()
+#if DEBUG
                 .MinimumLevel.Debug()
                 .WriteTo.Console(outputTemplate: logTemplate)
+#else
+                .MinimumLevel.Information()
+#endif
                 .WriteTo.File(GlobalValues.LoggingDirectory, rollingInterval: RollingInterval.Hour, outputTemplate: logTemplate)
                 .CreateLogger();
             Log.Logger.Error($"Starting Application {DateTime.Now.ToLongTimeString()}");
@@ -201,7 +216,6 @@ namespace WpfConsole
         }
 
         #endregion
-
 
         #region Global Routed events
 
@@ -269,6 +283,10 @@ namespace WpfConsole
             var message = ProcessConnectionChanged();
         }
 
+        /// <summary>
+        /// The current connection to the vault has changed and needs to be handled
+        /// </summary>
+        /// <returns></returns>
         private string ProcessConnectionChanged()
         {
             string message = LicenseSetup();
@@ -313,6 +331,11 @@ namespace WpfConsole
 
         #region Menu Click Events
 
+        /// <summary>
+        /// Search menu clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void SearchMaster_Click(object sender, RoutedEventArgs e)
         {
 
@@ -332,6 +355,11 @@ namespace WpfConsole
         //////    DisplayControl(_Create);
         //////}
 
+        /// <summary>
+        /// Connections menu clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Connections_Click(object sender, RoutedEventArgs e)
         {
             if (_Connections == null)
@@ -341,6 +369,11 @@ namespace WpfConsole
             DisplayControl(_Connections);
         }
 
+        /// <summary>
+        /// Stats menu clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Statistics_Click(object sender, RoutedEventArgs e)
         {
             if (!AdminMenuCheck() && !UserMenuCheck())
@@ -354,6 +387,11 @@ namespace WpfConsole
             DisplayControl(_Statistics);
         }
 
+        /// <summary>
+        /// File Display menu click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FileDisplay_Click(object sender, RoutedEventArgs e)
         {
             if (_FileDisplay == null)
@@ -363,6 +401,11 @@ namespace WpfConsole
             DisplayControl(_FileDisplay);
         }
 
+        /// <summary>
+        /// Preferences menu click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Preferences_Click(object sender, RoutedEventArgs e)
         {
             if (_PreferenceSetup == null)
@@ -372,6 +415,11 @@ namespace WpfConsole
             DisplayControl(_PreferenceSetup);
         }
 
+        /// <summary>
+        /// Key menu clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void KeyManagement_Click(object sender, RoutedEventArgs e)
         {
             if (_KeyManagement == null)
@@ -381,6 +429,11 @@ namespace WpfConsole
             DisplayControl(_KeyManagement);
         }
 
+        /// <summary>
+        /// Tag menu clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TagManagement_Click(object sender, RoutedEventArgs e)
         {
             // the search master must be instantiated because TagManagement
@@ -396,6 +449,11 @@ namespace WpfConsole
         }
 
 
+        /// <summary>
+        /// Check out menu clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckedOut_Click(object sender, RoutedEventArgs e)
         {
             if (_CheckedOut == null)
@@ -405,19 +463,19 @@ namespace WpfConsole
             DisplayControl(_CheckedOut);
         }
 
-        /// <summary>
-        /// Top Menu Password option
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Password_Click(object sender, RoutedEventArgs e)
-        {
-            if (_MyPassword == null)
-            {
-                _MyPassword = new MyPasswordChange();
-            }
-            DisplayControl(_MyPassword);
-        }
+        ///// <summary>
+        ///// Top Menu Password option
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void Password_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (_MyPassword == null)
+        //    {
+        //        _MyPassword = new MyPasswordChange();
+        //    }
+        //    DisplayControl(_MyPassword);
+        //}
 
         /// <summary>
         /// Top Menu Auto Load Preferences
@@ -534,20 +592,10 @@ namespace WpfConsole
         /// </summary>
         private void LoadConnections()
         {
-            LocalSettings settings = LocalSettings.Load();
+            var conHelper = new ConnectionHelper();
 
-            // add the local host setting if it is not there
-            if (settings.ConnectionsData.Any(r => r.AccessKeyName == ConnectionInformation.LocalAdminName) == false)
-            {
-                // this connection should always exist
-                var conn = new ConnectionInformation { AccessKeyName = ConnectionInformation.LocalAdminName, IPAddress = "localhost", IsCurrentConnection = false };
-                settings.AddConnection(conn);
-                settings.LastConnection = conn;
-            }
-
-            PriorConnections = new ObservableCollection<ConnectionInformation>(settings.ConnectionsData);
-            // setup the current connection 
-            foreach (var con in settings.ConnectionsData)
+            PriorConnections = new ObservableCollection<ConnectionInformation>(conHelper.GetAllConnections());
+            foreach (var con in PriorConnections)
             {
                 con.IsCurrentConnection = (GlobalValues.LastConnection != null) ? con.AccessKeyName == GlobalValues.LastConnection.AccessKeyName : false;
             }
@@ -570,7 +618,6 @@ namespace WpfConsole
             Logout.IsEnabled = userMenu || adminMenu;
             AutoLoad.IsEnabled = userMenu;
             ExportVault.IsEnabled = (userMenu || adminMenu);
-
         }
 
         /// <summary>
@@ -603,10 +650,44 @@ namespace WpfConsole
             return adminMenu;
         }
 
+        /// <summary>
+        /// Handle the login event
+        /// </summary>
+        /// <param name="data"></param>
+        private bool ProcessLogin(ConnectionInformation data)
+        {
+            bool retval = false;
+            var helper = new Helpers.LoginHelper();
+            var loginStatus = helper.ProcessLogin(data);
+            string message = string.Empty;
+            if (loginStatus != null && loginStatus.Result == LoginResult.ResultList.Success)
+            {
+                message = ProcessConnectionChanged();
+                retval = true;
+            }
+            else
+            {
+                Connections_Click(null, null);
+            }
+
+            //TODO: Write my own so that the messagebox will center over the application
+            MessageBox.Show(Application.Current.MainWindow,
+                $"{loginStatus.Message}. {message}",
+                WpfConsole.Resources.Resource.LoginName,
+                MessageBoxButton.OK,
+                MessageBoxImage.Asterisk);
+            return retval;
+        }
+
         #endregion
 
         #region Drag Drop
 
+        /// <summary>
+        /// Entering the drop zone
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DragDropZone_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -619,10 +700,20 @@ namespace WpfConsole
             }
         }
 
+        /// <summary>
+        /// Dragging over the drop zone - currently not implemented
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DragDropZone_DragOver(object sender, DragEventArgs e)
         {
         }
 
+        /// <summary>
+        /// Process the file that is being dragged over the drop zone
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DragDropZone_Drop(object sender, DragEventArgs e)
         {
             string[] inList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
@@ -675,35 +766,6 @@ namespace WpfConsole
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Handle the login event
-        /// </summary>
-        /// <param name="data"></param>
-        private bool ProcessLogin(ConnectionInformation data)
-        {
-            bool retval = false;
-            var helper = new Helpers.LoginHelper();
-            var loginStatus = helper.ProcessLogin(data);
-            string message = string.Empty;
-            if (loginStatus != null && loginStatus.Result == LoginResult.ResultList.Success)
-            {
-                message = ProcessConnectionChanged();
-                retval = true;
-            }
-            else
-            {
-                Connections_Click(null, null);
-            }
-
-            //TODO: Write my own so that the messagebox will center over the application
-            MessageBox.Show(Application.Current.MainWindow, 
-                $"{loginStatus.Message}. {message}", 
-                WpfConsole.Resources.Resource.LoginName, 
-                MessageBoxButton.OK, 
-                MessageBoxImage.Asterisk);
-            return retval;
         }
 
         #endregion

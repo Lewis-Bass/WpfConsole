@@ -734,4 +734,7 @@
   <data name="TagRemove" xml:space="preserve">
     <value>Remove Tags</value>
   </data>
+  <data name="TagMainDescription" xml:space="preserve">
+    <value>Maintain Tags used in the system</value>
+  </data>
 </root>
