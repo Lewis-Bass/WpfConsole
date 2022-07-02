@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileScaner", "FileScaner\Fi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileScannerTests", "FileScannerTests\FileScannerTests.csproj", "{6AB72077-46D6-4818-B81F-A77880A79083}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INOSetupFileCreate", "INOSetupFileCreate\INOSetupFileCreate.csproj", "{B59A3854-4FA3-4289-A3B7-4D63A80AFBB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "INOSetupFileCreate", "INOSetupFileCreate\INOSetupFileCreate.csproj", "{B59A3854-4FA3-4289-A3B7-4D63A80AFBB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
