@@ -26,6 +26,8 @@ using static Common.Licenses.LicenseChecks;
 using Common.ConnectionInfo;
 using WindowsData;
 using WpfAdmin.Resources;
+using System.Net.NetworkInformation;
+using DialogLibrary.SystemDialogs;
 
 namespace WpfAdmin
 {
@@ -41,7 +43,7 @@ namespace WpfAdmin
         {
             AccessKeyName = "LocalHost",
             IPAddress = "127.0.0.1",
-            IsCurrentConnection = true,            
+            IsCurrentConnection = true,
         };
 
 
@@ -86,13 +88,10 @@ namespace WpfAdmin
         {
             InitializeComponent();
             SerilogSetup();
-            ///////EventSetup();
             ThemeSetup();
 
             // do we have any problems associated with running the back end to make the user aware of ?
             // TODO: Check disk space
-
-
         }
 
         /// <summary>
@@ -110,16 +109,61 @@ namespace WpfAdmin
             }
             if (string.IsNullOrWhiteSpace(settings.CustomerKey))
             {
-                var resp = MessageBox.Show(Application.Current.MainWindow, Resource.PurchaseKeyIf, string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (resp == MessageBoxResult.Yes)
+                //var resp = MessageBox.Show(Application.Current.MainWindow, Resource.PurchaseKeyIf, string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Question);
+                //if (resp == MessageBoxResult.Yes)
+                //{
+                //    // TODO: Redirect to the web site
+                //}
+
+                var dlg = new UserInput(Resource.PurchaseKeyDescription);
+                if (Application.Current.MainWindow.IsLoaded)
                 {
-                    // TODO: Redirect to the web site
+                    dlg.Owner = Application.Current.MainWindow;
                 }
+                bool ok = false;
+                while (!ok)
+                {
 
-                //var string = 
+                    if (dlg.ShowDialog() == true)
+                    {
+                        //pin = dlg.Answer;
+                        settings.CustomerKey = dlg.Answer;
+                    }
+
+                    // TODO: Verify that the customer key is valid!
+
+                    ok = !string.IsNullOrWhiteSpace(settings.CustomerKey);
+                }
             }
-            // connect to local vault server
+            //// Does the local vault have a device license?
+            var chk = new LicenseChecks();
+            var licenseStatus = chk.GetLicenseStatus();
+            string message = string.Empty;
+            if (licenseStatus == LicenseChecks.LicenseStatus.Missing)
+            {
+                chk.CreateDemoLicense();
+            }
+            else if (licenseStatus == LicenseChecks.LicenseStatus.Expired)
+            {
+                // local admin can always connect
+                message = Resource.AdminExpiredLicense;
 
+            }
+            else if (licenseStatus == LicenseChecks.LicenseStatus.Demo)
+            {
+                var expireDate = chk.GetExpirationDate();
+                int daysRemain = (int)expireDate.Subtract(DateTime.Now).TotalDays;
+                // Demo License - display the warning
+                message = string.Format(Resource.DemoLicense, daysRemain);
+            }
+            if (!string.IsNullOrEmpty(message))
+            {
+                MessageBox.Show(Application.Current.MainWindow,
+                    $"{message}",
+                    string.Empty,
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Asterisk);
+            }
         }
 
         #endregion

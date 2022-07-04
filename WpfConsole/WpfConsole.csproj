@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>WpfConsole</RootNamespace>
     <AssemblyName>WpfConsole</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -16,6 +16,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -123,13 +124,6 @@
     <Compile Include="Connection\LibraryCardConnection.xaml.cs">
       <DependentUpon>LibraryCardConnection.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\GetPinValue.cs" />
-    <Compile Include="Dialogs\TagChange.xaml.cs">
-      <DependentUpon>TagChange.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\UserDropdownSelect.xaml.cs">
-      <DependentUpon>UserDropdownSelect.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ExportVault\ExportMain.xaml.cs">
       <DependentUpon>ExportMain.xaml</DependentUpon>
     </Compile>
@@ -194,18 +188,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Dialogs\TagChange.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialogs\UserDropdownSelect.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialogs\UserInput.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="ExportVault\ExportMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -243,9 +225,6 @@
     <Compile Include="Converters\BooleanToHideConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\MaximumWidthConverterMargin5.cs" />
-    <Compile Include="Dialogs\UserInput.xaml.cs">
-      <DependentUpon>UserInput.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FileDrop\FileDisplay.xaml.cs">
       <DependentUpon>FileDisplay.xaml</DependentUpon>
     </Compile>
@@ -309,20 +288,11 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.en.resx" />
     <EmbeddedResource Include="Resources\Resource.es.resx" />
     <EmbeddedResource Include="Resources\Resource.resx">
@@ -342,6 +312,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{ddd1d8e7-d84c-45f8-ba54-9e337aaf2807}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DialogLibrary\DialogLibrary.csproj">
+      <Project>{3584317f-1bac-47ad-9479-0dbd78835c4b}</Project>
+      <Name>DialogLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\Themes\Themes.csproj">
       <Project>{6a9af8dd-fa02-4e76-a743-e007be845371}</Project>

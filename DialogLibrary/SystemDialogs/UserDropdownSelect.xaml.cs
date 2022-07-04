@@ -1,8 +1,10 @@
-﻿using Common;
-using Common.Settings;
+﻿using Common.Settings;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,27 +14,32 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Themes.Helpers;
+using WindowsData;
 using static Themes.Enumerations.ThemeEnums;
 
-namespace WpfConsole.Dialogs
+namespace DialogLibrary.SystemDialogs
 {
 	/// <summary>
-	/// Interaction logic for UserInput.xaml
+	/// Interaction logic for UserDropdownSelect.xaml
 	/// </summary>
-	public partial class UserInput : Window
+	public partial class UserDropdownSelect : Window
 	{
-		public UserInput(string question, string defaultAnswer = "")
-		{ 
-			
+
+		public ObservableCollection<DropDownRecords> DropdownValues { get; set; }
+
+		public UserDropdownSelect(List<DropDownRecords> dropDownValues, string question)
+		{
 			LocalSettings settings = LocalSettings.Load();
 			ThemeSelector.ApplyTheme(
 				new Uri(ThemeSelector.ThemeEnumToURIString((ETheme)settings.ActiveTheme),
 				UriKind.Relative));
 
 			InitializeComponent();
+			
+			DropdownValues = new ObservableCollection<DropDownRecords>(dropDownValues);
+			cbAnswer.ItemsSource = DropdownValues;
 
 			lblQuestion.Content = question;
-			txtAnswer.Text = defaultAnswer;
 		}
 
 		private void btnDialogOk_Click(object sender, RoutedEventArgs e)
@@ -42,14 +49,12 @@ namespace WpfConsole.Dialogs
 
 		private void Window_ContentRendered(object sender, EventArgs e)
 		{
-			txtAnswer.SelectAll();
-			txtAnswer.Focus();
+			cbAnswer.Focus();
 		}
 
-		public string Answer
+		public DropDownRecords Answer
 		{
-			get { return txtAnswer.Text; }
+			get { return (DropDownRecords)cbAnswer.SelectedItem; }
 		}
-
 	}
 }

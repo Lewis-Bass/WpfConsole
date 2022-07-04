@@ -39,9 +39,8 @@ namespace Themes.Helpers
                 {
                     // add the new dictionary to the collection of merged dictionaries of the target object, needs to be added to the end to overwrite the other items
                     targetElement.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = dictionaryUri });
-                    targetElement.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = styleUri });
                 }
-
+                targetElement.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = styleUri });
             }
             finally { }
         }

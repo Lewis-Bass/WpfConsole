@@ -24,7 +24,7 @@ using static Themes.Enumerations.ThemeEnums;
 using System.IO;
 using Common.Licenses;
 using System.Linq;
-using WpfConsole.Dialogs;
+//using DialogLibrary.SystemDialogs;
 using System.Windows.Interop;
 using System.Windows.Markup;
 using WpfConsole.TagManagement;
@@ -52,7 +52,7 @@ namespace WpfConsole
         UserControl _KeyManagement;
         UserControl _TagManagement;
         UserControl _CheckedOut;
-        UserControl _MyPassword;
+        ///UserControl _MyPassword;
         UserControl _ExportMain;
 
         /// <summary>

@@ -137,6 +137,10 @@
       <Project>{ddd1d8e7-d84c-45f8-ba54-9e337aaf2807}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DialogLibrary\DialogLibrary.csproj">
+      <Project>{3584317F-1BAC-47AD-9479-0DBD78835C4B}</Project>
+      <Name>DialogLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Themes\Themes.csproj">
       <Project>{6a9af8dd-fa02-4e76-a743-e007be845371}</Project>
       <Name>Themes</Name>

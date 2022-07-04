@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WindowsData;
 
-namespace WpfConsole.Dialogs
+namespace DialogLibrary.SystemDialogs
 {
     /// <summary>
     /// Interaction logic for TagChange.xaml

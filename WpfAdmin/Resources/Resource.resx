@@ -117,7 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdminExpiredLicense" xml:space="preserve">
+    <value>The license is expired, administrators can only search and view items.</value>
+  </data>
+  <data name="AutoLoad" xml:space="preserve">
+    <value>Auto Load</value>
+  </data>
+  <data name="DemoLicense" xml:space="preserve">
+    <value>You are currently running a full function demo license. It is Valid for {0} more days.</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Keys" xml:space="preserve">
+    <value>Keys</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Disconnect</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Preferences</value>
+  </data>
+  <data name="PurchaseKeyDescription" xml:space="preserve">
+    <value>A Purchase Key is required to continue. Please check you email. If you have not purchased a key go to "http://NoURL.com</value>
+  </data>
   <data name="PurchaseKeyIf" xml:space="preserve">
     <value>Do you need to obtain a purchase key?</value>
+  </data>
+  <data name="TagName" xml:space="preserve">
+    <value>Tag</value>
   </data>
 </root>

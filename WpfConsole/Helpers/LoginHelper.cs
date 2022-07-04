@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WindowsData;
-using WpfConsole.Dialogs;
+using DialogLibrary.SystemDialogs;
 using System.Windows.Controls;
 using WpfConsole.Connection;
 

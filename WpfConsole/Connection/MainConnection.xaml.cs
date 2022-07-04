@@ -1,29 +1,11 @@
-﻿using Common;
-using Common.ServerCommunication;
-using Common.ServerCommunication.Response;
-using System;
-using System.Collections.Generic;
+﻿using Common.ConnectionInfo;
+using Common.Settings;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WindowsData;
-using Common.ServerCommunication.Helpers;
 using WpfConsole.Resources;
-using System.ComponentModel;
-using WpfConsole.Dialogs;
-using Common.Settings;
-using WpfConsole.Properties;
-using Common.ConnectionInfo;
 
 namespace WpfConsole.Connection
 {

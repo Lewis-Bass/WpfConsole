@@ -1,26 +1,17 @@
-﻿using Microsoft.Win32;
+﻿using Common;
+using Common.ServerCommunication.Helpers;
+using Common.ServerCommunication.Requests;
+using DialogLibrary.SystemDialogs;
+using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WindowsData;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using Common.ServerCommunication.Requests;
-using Common;
-using Common.ServerCommunication.Helpers;
-using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using WindowsData;
 using WpfConsole.Resources;
-using WpfConsole.Dialogs;
 
 namespace WpfConsole.FileDrop
 {

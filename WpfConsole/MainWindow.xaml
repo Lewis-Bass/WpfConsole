@@ -4,7 +4,6 @@
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:lang="clr-namespace:WpfConsole.Resources"
-        Style="{DynamicResource StandardUserControl}"
 		mc:Ignorable="d"
 		Title="MainWindow" 
 		MinHeight="768" MinWidth="1024"

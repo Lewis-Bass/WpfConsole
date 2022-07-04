@@ -1,32 +1,20 @@
-﻿using Common.ServerCommunication.Helpers;
+﻿using Common;
+using Common.ServerCommunication.Helpers;
 using Common.ServerCommunication.Requests;
-using Common;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WindowsData;
 using WpfConsole.Resources;
-using WpfConsole.Dialogs;
 
 namespace WpfConsole.SearchMaster
 {
-	/// <summary>
-	/// Interaction logic for Results.xaml
-	/// </summary>
-	public partial class Results : UserControl, INotifyPropertyChanged
+    /// <summary>
+    /// Interaction logic for Results.xaml
+    /// </summary>
+    public partial class Results : UserControl, INotifyPropertyChanged
 	{
 
 		#region Properties
@@ -87,7 +75,7 @@ namespace WpfConsole.SearchMaster
 		private void ExecuteSave_Click(object sender, RoutedEventArgs e)
 		{
 			// get a name for the search
-			Dialogs.UserInput userInput = new Dialogs.UserInput(Resource.SearchSaveName, "");
+			DialogLibrary.SystemDialogs.UserInput userInput = new DialogLibrary.SystemDialogs.UserInput(Resource.SearchSaveName, "");
 			if (userInput.ShowDialog() == true)
 			{
 				BinderInformation binder = new BinderInformation { BinderID = string.Empty, BinderName = userInput.Answer };

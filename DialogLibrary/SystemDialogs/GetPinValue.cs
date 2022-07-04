@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WindowsData;
-using WpfConsole.Resources;
+using DialogLibrary.Resources;
 
-namespace WpfConsole.Dialogs
+namespace DialogLibrary.SystemDialogs
 {
     public class GetPinValue
     {

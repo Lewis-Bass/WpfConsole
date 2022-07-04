@@ -61,11 +61,92 @@ namespace WpfAdmin.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The license is expired, administrators can only search and view items..
+        /// </summary>
+        public static string AdminExpiredLicense {
+            get {
+                return ResourceManager.GetString("AdminExpiredLicense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto Load.
+        /// </summary>
+        public static string AutoLoad {
+            get {
+                return ResourceManager.GetString("AutoLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are currently running a full function demo license. It is Valid for {0} more days..
+        /// </summary>
+        public static string DemoLicense {
+            get {
+                return ResourceManager.GetString("DemoLicense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        public static string Export {
+            get {
+                return ResourceManager.GetString("Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keys.
+        /// </summary>
+        public static string Keys {
+            get {
+                return ResourceManager.GetString("Keys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disconnect.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preferences.
+        /// </summary>
+        public static string Preferences {
+            get {
+                return ResourceManager.GetString("Preferences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A Purchase Key is required to continue. Please check you email. If you have not purchased a key go to &quot;http://NoURL.com.
+        /// </summary>
+        public static string PurchaseKeyDescription {
+            get {
+                return ResourceManager.GetString("PurchaseKeyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you need to obtain a purchase key?.
         /// </summary>
         public static string PurchaseKeyIf {
             get {
                 return ResourceManager.GetString("PurchaseKeyIf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tag.
+        /// </summary>
+        public static string TagName {
+            get {
+                return ResourceManager.GetString("TagName", resourceCulture);
             }
         }
     }

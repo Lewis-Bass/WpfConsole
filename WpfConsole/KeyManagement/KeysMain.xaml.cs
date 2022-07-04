@@ -126,7 +126,7 @@ namespace WpfConsole.KeyManagement
 				if (btn.DataContext is AccessKey)
 				{
 					// get the address of who to send the email to
-					Dialogs.UserInput userInput = new Dialogs.UserInput(Resource.EmailEnterText, "");
+					DialogLibrary.SystemDialogs.UserInput userInput = new DialogLibrary.SystemDialogs.UserInput(Resource.EmailEnterText, "");
 					if (userInput.ShowDialog() != true)
 					{
 						return;
