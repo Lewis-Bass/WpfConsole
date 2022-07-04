@@ -171,6 +171,21 @@ namespace Common.Settings
             }
         }
 
+        string _CustomerKey = string.Empty;
+        /// <summary>
+        /// Contains the purchase key that was sent to the user from the web site
+        /// </summary>
+        public string CustomerKey {
+            get { return _CustomerKey; }
+            set
+            {
+                if (_CustomerKey != value)
+                {
+                    _CustomerKey = value;
+                    WriteFile();
+                }
+            }
+        }
 
         #endregion
 

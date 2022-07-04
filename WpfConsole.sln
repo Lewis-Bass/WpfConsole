@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileScannerTests", "FileSca
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "INOSetupFileCreate", "INOSetupFileCreate\INOSetupFileCreate.csproj", "{B59A3854-4FA3-4289-A3B7-4D63A80AFBB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAdmin", "WpfAdmin\WpfAdmin.csproj", "{69E923F7-3084-41CF-8367-D88F00D83C06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogLibrary", "DialogLibrary\DialogLibrary.csproj", "{3584317F-1BAC-47AD-9479-0DBD78835C4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{B59A3854-4FA3-4289-A3B7-4D63A80AFBB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B59A3854-4FA3-4289-A3B7-4D63A80AFBB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B59A3854-4FA3-4289-A3B7-4D63A80AFBB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69E923F7-3084-41CF-8367-D88F00D83C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E923F7-3084-41CF-8367-D88F00D83C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E923F7-3084-41CF-8367-D88F00D83C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E923F7-3084-41CF-8367-D88F00D83C06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3584317F-1BAC-47AD-9479-0DBD78835C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3584317F-1BAC-47AD-9479-0DBD78835C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3584317F-1BAC-47AD-9479-0DBD78835C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3584317F-1BAC-47AD-9479-0DBD78835C4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
