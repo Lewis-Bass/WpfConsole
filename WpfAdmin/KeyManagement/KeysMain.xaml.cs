@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +23,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WindowsData;
-using WpfConsole.Connection;
-using WpfConsole.Resources;
+//using WpfConsole.Connection;
+using WpfAdmin.Resources;
 
-namespace WpfConsole.KeyManagement
+namespace WpfAdmin.KeyManagement
 {
 	/// <summary>
 	/// Interaction logic for KeysMain.xaml
@@ -139,22 +140,22 @@ namespace WpfConsole.KeyManagement
 					string cardString = CreateCard(key);
 
 					int port = 0;
-					if (!int.TryParse(WpfConsole.Resources.Resource.EmailHostPort, out port))
+					if (!int.TryParse(Resource.EmailHostPort, out port))
 					{
-						Serilog.Log.Error($"Bad Configuration EmailHostPort{WpfConsole.Resources.Resource.EmailHostPort}");
+						Serilog.Log.Error($"Bad Configuration EmailHostPort{Resource.EmailHostPort}");
 						return;
 					}
 					var send = new Send(
-						WpfConsole.Resources.Resource.EmailHost,
-						WpfConsole.Resources.Resource.EmailHostLogin,
-						WpfConsole.Resources.Resource.EmailHostPassword,
+						Resource.EmailHost,
+						Resource.EmailHostLogin,
+						Resource.EmailHostPassword,
 						port,
-						WpfConsole.Resources.Resource.EmailFromAddress,
-						WpfConsole.Resources.Resource.EmailFromName);
+						Resource.EmailFromAddress,
+						Resource.EmailFromName);
 					send.Attachments = new Dictionary<string, byte[]>();
 					send.Attachments.Add(key.KeyName.Replace(" ", ""), Encoding.ASCII.GetBytes(cardString));
-					send.Body = string.Format(WpfConsole.Resources.Resource.EmailBody, cardString);
-					send.Subject = WpfConsole.Resources.Resource.EmailCardSubject;
+					send.Body = string.Format(Resource.EmailBody, cardString);
+					send.Subject = Resource.EmailCardSubject;
 					send.SendEmail(new string[] { emailTo });
 
 				}
@@ -177,7 +178,15 @@ namespace WpfConsole.KeyManagement
 			//	"Name":"Blue",
 			//  "Url":"localhost"
 			//}
-			return $"{{\n\t\"Name\":\"{key.KeyName}\",\n\t\"Url\":\"{GlobalValues.LastConnection.IPAddress}\"\n}}";
+			if (GlobalValues.LastConnection != null && !string.IsNullOrWhiteSpace(GlobalValues.LastConnection.IPAddress))
+			{
+				return $"{{\n\t\"Name\":\"{key.KeyName}\",\n\t\"Url\":\"{GlobalValues.LastConnection.IPAddress}\"\n}}";
+			}
+			else
+            {
+				IPHostEntry IPHost = Dns.GetHostEntry("localhost"); // NOT GOING TO WORK  NEED IP ADDRESS NOT 127.0.0.1?
+				return $"{{\n\t\"Name\":\"{key.KeyName}\",\n\t\"Url\":\"{IPHost.HostName}\"\n}}";
+			}
 		}
 
 		/// <summary>

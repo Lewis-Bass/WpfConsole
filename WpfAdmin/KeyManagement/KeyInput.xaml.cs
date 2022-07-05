@@ -12,10 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WindowsData;
-using WpfConsole.Resources;
+using WpfAdmin.Resources;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace WpfConsole.KeyManagement
+namespace WpfAdmin.KeyManagement
 {
 	/// <summary>
 	/// Interaction logic for KeyInput.xaml

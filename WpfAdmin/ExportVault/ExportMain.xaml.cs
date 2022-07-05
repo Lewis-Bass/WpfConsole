@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfConsole.ExportVault
+namespace WpfAdmin.ExportVault
 {
     /// <summary>
     /// Interaction logic for ExportMain.xaml

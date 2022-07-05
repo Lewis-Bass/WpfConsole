@@ -209,11 +209,19 @@ namespace Common.Settings
 
         public bool WriteToWebSite()
         {
-            LoginData loginData = SetupLogin();
-            var uri = new Uri($"http://{loginData.IPAddress}:{GlobalValues.FileScanPort}/settings/writesettings");
-            var returnStr = SendToServer.SendRest(this, uri).Result;
-            //var response = Newtonsoft.Json.JsonConvert.DeserializeObject<AutoLoadSettings>(returnStr.ToString());
-            //return response;
+            try
+            {
+                LoginData loginData = SetupLogin();
+                var uri = new Uri($"http://{loginData.IPAddress}:{GlobalValues.FileScanPort}/settings/writesettings");
+                var returnStr = SendToServer.SendRest(this, uri).Result;
+                //var response = Newtonsoft.Json.JsonConvert.DeserializeObject<AutoLoadSettings>(returnStr.ToString());
+                //return response;
+            }
+            catch (Exception ex)
+            {
+                Serilog.Log.Error(ex, "WriteToWebSite");
+                return false;
+            }
             return true;
         }
 

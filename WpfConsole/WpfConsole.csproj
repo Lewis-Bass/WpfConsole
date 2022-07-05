@@ -118,24 +118,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AutoLoad\AutoLoadMain.xaml.cs">
-      <DependentUpon>AutoLoadMain.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Connection\LibraryCardConnection.xaml.cs">
       <DependentUpon>LibraryCardConnection.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ExportVault\ExportMain.xaml.cs">
-      <DependentUpon>ExportMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\LoginHelper.cs" />
     <Compile Include="Helpers\ResultsSimple.xaml.cs">
       <DependentUpon>ResultsSimple.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="KeyManagement\KeyInput.xaml.cs">
-      <DependentUpon>KeyInput.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="KeyManagement\KeysMain.xaml.cs">
-      <DependentUpon>KeysMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -172,10 +160,6 @@
     <Compile Include="TagManagement\TagMain.xaml.cs">
       <DependentUpon>TagMain.xaml</DependentUpon>
     </Compile>
-    <Page Include="AutoLoad\AutoLoadMain.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="CheckedOutFiles\CheckedOutList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -188,23 +172,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ExportVault\ExportMain.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="FileDrop\FileDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Helpers\ResultsSimple.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="KeyManagement\KeyInput.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="KeyManagement\KeysMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,10 +204,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Preference\PreferenceSetup.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Resources\GlyphBrush.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -282,9 +250,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Preference\PreferenceSetup.xaml.cs">
-      <DependentUpon>PreferenceSetup.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -324,6 +289,10 @@
     <ProjectReference Include="..\WindowsData\WindowsData.csproj">
       <Project>{e91e18d9-499f-4510-92d3-e3c1dcf6edbf}</Project>
       <Name>WindowsData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfCommon\WpfCommon.csproj">
+      <Project>{507acee0-d80e-4d87-9dbb-2a71d1c90f13}</Project>
+      <Name>WpfCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

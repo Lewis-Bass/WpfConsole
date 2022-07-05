@@ -16,9 +16,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WindowsData;
-using WpfConsole.Properties;
+//using WpfAdmin.Properties;
 
-namespace WpfConsole.AutoLoad
+namespace WpfAdmin.AutoLoad
 {
     /// <summary>
     /// Interaction logic for AutoLoadMain.xaml

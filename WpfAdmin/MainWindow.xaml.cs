@@ -1,33 +1,20 @@
 ﻿using Common;
 using Common.Licenses;
 using Common.Settings;
+using DialogLibrary.SystemDialogs;
 using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Themes.Helpers;
-using static Themes.Enumerations.ThemeEnums;
-using System.Windows.Interop;
-using System.Windows.Markup;
-using static Common.Licenses.LicenseChecks;
-using Common.ConnectionInfo;
 using WindowsData;
+using WpfAdmin.AutoLoad;
+using WpfAdmin.ExportVault;
+using WpfAdmin.KeyManagement;
 using WpfAdmin.Resources;
-using System.Net.NetworkInformation;
-using DialogLibrary.SystemDialogs;
+using WpfCommon.Preference;
+using static Themes.Enumerations.ThemeEnums;
 
 namespace WpfAdmin
 {
@@ -39,43 +26,27 @@ namespace WpfAdmin
 
         #region globals
 
+        // User screens
+        UserControl _KeyManagement;
+        UserControl _AutoLoad;
+        UserControl _ExportMain;
+        UserControl _PreferenceSetup;
+
+        //UserControl _TagManagement;
+        //UserControl _CheckedOut;
+        //UserControl _MyPassword;
+
+
+
+        /// <summary>
+        /// The admin console only works with a localhost connection. set it up here
+        /// </summary>
         public static ConnectionInformation LocalVaultConnection = new ConnectionInformation
         {
             AccessKeyName = "LocalHost",
             IPAddress = "127.0.0.1",
             IsCurrentConnection = true,
         };
-
-
-
-
-
-        //UserControl _SearchMaster;
-        //UserControl _Connections;
-        //UserControl _Statistics;
-        //UserControl _FileDisplay;
-        //UserControl _AutoLoad;
-        //UserControl _PreferenceSetup;
-        //UserControl _KeyManagement;
-        //UserControl _TagManagement;
-        //UserControl _CheckedOut;
-        //UserControl _MyPassword;
-        //UserControl _ExportMain;
-
-        ///////////////////// <summary>
-        ///////////////////// Prior Connections - left nav item
-        ///////////////////// </summary>
-        //////////////////public ObservableCollection<ConnectionInformation> PriorConnections { get; set; } = new ObservableCollection<ConnectionInformation>();
-
-        ///////////////////// <summary>
-        ///////////////////// Last (x) Prior Viewed Files  - left nav item
-        ///////////////////// </summary>
-        //////////////////public LocalFileList PriorFiles { get; set; } = new LocalFileList();
-
-        ///////////////////// <summary>
-        ///////////////////// Last (x) Checked out files - left nav
-        ///////////////////// </summary>
-        //////////////////public LocalFileList CheckFiles { get; set; } = new LocalFileList();
 
         #endregion
 
@@ -168,8 +139,7 @@ namespace WpfAdmin
 
         #endregion
 
-
-        #region
+        #region Helpers
 
         private void ConnectToLocalVault()
         {
@@ -280,15 +250,78 @@ namespace WpfAdmin
         }
 
         /// <summary>
-        /// When the screen initially loads, reconnect to the ark that was last used
+        /// Remove the currently displayed control and switch to the control passed in
         /// </summary>
-
+        private void DisplayControl(UserControl displayControl)
+        {
+            for (int i = (MenuSelectionDisplay.Children.Count - 1); i >= 0; i--)
+            {
+                MenuSelectionDisplay.Children.RemoveAt(i);
+            }
+            MenuSelectionDisplay.Children.Add(displayControl);
+        }
 
         #endregion
 
-        #region Helpers
+        #region Top Nav clicks
 
+        /// <summary>
+        /// Key menu clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void KeyManagement_Click(object sender, RoutedEventArgs e)
+        {
+            if (_KeyManagement == null)
+            {
+                _KeyManagement = new KeysMain();
+            }
+            DisplayControl(_KeyManagement);
+        }
 
+        /// <summary>
+        /// Top Menu Auto Load Preferences
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AutoLoad_Click(object sender, RoutedEventArgs e)
+        {
+            if (_AutoLoad == null)
+            {
+                _AutoLoad = new AutoLoadMain();
+            }
+            DisplayControl(_AutoLoad);
+
+        }
+
+        /// <summary>
+        /// Top Menu Export option
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ExportVault_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Wire up the form
+            if (_ExportMain == null)
+            {
+                _ExportMain = new ExportMain();
+            }
+            DisplayControl(_ExportMain);
+        }
+
+        /// <summary>
+        /// Preferences menu click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Preferences_Click(object sender, RoutedEventArgs e)
+        {
+            if (_PreferenceSetup == null)
+            {
+                _PreferenceSetup = new PreferenceSetup();
+            }
+            DisplayControl(_PreferenceSetup);
+        }
 
         #endregion
 

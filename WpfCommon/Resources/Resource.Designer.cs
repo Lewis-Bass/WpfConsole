@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfAdmin.Resources {
+namespace WpfCommon.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WpfAdmin.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WpfAdmin.Resources.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WpfCommon.Resources.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -1371,15 +1371,6 @@ namespace WpfAdmin.Resources {
         public static string PriorConnections {
             get {
                 return ResourceManager.GetString("PriorConnections", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to A Purchase Key is required to continue. Please check you email. If you have not purchased a key go to &quot;http://NoURL.com.
-        /// </summary>
-        public static string PurchaseKeyDescription {
-            get {
-                return ResourceManager.GetString("PurchaseKeyDescription", resourceCulture);
             }
         }
         

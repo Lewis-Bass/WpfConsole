@@ -13,13 +13,13 @@ using WindowsData;
 using WpfConsole.CheckedOutFiles;
 using WpfConsole.Connection;
 using WpfConsole.FileDrop;
-using WpfConsole.KeyManagement;
-using WpfConsole.Preference;
+////using WpfConsole.KeyManagement;
+using WpfCommon.Preference;
 //using WpfConsole.Search;
 using WpfConsole.SearchMaster;
 //using WpfConsole.SearchFilter;
 using WpfConsole.Resources;
-using WpfConsole.AutoLoad;
+//using WpfConsole.AutoLoad;
 using static Themes.Enumerations.ThemeEnums;
 using System.IO;
 using Common.Licenses;
@@ -30,7 +30,7 @@ using System.Windows.Markup;
 using WpfConsole.TagManagement;
 using System.Collections.Generic;
 using static Common.Licenses.LicenseChecks;
-using WpfConsole.ExportVault;
+//using WpfConsole.ExportVault;
 using WpfConsole.Properties;
 using Common.ConnectionInfo;
 
@@ -47,13 +47,13 @@ namespace WpfConsole
         UserControl _Connections;
         UserControl _Statistics;
         UserControl _FileDisplay;
-        UserControl _AutoLoad;
+        //UserControl _AutoLoad;
         UserControl _PreferenceSetup;
-        UserControl _KeyManagement;
+        //UserControl _KeyManagement;
         UserControl _TagManagement;
         UserControl _CheckedOut;
         ///UserControl _MyPassword;
-        UserControl _ExportMain;
+        //UserControl _ExportMain;
 
         /// <summary>
         /// Prior Connections - left nav item
@@ -420,14 +420,14 @@ namespace WpfConsole
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void KeyManagement_Click(object sender, RoutedEventArgs e)
-        {
-            if (_KeyManagement == null)
-            {
-                _KeyManagement = new KeysMain();
-            }
-            DisplayControl(_KeyManagement);
-        }
+        //private void KeyManagement_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (_KeyManagement == null)
+        //    {
+        //        _KeyManagement = new KeysMain();
+        //    }
+        //    DisplayControl(_KeyManagement);
+        //}
 
         /// <summary>
         /// Tag menu clicked
@@ -477,35 +477,34 @@ namespace WpfConsole
         //    DisplayControl(_MyPassword);
         //}
 
-        /// <summary>
-        /// Top Menu Auto Load Preferences
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AutoLoad_Click(object sender, RoutedEventArgs e)
-        {
-            if (_AutoLoad == null)
-            {
-                _AutoLoad = new AutoLoadMain();
-            }
-            DisplayControl(_AutoLoad);
+        ///// <summary>
+        ///// Top Menu Auto Load Preferences
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void AutoLoad_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (_AutoLoad == null)
+        //    {
+        //        _AutoLoad = new AutoLoadMain();
+        //    }
+        //    DisplayControl(_AutoLoad);
+        //}
 
-        }
-
-        /// <summary>
-        /// Top Menu Export option
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ExportVault_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO: Wire up the form
-            if (_ExportMain == null)
-            {
-                _ExportMain = new ExportMain();
-            }
-            DisplayControl(_ExportMain);
-        }
+        ///////// <summary>
+        ///////// Top Menu Export option
+        ///////// </summary>
+        ///////// <param name="sender"></param>
+        ///////// <param name="e"></param>
+        //////private void ExportVault_Click(object sender, RoutedEventArgs e)
+        //////{
+        //////    // TODO: Wire up the form
+        //////    if (_ExportMain == null)
+        //////    {
+        //////        _ExportMain = new ExportMain();
+        //////    }
+        //////    DisplayControl(_ExportMain);
+        //////}
 
         /// <summary>
         /// logout of the current session
@@ -613,11 +612,11 @@ namespace WpfConsole
             SearchMaster.IsEnabled = userMenu;
             AddFiles.IsEnabled = userMenu;
             CheckedOutFiles.IsEnabled = userMenu;
-            Keys.IsEnabled = userMenu;
+            //Keys.IsEnabled = userMenu;
             Tags.IsEnabled = userMenu;
             Logout.IsEnabled = userMenu || adminMenu;
-            AutoLoad.IsEnabled = userMenu;
-            ExportVault.IsEnabled = (userMenu || adminMenu);
+            //AutoLoad.IsEnabled = userMenu;
+            //ExportVault.IsEnabled = (userMenu || adminMenu);
         }
 
         /// <summary>

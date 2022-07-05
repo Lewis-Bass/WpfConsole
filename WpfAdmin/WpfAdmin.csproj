@@ -50,6 +50,9 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\packages\Serilog.2.11.0\lib\net46\Serilog.dll</HintPath>
     </Reference>
@@ -67,6 +70,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.4.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -85,17 +89,45 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AutoLoad\AutoLoadMain.xaml.cs">
+      <DependentUpon>AutoLoadMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExportVault\ExportMain.xaml.cs">
+      <DependentUpon>ExportMain.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InitialSetup\Setup.xaml.cs">
       <DependentUpon>Setup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KeyManagement\KeyInput.xaml.cs">
+      <DependentUpon>KeyInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KeyManagement\KeysMain.xaml.cs">
+      <DependentUpon>KeysMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Page Include="AutoLoad\AutoLoadMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="ExportVault\ExportMain.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="InitialSetup\Setup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KeyManagement\KeyInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="KeyManagement\KeysMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +181,11 @@
       <Project>{e91e18d9-499f-4510-92d3-e3c1dcf6edbf}</Project>
       <Name>WindowsData</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WpfCommon\WpfCommon.csproj">
+      <Project>{507acee0-d80e-4d87-9dbb-2a71d1c90f13}</Project>
+      <Name>WpfCommon</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

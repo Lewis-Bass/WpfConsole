@@ -1,95 +1,90 @@
 ﻿<Window x:Class="WpfAdmin.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfAdmin"
-        xmlns:lang="clr-namespace:WpfAdmin.Resources"
-        mc:Ignorable="d"
-        Title="MainWindow"
-        Loaded="OnLoad"
-        MinHeight="768" MinWidth="1024"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:WpfAdmin"
+		xmlns:lang="clr-namespace:WpfAdmin.Resources"
+		mc:Ignorable="d"
+		Title="MainWindow"
+		Loaded="OnLoad"
+		MinHeight="768" MinWidth="1024"
 		Height="900" Width="1500">
-    <Grid x:Name="MainGrid">
-        <DockPanel VerticalAlignment="Stretch" 
+	<Grid x:Name="MainGrid">
+		<DockPanel VerticalAlignment="Stretch" 
 			   HorizontalAlignment="Stretch"
 			   LastChildFill="True">
 
-            <!--TOP RING MENU-->
-            <WrapPanel DockPanel.Dock="Top"                        
+			<!--TOP RING MENU-->
+			<WrapPanel DockPanel.Dock="Top"                        
 					   Background="{DynamicResource Toolbar.Static.BackgroundBrush}"
 					   HorizontalAlignment="Stretch">
-                <!-- Move the menu over so that it does not overlap the left menu -->
-                <TextBlock Text=""                           
+				<!-- Move the menu over so that it does not overlap the left menu -->
+				<TextBlock Text=""                           
 						   Width="150"
 						   VerticalAlignment="Center" 
 						   Style="{DynamicResource TextBlockNormal3Style}"/>
-                <Menu x:Name="mnuTop"
+				<Menu x:Name="mnuTop"
 					  HorizontalAlignment="Stretch"                       
 					  VerticalAlignment="Center">
 
-                    <MenuItem Name="Tags" Header="{x:Static lang:Resource.TagName}" />
-                    <MenuItem Name="Keys"  Header="{x:Static lang:Resource.Keys}" />
-                    <MenuItem Name="AutoLoad" Header="{x:Static lang:Resource.AutoLoad}" />
-                    <MenuItem Name="Preferences" Header="{x:Static lang:Resource.Preferences}" />
-                    <MenuItem Name="ExportVault" Header="{x:Static lang:Resource.Export}"/>
-                    <MenuItem Name="Logout" Header="{x:Static lang:Resource.Logout}"/>
-                    <!--<MenuItem Name="Tags"  Header="{x:Static lang:Resource.TagName}" Click="TagManagement_Click"/>
-                    <MenuItem Name="Keys"  Header="{x:Static lang:Resource.Keys}" Click="KeyManagement_Click"/>
-                    <MenuItem Name="AutoLoad" Header="{x:Static lang:Resource.AutoLoad}" Click="AutoLoad_Click"/>
-                    <MenuItem Name="Preferences" Header="{x:Static lang:Resource.Preferences}" Click="Preferences_Click"/>
-                    <MenuItem Name="ExportVault" Header="{x:Static lang:Resource.Export}" Click="ExportVault_Click"/>
-                    <MenuItem Name="Logout" Header="{x:Static lang:Resource.Logout}" Click="Logout_Click"/>-->
-                </Menu>
-            </WrapPanel>
+					<!--<MenuItem Name="Tags"  Header="{x:Static lang:Resource.TagName}" Click="TagManagement_Click"  ???????????????/-->
+					<MenuItem Name="Keys"  Header="{x:Static lang:Resource.Keys}" Click="KeyManagement_Click"/>
+					<!--<MenuItem Name="Tags"  Header="{x:Static lang:Resource.TagName}" Click="TagManagement_Click"/>-->
+					<MenuItem Name="AutoLoad" Header="{x:Static lang:Resource.AutoLoad}" Click="AutoLoad_Click"/>                    
+					<MenuItem Name="ExportVault" Header="{x:Static lang:Resource.Export}" Click="ExportVault_Click"/>
+					<MenuItem Name="Preferences" Header="{x:Static lang:Resource.Preferences}" Click="Preferences_Click"/>
+					<!--<MenuItem Name="Tags"  Header="{x:Static lang:Resource.TagName}" Click="TagManagement_Click"/>-->
+				</Menu>
+			</WrapPanel>
 
-            <!--LEFT MENU-->
-            <Grid DockPanel.Dock="Left"
+			<!--LEFT MENU-->
+			<Grid DockPanel.Dock="Left"
 					HorizontalAlignment="Stretch" 
 					VerticalAlignment="Stretch"
 					Width="150"
 					Background="{DynamicResource Toolbar.Static.BackgroundBrush}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-            </Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+			</Grid>
 
 
-            <!--BOTOM MENU-->
-            <Grid x:Name="mainGrid" DockPanel.Dock="Bottom">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition x:Name="NavColumn" Width="Auto" MinWidth="170" MaxWidth="500"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid x:Name="gridNavigationBar" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <Grid.RowDefinitions>
-                        <RowDefinition x:Name="toolBarRow" Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <ContentControl x:Name="NavBarContainer" Grid.Row="1" Width="220" IsTabStop="False"/>
-                </Grid>
-            </Grid>
+			<!--BOTOM MENU-->
+			<Grid x:Name="mainGrid" DockPanel.Dock="Bottom">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition x:Name="NavColumn" Width="Auto" MinWidth="170" MaxWidth="500"/>
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition/>
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Grid x:Name="gridNavigationBar" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<Grid.RowDefinitions>
+						<RowDefinition x:Name="toolBarRow" Height="Auto"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<ContentControl x:Name="NavBarContainer" Grid.Row="1" Width="220" IsTabStop="False"/>
+				</Grid>
+			</Grid>
 
-            <!--Main Content-->
-            <Grid x:Name="MenuSelectionDisplay"                    
+			<!--Main Content-->
+			<Grid x:Name="MenuSelectionDisplay"                    
 					DockPanel.Dock="Right"
 					Background="{DynamicResource StandardView.BackgroundBrush}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-            </Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+			</Grid>
 
-        </DockPanel>
-    </Grid>
+		</DockPanel>
+	</Grid>
 </Window>
