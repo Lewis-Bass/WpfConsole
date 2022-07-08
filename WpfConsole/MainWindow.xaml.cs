@@ -208,6 +208,12 @@ namespace WpfConsole
         private void ReconnectIfPossible()
         {
             LocalSettings settings = LocalSettings.Load();
+            if (settings == null || string.IsNullOrWhiteSpace(settings.CustomerKey))
+            {
+                MessageBox.Show(Resource.NoPurchaseKey, Resource.Notice, MessageBoxButton.OK, MessageBoxImage.Error);
+                Close();
+                return;
+            }
             if (settings.LastConnection != null)
             {
                 ProcessLogin(settings.LastConnection);

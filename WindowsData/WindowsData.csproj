@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArkData.cs" />
     <Compile Include="BinderInformation.cs" />
     <Compile Include="ConnectionInformation.cs" />
     <Compile Include="DeviceInfo.cs" />
@@ -69,6 +68,7 @@
     <Compile Include="SearchCriteriaGUI.cs" />
     <Compile Include="SearchResults.cs" />
     <Compile Include="SearchTreeGUI.cs" />
+    <Compile Include="VaultInformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Resource.es.resx" />

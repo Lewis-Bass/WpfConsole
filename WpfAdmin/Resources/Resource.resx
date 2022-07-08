@@ -563,6 +563,9 @@
   <data name="PurchaseKeyDescription" xml:space="preserve">
     <value>A Purchase Key is required to continue. Please check you email. If you have not purchased a key go to "http://NoURL.com</value>
   </data>
+  <data name="PurchaseKeyUrl" xml:space="preserve">
+    <value>https://google.com</value>
+  </data>
   <data name="RekeyPassword" xml:space="preserve">
     <value>RekeyPassword</value>
   </data>

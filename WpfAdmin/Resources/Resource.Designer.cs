@@ -1384,6 +1384,15 @@ namespace WpfAdmin.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://google.com.
+        /// </summary>
+        public static string PurchaseKeyUrl {
+            get {
+                return ResourceManager.GetString("PurchaseKeyUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RekeyPassword.
         /// </summary>
         public static string RekeyPassword {

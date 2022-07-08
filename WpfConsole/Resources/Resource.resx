@@ -530,6 +530,9 @@
   <data name="NewPassword" xml:space="preserve">
     <value>New Password</value>
   </data>
+  <data name="NoPurchaseKey" xml:space="preserve">
+    <value>The software is not authorized! Please use the Admin program to remedy this issue.</value>
+  </data>
   <data name="Notice" xml:space="preserve">
     <value>Notice</value>
   </data>

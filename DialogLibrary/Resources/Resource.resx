@@ -135,6 +135,9 @@
   <data name="OkButton" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="PuchaseWebSiteButton" xml:space="preserve">
+    <value>Purchase Key</value>
+  </data>
   <data name="TagAdd" xml:space="preserve">
     <value>Use existing Tags</value>
   </data>

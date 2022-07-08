@@ -175,13 +175,31 @@ namespace Common.Settings
         /// <summary>
         /// Contains the purchase key that was sent to the user from the web site
         /// </summary>
-        public string CustomerKey {
+        public string CustomerKey
+        {
             get { return _CustomerKey; }
             set
             {
                 if (_CustomerKey != value)
                 {
                     _CustomerKey = value;
+                    WriteFile();
+                }
+            }
+        }
+
+        VaultInformation _GetVaultInformation = null;
+        /// <summary>
+        /// Contains the vault name and the location of the storage file
+        /// </summary>
+        public VaultInformation GetVaultInformation
+        {
+            get { return _GetVaultInformation; }
+            set
+            {
+                if (_GetVaultInformation != value)
+                {
+                    _GetVaultInformation = value;
                     WriteFile();
                 }
             }
@@ -244,14 +262,6 @@ namespace Common.Settings
                     }
                 }
             }
-            //if (!settings.ConnectionsData.Any(r => r.AccessKeyName == ConnectionInformation.LocalAdminName))
-            //{
-            //    // this connection should always exist
-            //    settings.AddConnection(new ConnectionInformation { AccessKeyName = ConnectionInformation.LocalAdminName, IPAddress = "localhost", IsCurrentConnection = false });
-            //}
-            //}
-            //Monitor.Exit(readingFile);
-
             readingFile = false;
             return settings;
         }
@@ -266,7 +276,6 @@ namespace Common.Settings
                 return;
             }
 
-            //Monitor.TryEnter(readingFile);
             if (File.Exists(GlobalValues.UserSettingsStorageLocation))
             {
                 File.Delete(GlobalValues.UserSettingsStorageLocation);
@@ -276,7 +285,6 @@ namespace Common.Settings
             TextWriter textWriter = new StreamWriter(GlobalValues.UserSettingsStorageLocation);
             serializer.Serialize(textWriter, this);
             textWriter.Close();
-            //Monitor.Exit(readingFile);
         }
 
         #endregion

@@ -1285,6 +1285,15 @@ namespace WpfConsole.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The software is not authorized! Please use the Admin program to remedy this issue..
+        /// </summary>
+        public static string NoPurchaseKey {
+            get {
+                return ResourceManager.GetString("NoPurchaseKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notice.
         /// </summary>
         public static string Notice {

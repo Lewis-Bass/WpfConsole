@@ -115,6 +115,15 @@ namespace DialogLibrary.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Purchase Key.
+        /// </summary>
+        public static string PuchaseWebSiteButton {
+            get {
+                return ResourceManager.GetString("PuchaseWebSiteButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use existing Tags.
         /// </summary>
         public static string TagAdd {

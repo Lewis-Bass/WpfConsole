@@ -116,7 +116,6 @@ namespace WpfConsole.SearchMaster
 		}
 
 		#endregion
-
 	   
 	}
 }
