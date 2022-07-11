@@ -121,7 +121,7 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox x:Name="grpLicense" Header="{x:Static lang:Resource.License}" IsEnabled="False">
+        <!--<GroupBox x:Name="grpLicense" Header="{x:Static lang:Resource.License}" IsEnabled="False">
             <Grid Margin="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -154,7 +154,7 @@
                     </Button>
                 </WrapPanel>
             </Grid>
-        </GroupBox>
+        </GroupBox>-->
 
     </StackPanel>
 </UserControl>

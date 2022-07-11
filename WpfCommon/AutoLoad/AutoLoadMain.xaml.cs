@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 using WindowsData;
 //using WpfAdmin.Properties;
 
-namespace WpfAdmin.AutoLoad
+namespace WpfCommon.AutoLoad
 {
     /// <summary>
     /// Interaction logic for AutoLoadMain.xaml

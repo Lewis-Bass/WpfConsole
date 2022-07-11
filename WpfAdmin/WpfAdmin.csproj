@@ -89,9 +89,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AutoLoad\AutoLoadMain.xaml.cs">
-      <DependentUpon>AutoLoadMain.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ExportVault\ExportMain.xaml.cs">
       <DependentUpon>ExportMain.xaml</DependentUpon>
     </Compile>
@@ -112,10 +109,6 @@
     <Compile Include="Vault\VaultSetup.xaml.cs">
       <DependentUpon>VaultSetup.xaml</DependentUpon>
     </Compile>
-    <Page Include="AutoLoad\AutoLoadMain.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
     <Page Include="ExportVault\ExportMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

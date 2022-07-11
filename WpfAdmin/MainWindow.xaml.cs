@@ -4,18 +4,17 @@ using Common.Settings;
 using DialogLibrary.SystemDialogs;
 using Serilog;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using Themes.Helpers;
 using WindowsData;
-using WpfAdmin.AutoLoad;
 using WpfAdmin.ExportVault;
 using WpfAdmin.KeyManagement;
 using WpfAdmin.Resources;
-using WpfCommon.Preference;
 using WpfAdmin.Vault;
+using WpfCommon.AutoLoad;
+using WpfCommon.Preference;
 using static Themes.Enumerations.ThemeEnums;
 
 namespace WpfAdmin
@@ -80,21 +79,8 @@ namespace WpfAdmin
         /// <param name="e"></param>
         void OnLoad(object sender, RoutedEventArgs e)
         {
-
             if (!CheckPurchaseKey())
-            {
-                Close(); // fatal error - bail out
-                return;
-            }
-
-            if (!CheckDeviceLicense())
-            {
-                Close();
-                return;
-            }
-
-            if (!CheckVaultSetup())
-            {
+            {            
                 // the vault location must be specified before anything can be done, turn off all of the options except the setup
                 // and put a note on the screen
                 SetupNavAvailability(false);
@@ -130,75 +116,20 @@ namespace WpfAdmin
             {
                 settings = new LocalSettings();
             }
-            if (string.IsNullOrWhiteSpace(settings.CustomerKey))
+            if (string.IsNullOrWhiteSpace(settings.CustomerKey) || settings.GetVaultInformation == null || string.IsNullOrWhiteSpace(settings.GetVaultInformation.VaultStorageLocation))
             {
-                bool ok = false;
-                while (!ok)
-                {
-                    var dlg = new PurchaseKey(Resource.PurchaseKeyDescription);
-                    if (Application.Current.MainWindow.IsLoaded)
-                    {
-                        dlg.Owner = Application.Current.MainWindow;
-                    }
-                    if (dlg.ShowDialog() == true)
-                    {
-                        if (dlg.IsRedirectAnswer)
-                        {
-                            System.Diagnostics.Process.Start(Resource.PurchaseKeyUrl);
-                        }
-                        else
-                        {
-                            settings.CustomerKey = dlg.Answer;
-                        }
-                    }
+                // do not allow any progression until the key has been input!
+                SetupNavAvailability(false);
+                VaultSetup_Click(null, null);
 
-                    // TODO: Verify that the customer key is valid!
-                    ok = !string.IsNullOrWhiteSpace(settings.CustomerKey);
-                }
+                // TODO: Verify that the customer key is valid!
+                settings = LocalSettings.Load();
             }
             // it is possible to cancel the dialog message without the customer key
+            settings = LocalSettings.Load();
             return !string.IsNullOrWhiteSpace(settings.CustomerKey);
         }
-
-        /// <summary>
-        /// Does the device have a license?
-        /// </summary>
-        /// <returns></returns>
-        private bool CheckDeviceLicense()
-        {
-            //// Does the local vault have a device license?
-            var chk = new LicenseChecks();
-            var licenseStatus = chk.GetLicenseStatus();
-            string message = string.Empty;
-            if (licenseStatus == LicenseChecks.LicenseStatus.Missing)
-            {
-                chk.CreateDemoLicense();
-            }
-            else if (licenseStatus == LicenseChecks.LicenseStatus.Expired)
-            {
-                // local admin can always connect
-                message = Resource.AdminExpiredLicense;
-
-            }
-            else if (licenseStatus == LicenseChecks.LicenseStatus.Demo)
-            {
-                var expireDate = chk.GetExpirationDate();
-                int daysRemain = (int)expireDate.Subtract(DateTime.Now).TotalDays;
-                // Demo License - display the warning
-                message = string.Format(Resource.DemoLicense, daysRemain);
-            }
-            if (!string.IsNullOrEmpty(message))
-            {
-                MessageBox.Show(Application.Current.MainWindow,
-                    $"{message}",
-                    string.Empty,
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Asterisk);
-                return false;
-            }
-            return true;
-        }
-
+        
         /// <summary>
         /// is the vault setup valid?
         /// </summary>
@@ -282,8 +213,8 @@ namespace WpfAdmin
             ////////else if (licenseStatus == LicenseChecks.LicenseStatus.Expired)
             ////////{
             ////////    // local admin can always connect
-            ////////    var settings = LocalSettings.Load();
-            ////////    if (settings.LastConnection.IsLocalAdmin)
+            ////////    var _Settings = LocalSettings.Load();
+            ////////    if (_Settings.LastConnection.IsLocalAdmin)
             ////////    {
             ////////        message = Resource.AdminExpiredLicense;
             ////////    }
@@ -376,6 +307,7 @@ namespace WpfAdmin
             {
                 _VaultSetup = new VaultSetup();
             }
+
             DisplayControl(_VaultSetup);
         }
 

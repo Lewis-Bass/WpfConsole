@@ -471,7 +471,7 @@
     <value>Paste Library Card Text Message</value>
   </data>
   <data name="License" xml:space="preserve">
-    <value>License</value>
+    <value>License Upgrade</value>
   </data>
   <data name="LoadFiles" xml:space="preserve">
     <value>Load Files</value>
@@ -559,6 +559,12 @@
   </data>
   <data name="PriorConnections" xml:space="preserve">
     <value>Prior Connections</value>
+  </data>
+  <data name="PuchaseWebSiteButton" xml:space="preserve">
+    <value>Purchase Key</value>
+  </data>
+  <data name="PurchaseKey" xml:space="preserve">
+    <value>Purchase Key</value>
   </data>
   <data name="PurchaseKeyDescription" xml:space="preserve">
     <value>A Purchase Key is required to continue. Please check you email. If you have not purchased a key go to "http://NoURL.com</value>
@@ -739,6 +745,9 @@
   </data>
   <data name="Vault" xml:space="preserve">
     <value>Vault</value>
+  </data>
+  <data name="VaultInitialSetupMessage" xml:space="preserve">
+    <value>The vault must be setup before it can be used! Please complete this form before proceeding!</value>
   </data>
   <data name="View" xml:space="preserve">
     <value>View</value>

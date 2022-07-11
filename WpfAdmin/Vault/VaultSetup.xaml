@@ -7,68 +7,135 @@
              xmlns:lang="clr-namespace:WpfAdmin.Resources"
              Style="{DynamicResource StandardUserControl}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Loaded="VaultSetup_Loaded">
 
     <StackPanel VerticalAlignment="Stretch" 
                 HorizontalAlignment="Stretch">
 
-        <DockPanel VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch">
-            <TextBlock DockPanel.Dock="Left" 
-                       Text="{x:Static lang:Resource.CreateArk}"/>
-        </DockPanel>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="150"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <TextBlock x:Name="tbInformationMessage" 
+                       Grid.Row="3" Grid.Column="1" Foreground="Red"
+                       TextWrapping="Wrap" />
+        
+        <GroupBox x:Name="grpCustomerKey" Header="{x:Static lang:Resource.PurchaseKey}">
+            <Grid Margin="15" Background="{DynamicResource StandardView.BackgroundBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0"
+                <TextBlock Name="tbQuestion" Grid.Row="0" TextWrapping="Wrap" 
+                           Text="{Binding lang:Resource.PurchaseKeyDescription}">                    
+                </TextBlock>
+                <TextBox Name="txtAnswer" Grid.Row="1" MinWidth="250"/>
+                <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">
+                    <Button IsDefault="True" 
+                        Name="btnDialogOk"
+                        Click="btnDialogOk_Click"
+                        MinWidth="60" Margin="0,0,10,0">
+                        <TextBlock Text="{x:Static lang:Resource.Update}"/>
+                    </Button>
+                    <Button MinWidth="60"
+                        Name="btnPurchaseWeb"
+                        Click="btnPurchaseWeb_Click">
+                        <TextBlock Text="{x:Static lang:Resource.PuchaseWebSiteButton}"/>
+                    </Button>
+                </WrapPanel>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="ArkSetup" Header="{x:Static lang:Resource.CreateArk}" IsEnabled="False">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0"
                        VerticalAlignment="Center"
                        Margin="5px"
                        Text="{x:Static lang:Resource.ArkName}"/>
 
-            <TextBox x:Name="txtArkName"
+                <TextBox x:Name="txtArkName"
                      Grid.Row="0" Grid.Column="1"                     
                      Margin="5px"                     
                      Text="{Binding VaultName}">
-            </TextBox>
+                </TextBox>
 
-            <TextBlock Grid.Row="1" Grid.Column="0"
+                <TextBlock Grid.Row="1" Grid.Column="0"
                        VerticalAlignment="Center"
                        Margin="5px"
                        Text="{x:Static lang:Resource.StorageLocation}"/>
-            <TextBox x:Name="txtFileName"
+                <TextBox x:Name="txtFileName"
                      Grid.Row="1" Grid.Column="1" 
                      Margin="5px"
                      Text="{Binding VaultStorageLocation}"/>
-            <Button x:Name="FileBrowser" 
+                <Button x:Name="FileBrowser" 
                         Grid.Row="1" Grid.Column="2"
                         Click="FileBrowser_Click"
                         Margin="5px">
-                <TextBlock Text="{x:Static lang:Resource.BrowseHardDisk}"/>
-            </Button>
+                    <TextBlock Text="{x:Static lang:Resource.BrowseHardDisk}"/>
+                </Button>
 
-            <Button x:Name="Create" 
+                <Button x:Name="Create" 
                     Grid.Row="2"
                     Grid.Column="1"
                     Margin="5px"
                     Width="100px"
                     HorizontalAlignment="Left"
                     Click="Create_Click">
-                <TextBlock Text="{x:Static lang:Resource.Create}"/>
-            </Button>
-        </Grid>
+                    <TextBlock Text="{x:Static lang:Resource.Create}"/>
+                </Button>
+            </Grid>
+        </GroupBox>
+
+        <!--<GroupBox x:Name="grpLicense" Header="{x:Static lang:Resource.License}">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="tbLicenseMessage" 
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           Grid.ColumnSpan="99"
+                           Padding="5" />
+                <TextBlock Grid.Row="1" Grid.Column="0"
+                           Text="{x:Static lang:Resource.AttachLicenseFile}"
+                           MaxWidth="150" 
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"/>
+                <WrapPanel Grid.Row="1" Grid.Column="1">
+                    <TextBox x:Name="txtUpgradeFileName" Width="450"/>
+                    <Button x:Name="btnFileBrowser"
+                        Margin="5px"                        
+                        MaxHeight="25"
+                        Width="100"
+                        Grid.Row="1" Grid.Column="2"
+                        Click="btnFileBrowser_Click>
+                        <TextBlock Text="{x:Static lang:Resource.Browse}"/>
+                    </Button>                   
+                </WrapPanel>
+            </Grid>
+        </GroupBox>-->
+
+
+
     </StackPanel>
 </UserControl>
 

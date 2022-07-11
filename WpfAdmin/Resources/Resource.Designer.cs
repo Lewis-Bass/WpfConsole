@@ -1105,7 +1105,7 @@ namespace WpfAdmin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to License.
+        ///   Looks up a localized string similar to License Upgrade.
         /// </summary>
         public static string License {
             get {
@@ -1371,6 +1371,24 @@ namespace WpfAdmin.Resources {
         public static string PriorConnections {
             get {
                 return ResourceManager.GetString("PriorConnections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchase Key.
+        /// </summary>
+        public static string PuchaseWebSiteButton {
+            get {
+                return ResourceManager.GetString("PuchaseWebSiteButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchase Key.
+        /// </summary>
+        public static string PurchaseKey {
+            get {
+                return ResourceManager.GetString("PurchaseKey", resourceCulture);
             }
         }
         
@@ -1911,6 +1929,15 @@ namespace WpfAdmin.Resources {
         public static string Vault {
             get {
                 return ResourceManager.GetString("Vault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The vault must be setup before it can be used! Please complete this form before proceeding!.
+        /// </summary>
+        public static string VaultInitialSetupMessage {
+            get {
+                return ResourceManager.GetString("VaultInitialSetupMessage", resourceCulture);
             }
         }
         

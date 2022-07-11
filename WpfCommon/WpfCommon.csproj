@@ -60,6 +60,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AutoLoad\AutoLoadMain.xaml.cs">
+      <DependentUpon>AutoLoadMain.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Preference\PreferenceSetup.xaml.cs">
       <DependentUpon>PreferenceSetup.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AutoLoad\AutoLoadMain.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Preference\PreferenceSetup.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>

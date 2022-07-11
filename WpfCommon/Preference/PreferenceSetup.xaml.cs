@@ -162,36 +162,40 @@ namespace WpfCommon.Preference
 
         #endregion
 
-        private void btnFileBrowser_Click(object sender, RoutedEventArgs e)
-        {
-            var openFileDialog = new System.Windows.Forms.OpenFileDialog
-            {
-                CheckFileExists = true,
-                CheckPathExists = true,
-                AddExtension = true,
-                Multiselect = false,
-                Filter = "License File|*.lic"
-            };
+        #region License Key Changes
 
-            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                var fileName = openFileDialog.FileName;
-                txtFileName.Text = fileName;
-                var fileContent = File.ReadAllText(fileName);
+        //private void btnFileBrowser_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var openFileDialog = new System.Windows.Forms.OpenFileDialog
+        //    {
+        //        CheckFileExists = true,
+        //        CheckPathExists = true,
+        //        AddExtension = true,
+        //        Multiselect = false,
+        //        Filter = "License File|*.lic"
+        //    };
 
-                if (File.Exists(GlobalValues.LicenseFileName))
-                {
-                    File.Delete(GlobalValues.LicenseFileName);
-                }
-                File.Copy(fileName, GlobalValues.LicenseFileName);
+        //    if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+        //    {
+        //        var fileName = openFileDialog.FileName;
+        //        txtFileName.Text = fileName;
+        //        var fileContent = File.ReadAllText(fileName);
 
-            }
-        }
+        //        if (File.Exists(GlobalValues.LicenseFileName))
+        //        {
+        //            File.Delete(GlobalValues.LicenseFileName);
+        //        }
+        //        File.Copy(fileName, GlobalValues.LicenseFileName);
+
+        //    }
+        //}
 
         private void StackPanel_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             // are we connected so that the license can be updated
-            grpLicense.IsEnabled = GlobalValues.IsConnectionValid;
+            //grpLicense.IsEnabled = GlobalValues.IsConnectionValid;
         }
+
+        #endregion
     }
 }
