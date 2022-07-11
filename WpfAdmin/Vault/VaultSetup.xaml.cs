@@ -97,6 +97,11 @@ namespace WpfAdmin.Vault
 
         #region
 
+        /// <summary>
+        /// process the customer key
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDialogOk_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtAnswer.Text))
@@ -108,6 +113,12 @@ namespace WpfAdmin.Vault
             // can the vault be setup now?
             EnableDisableArkSetup();
         }
+
+        /// <summary>
+        /// Redirect to the web
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPurchaseWeb_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start(Resource.PurchaseKeyUrl);

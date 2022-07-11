@@ -2,11 +2,11 @@
 [run]
 Filename: {sys}\sc.exe; Parameters: "create VaultFileScan start= auto binPath= ""{app}\FileScaner\FileScaner.exe"" group= ""Local Service"" " ; Flags: runhidden
 Filename: {sys}\sc.exe; Parameters: "start VaultFileScan" ; Flags: runhidden
-;;Filename: {cmd}\shutdown; Parameters: "/r" ; Flags: runhidden
 
 [UninstallRun]
 Filename: {sys}\sc.exe; Parameters: "stop VaultFileScan" ; Flags: runhidden
 Filename: {sys}\sc.exe; Parameters: "delete VaultFileScan" ; Flags: runhidden
 
 [Icons]
-Name: "{group}\Vault Maintenance"; Filename: "{app}\WpfConsole\WpfConsole.exe"
+Name: "{group}\Vault Maintenance"; Filename: "{app}\Console\WpfConsole.exe"; WorkingDir: "{app}\WpfConsole"
+Name: "{group}\Admin Access"; Filename: "{app}\Admin\WpfAdmin.exe"; WorkingDir: "{app}\WpfAdmin"
